@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+
+require('babel-register');
+
+var argv = require('minimist')(process.argv.slice(2));
+
+var main = require('../lib/cli/dldoc').default;
+
+main(argv);

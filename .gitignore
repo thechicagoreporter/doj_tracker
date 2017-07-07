@@ -1,0 +1,7 @@
+node_modules
+# Ignore Google API Oauth2 credentials
+client_id.json
+# Ignore vim swap files
+*.swp
+# Ignore generated ArchieML
+data.archieml
