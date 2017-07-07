@@ -32,5 +32,9 @@
     "moment": "^2.18.1",
     "nunjucks": "^3.0.1",
     "xlsx": "^0.10.7"
+  },
+  "repository" : {
+    "type": "git",
+    "url" : "https://github.com/thechicagoreporter/doj_tracker.git"
   }
 }

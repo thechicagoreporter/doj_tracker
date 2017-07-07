@@ -14,7 +14,7 @@ Installation
 
 Clone the repository:
 
-    # TODO: Add this git command
+    git clone https://github.com/thechicagoreporter/doj_tracker.git
 
 Install build dependencies:
 
