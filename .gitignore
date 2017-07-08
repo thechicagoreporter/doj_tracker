@@ -5,3 +5,5 @@ client_id.json
 *.swp
 # Ignore generated ArchieML
 data.archieml
+# Ignore generated bundles
+dist

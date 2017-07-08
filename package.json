@@ -22,6 +22,7 @@
     "archieml": "^0.4.2",
     "babel-preset-env": "^1.6.0",
     "babel-register": "^6.24.1",
+    "css-loader": "^0.28.4",
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.2.0",
     "eslint-plugin-import": "^2.7.0",
@@ -30,11 +31,16 @@
     "google-auth-library": "^0.10.0",
     "googleapis": "^20.0.1",
     "moment": "^2.18.1",
+    "node-sass": "^4.5.3",
     "nunjucks": "^3.0.1",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.1.0",
+    "webpack-dev-middleware": "^1.11.0",
     "xlsx": "^0.10.7"
   },
-  "repository" : {
+  "repository": {
     "type": "git",
-    "url" : "https://github.com/thechicagoreporter/doj_tracker.git"
+    "url": "https://github.com/thechicagoreporter/doj_tracker.git"
   }
 }
