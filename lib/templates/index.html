@@ -16,13 +16,12 @@
                   class="recommendation recommendation--{{ recommendation.statusSlug }}">
                     <h3 class="recommendation__gist">{{ recommendation.recommendation_gist }}</h3>
 
-                    <div class="recommendation__status">Status: {{ recommendation.status }}</div>
+                    <div class="recommendation__status">{{ recommendation.status }}</div>
 
                     <div class="recommendation__specific">
                         {{ recommendation.recommendation_specific }}
                     </div>
 
-                    <p>Agencies:</p>
                     <ul class="agencies">
                         {% for agency in recommendation.agency_responsible %}
                         <li class="agency">{{ agency }}</li>
