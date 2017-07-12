@@ -1,4 +1,24 @@
-.category {
+.category__name a {
+  text-decoration: none;
+
+  &::after {
+    content: '▼';
+  }
+}
+
+.category__name--collapsed a {
+  &::after {
+    padding-left: 0.2em;
+    content: '▸';
+  }
+}
+
+.recommendation--collapsed {
+  display: none;
+}
+
+.recommendation {
+  padding: 1em;
 }
 
 .recommendation__status {

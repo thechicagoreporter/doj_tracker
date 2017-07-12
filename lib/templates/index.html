@@ -6,40 +6,48 @@
     </head>
 
     <body>
-        {% for category in data.categories %}
-        <div class="category">
-            <h2>{{ category.name }}</h2>
+        <div class="doj-tracker-container">
+            {% for category in data.categories %}
+            <div class="category" data-slug="{{ category.slug }}">
+                <h2 class="category__name"><a href="#">{{ category.name }}</a></h2>
 
-            {% for recommendation in category.recommendations %}
-            <div data-id="{{ recommendation.id }}" class="recommendation">
-                <h3 class="recommendation__gist">{{ recommendation.recommendation_gist }}</h3>
+                {% for recommendation in category.recommendations %}
+                <div data-id="{{ recommendation.id }}"
+                  class="recommendation recommendation--{{ recommendation.statusSlug }}">
+                    <h3 class="recommendation__gist">{{ recommendation.recommendation_gist }}</h3>
 
-                <div class="recommendation__status">Status: {{ recommendation.status }}</div>
+                    <div class="recommendation__status">Status: {{ recommendation.status }}</div>
 
-                <div class="recommendation__specific">
-                    {{ recommendation.recommendation_specific }}
+                    <div class="recommendation__specific">
+                        {{ recommendation.recommendation_specific }}
+                    </div>
+
+                    <p>Agencies:</p>
+                    <ul class="agencies">
+                        {% for agency in recommendation.agency_responsible %}
+                        <li class="agency">{{ agency }}</li>
+                        {% endfor %}
+                    </ul>
+
+                    <ul class="recommendation__updates">
+                        {% for update in recommendation.updates %}
+                        <li class="update">
+                          <h4 class="update__date">{{ update.date }}</h3>
+                          <div class="update__notes">
+                              {{ update.notes | safe }}
+                          </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
                 </div>
-
-                <p>Agencies:</p>
-                <ul class="agencies">
-                    {% for agency in recommendation.agency_responsible %}
-                    <li class="agency">{{ agency }}</li>
-                    {% endfor %}
-                </ul>
-
-                <ul class="recommendation__updates">
-                    {% for update in recommendation.updates %}
-                    <li class="update">
-                      <h4 class="update__date">{{ update.date }}</h3>
-                      <div class="update__notes">
-                          {{ update.notes | safe }}
-                      </div>
-                    </li>
-                    {% endfor %}
-                </ul>
+                {% endfor %}
             </div>
             {% endfor %}
         </div>
-        {% endfor %}
+        <script>
+            document.querySelectorAll('.doj-tracker-container').forEach(function(el) {
+              new dojtracker.App(el);
+            });
+        </script>
     </body>
 </html>

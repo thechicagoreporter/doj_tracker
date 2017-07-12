@@ -34,6 +34,7 @@
     "node-sass": "^4.5.3",
     "nunjucks": "^3.0.1",
     "sass-loader": "^6.0.6",
+    "slugify": "^1.1.0",
     "style-loader": "^0.18.2",
     "webpack": "^3.1.0",
     "webpack-dev-middleware": "^1.11.0",
@@ -42,5 +43,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/thechicagoreporter/doj_tracker.git"
+  },
+  "dependencies": {
+    "redux": "^3.7.1"
   }
 }
