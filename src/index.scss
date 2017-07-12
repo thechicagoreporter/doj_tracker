@@ -3,6 +3,14 @@ $partially-implemented-color: orange;
 $implemented-color: green;
 $unclear-color: gray;
 
+@mixin sans-serif-font() {
+  font-family: sans-serif;
+}
+
+.tracker-container {
+  @include sans-serif-font;
+}
+
 .category__name a {
   text-decoration: none;
 
