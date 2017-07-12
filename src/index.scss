@@ -13,6 +13,7 @@ $unclear-color: gray;
 
 .category__name a {
   text-decoration: none;
+  color: black;
 
   &::after {
     content: '▼';
