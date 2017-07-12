@@ -60,6 +60,17 @@ $unclear-color: gray;
   padding-left: 0;
 }
 
+.agencies {
+  padding-left: 0;
+}
+
+.agency {
+  display: inline-block;
+  border: 1px solid black;
+  padding: 0.4em;
+  list-style-type: none;
+}
+
 .update {
   list-style-type: none;
 }
