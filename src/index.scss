@@ -1,3 +1,8 @@
+$not-implemented-color: pink;
+$partially-implemented-color: orange;
+$implemented-color: green;
+$unclear-color: gray;
+
 .category__name a {
   text-decoration: none;
 
@@ -13,13 +18,31 @@
   }
 }
 
+.recommendation {
+  padding: 4em;
+  margin-bottom: 4em;
+}
+
+.recommendation--not-implemented {
+  background-color: $not-implemented-color;
+}
+
+.recommendation--partially-implemented {
+  background-color: $partially-implemented-color;
+}
+
+.recommendation--implemented {
+  background-color: $implemented-color;
+}
+
+.recommendation--unclear {
+  background-color: $unclear-color;
+}
+
 .recommendation--collapsed {
   display: none;
 }
 
-.recommendation {
-  padding: 1em;
-}
 
 .recommendation__status {
   margin-bottom: 1em;
@@ -27,4 +50,8 @@
 
 .recommendation__updates {
   padding-left: 0;
+}
+
+.update {
+  list-style-type: none;
 }
