@@ -1,4 +1,4 @@
-import { TOGGLE_CATEGORY } from './actions';
+import { TOGGLE_CATEGORY, FILTER_STATUS } from './actions';
 
 const initialState = {
   categories: [],
@@ -19,6 +19,10 @@ export const trackerApp = function trackerAppReducer(state = initialState, actio
         }),
       });
 
+    case FILTER_STATUS:
+      return Object.assign({}, state, {
+        statusFilter: action.statusFilter
+      });
 
     default:
       return state

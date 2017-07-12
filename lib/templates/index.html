@@ -7,12 +7,23 @@
 
     <body>
         <div class="tracker-container">
+            <form class="filters">
+                <select class="filters__status">
+                    <option value="">Filter by status</option>
+                    <option value="Not implemented">Not implemented</option>
+                    <option value="Partially implemented">Partially implemented</option>
+                    <option value="Implemented">Implemented</option>
+                    <option value="Unclear">Unclear</option>
+                </select>
+            </form>
+
             {% for category in data.categories %}
             <div class="category" data-slug="{{ category.slug }}">
                 <h2 class="category__name"><a href="#">{{ category.name }}</a></h2>
 
                 {% for recommendation in category.recommendations %}
                 <div data-id="{{ recommendation.id }}"
+                  data-status="{{ recommendation.status }}"
                   class="recommendation recommendation--{{ recommendation.statusSlug }}">
                     <h3 class="recommendation__gist">{{ recommendation.recommendation_gist }}</h3>
 

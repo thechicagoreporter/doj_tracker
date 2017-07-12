@@ -1,7 +1,7 @@
 import './index.scss';
 
 import { createStore } from 'redux';
-import { toggleCategory } from './actions';
+import { filterStatus, toggleCategory } from './actions';
 import { trackerApp } from './reducers';
 import{ addClass, removeClass, addEventListener } from './util';
 
@@ -31,11 +31,19 @@ export class App {
       this.clickCategoryName.bind(this)
     );
 
+    addEventListener(
+      this.container.querySelectorAll(".filters__status"),
+      "change",
+      this.changeStatusFilter.bind(this)
+    );
+
     this.render();
   }
 
   render() {
-    this.store.getState().categories.forEach((category) => {
+    const state = this.store.getState();
+
+    state.categories.forEach((category) => {
       let classFn = removeClass;
 
       if (category.collapsed) {
@@ -52,6 +60,26 @@ export class App {
       );
       classFn(recommendationEls, "recommendation--collapsed");
     });
+
+    if (state.statusFilter) {
+      addClass(
+        this.container.querySelectorAll(".recommendation"),
+        "recommendation--hidden"
+      );
+
+      removeClass(
+        this.container.querySelectorAll(
+          `.recommendation[data-status="${state.statusFilter}"]`
+        ),
+        "recommendation--hidden"
+      );
+    }
+    else {
+      removeClass(
+        this.container.querySelectorAll(".recommendation"),
+        "recommendation--hidden"
+      );
+    }
   }
 
   clickCategoryName(evt) {
@@ -62,5 +90,10 @@ export class App {
       .parentNode
       .getAttribute('data-slug');
     this.store.dispatch(toggleCategory(slug));
+  }
+
+  changeStatusFilter(evt) {
+    const statusFilter = evt.target.options[evt.target.selectedIndex].value;
+    this.store.dispatch(filterStatus(statusFilter));
   }
 }

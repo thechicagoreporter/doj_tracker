@@ -48,7 +48,8 @@ $unclear-color: gray;
   background-color: $unclear-color;
 }
 
-.recommendation--collapsed {
+.recommendation--collapsed,
+.recommendation--hidden {
   display: none;
 }
 
