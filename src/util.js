@@ -2,9 +2,9 @@ export const addClass = function addCssClass(els, className) {
   els.forEach((el) => {
     if (el.classList) {
       el.classList.add(className);
-    }
-    else {
-      el.className += ' ' + className;
+    } else {
+      // eslint-disable-next-line no-param-reassign
+      el.className += ` ${className}`;
     }
   });
 };
@@ -13,16 +13,15 @@ export const removeClass = function removeCssClass(els, className) {
   els.forEach((el) => {
     if (el.classList) {
       el.classList.remove(className);
-    }
-    else {
+    } else {
+      const classNameOptions = className.split(' ').join('|');
+      // eslint-disable-next-line no-param-reassign
       el.className = el.className.replace(
         new RegExp(
-          '(^|\\b)' +
-          className.split(' ')
-            .join('|') +
-          '(\\b|$)', 'gi'
+          `(^|\\b)${classNameOptions}(\\b|$)`,
+          'gi',
         ),
-        ' '
+        ' ',
       );
     }
   });
@@ -31,7 +30,7 @@ export const removeClass = function removeCssClass(els, className) {
 export const addEventListener = function addEventListenerForEls(
   els,
   eventName,
-  eventHandler
+  eventHandler,
 ) {
   els.forEach((el) => {
     el.addEventListener(eventName, eventHandler);

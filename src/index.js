@@ -1,10 +1,16 @@
-import './index.scss';
 
 import { createStore } from 'redux';
 import { toggleStatusFilter, toggleCategory } from './actions';
 import { trackerApp } from './reducers';
-import{ addClass, removeClass, addEventListener } from './util';
+import { addClass, removeClass, addEventListener } from './util';
 
+import './index.scss';
+
+function getStatusFromEl(el) {
+  return el.getAttribute('data-status');
+}
+
+// eslint-disable-next-line import/prefer-default-export
 export class App {
   constructor(container) {
     this.container = container;
@@ -17,10 +23,10 @@ export class App {
         collapsed: true,
       });
     });
-    const statusEls = this.container.querySelectorAll('.status-filter')
+    const statusEls = this.container.querySelectorAll('.status-filter');
     const statuses = new Set();
     statusEls.forEach((el) => {
-      statuses.add(this.getStatusFromEl(el));
+      statuses.add(getStatusFromEl(el));
     });
     const initialState = {
       categories,
@@ -33,26 +39,22 @@ export class App {
 
     addEventListener(
       this.container.querySelectorAll('.category__name a'),
-      "click",
-      this.clickCategoryName.bind(this)
+      'click',
+      this.clickCategoryName.bind(this),
     );
 
     addEventListener(
-      this.container.querySelectorAll(".status-filter"),
-      "click",
-      this.clickStatusFilter.bind(this)
+      this.container.querySelectorAll('.status-filter'),
+      'click',
+      this.clickStatusFilter.bind(this),
     );
 
     this.render();
   }
 
-  getStatusFromEl(el) {
-    return el.getAttribute("data-status");
-  }
 
   render() {
     const state = this.store.getState();
-    console.log(state);
 
     state.categories.forEach((category) => {
       let classFn = removeClass;
@@ -62,39 +64,39 @@ export class App {
       }
 
       const categoryNameEl = this.container.querySelectorAll(
-        `.category[data-slug="${category.slug}"] .category__name`
+        `.category[data-slug="${category.slug}"] .category__name`,
       );
-      classFn(categoryNameEl, "category__name--collapsed");
+      classFn(categoryNameEl, 'category__name--collapsed');
 
       const recommendationEls = this.container.querySelectorAll(
-        `.category[data-slug="${category.slug}"] .recommendation`
+        `.category[data-slug="${category.slug}"] .recommendation`,
       );
-      classFn(recommendationEls, "recommendation--collapsed");
+      classFn(recommendationEls, 'recommendation--collapsed');
     });
 
     addClass(
-      this.container.querySelectorAll(".recommendation"),
-      "recommendation--hidden"
+      this.container.querySelectorAll('.recommendation'),
+      'recommendation--hidden',
     );
 
     removeClass(
-      this.container.querySelectorAll(".status-filter"),
-      "status-filter--selected",
+      this.container.querySelectorAll('.status-filter'),
+      'status-filter--selected',
     );
 
     state.statuses.forEach((statusFilter) => {
       removeClass(
         this.container.querySelectorAll(
-          `.recommendation[data-status="${statusFilter}"]`
+          `.recommendation[data-status="${statusFilter}"]`,
         ),
-        "recommendation--hidden"
+        'recommendation--hidden',
       );
 
       addClass(
         this.container.querySelectorAll(
-          `.status-filter[data-status="${statusFilter}"]`
+          `.status-filter[data-status="${statusFilter}"]`,
         ),
-        "status-filter--selected"
+        'status-filter--selected',
       );
     });
   }
@@ -111,7 +113,7 @@ export class App {
 
   clickStatusFilter(evt) {
     evt.preventDefault();
-    const statusFilter = this.getStatusFromEl(evt.target);
+    const statusFilter = getStatusFromEl(evt.target);
     this.store.dispatch(toggleStatusFilter(statusFilter));
   }
 }

@@ -1,5 +1,5 @@
-export const TOGGLE_CATEGORY = "TOGGLE_CATEGORY";
-export const TOGGLE_STATUS_FILTER = "TOGGLE_STATUS_FILTER";
+export const TOGGLE_CATEGORY = 'TOGGLE_CATEGORY';
+export const TOGGLE_STATUS_FILTER = 'TOGGLE_STATUS_FILTER';
 
 export const toggleCategory = function toggleCategoryActionCreator(slug) {
   return {

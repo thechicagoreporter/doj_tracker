@@ -41,9 +41,17 @@ The code for this project is mostly written in JavaScript using [ES2015](https:/
 
 For the most part, it follows the [AirBnB JavaScript coding style](https://github.com/airbnb/javascript).
 
+Having a coding style, and using a tool to make sure you're following it is a good way to avoid simple logic errors and make your code more readable for future you and other developers.
+
 To lint the code using [eslint](http://eslint.org/), run:
 
     npm run lint
+
+In the code, you may see comments that look like this:
+
+    // eslint-disable-next-line import/prefer-default-export
+
+These just disable a particular coding style [rules](http://eslint.org/docs/rules/) when the exception is appropriate.
 
 Browser support
 ---------------

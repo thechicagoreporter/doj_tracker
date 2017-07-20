@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint lib",
+    "lint": "eslint lib src",
     "sheet2archieml": "./bin/dlsheet --client-secret client_id.json https://docs.google.com/spreadsheets/d/1cj157YGWSDV-c0kBkndZ4XC85tsYSea148mhaP-tpX0/edit | ./bin/sheet2json | ./bin/transformsheetdata | ./bin/json2archieml --prop=recommendations > data.archieml",
     "serve": "node app.js --client-secret client_id.json https://docs.google.com/document/d/16IQIgNn2DXD5AMlMZE2SsrYJCBWJhSykrelscAY5ek4/edit"
   },
