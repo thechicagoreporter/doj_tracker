@@ -1,14 +1,20 @@
+#!/usr/bin/env node
+
+/**
+ * Run a local development server.
+ */
+
 require('babel-register');
 
-var fs = require('fs');
-var argv = require('minimist')(process.argv.slice(2));
-var app = require('./lib/app').default; 
-var drive = require('./lib/google-drive');
-var webpackDevMiddleware = require("webpack-dev-middleware");
-var webpack = require("webpack");
-var webpackConfig = require("./webpack.config");
+const fs = require('fs');
+const argv = require('minimist')(process.argv.slice(2));
+const app = require('../lib/app').default; 
+const drive = require('../lib/google-drive');
+const webpackDevMiddleware = require("webpack-dev-middleware");
+const webpack = require("webpack");
+const webpackConfig = require("../webpack.config");
 
-var docUrl = argv._[0];
+const docUrl = argv._[0];
 
 fs.readFile(argv['client-secret'], function (err, content) {
   if (err) {
@@ -17,7 +23,7 @@ fs.readFile(argv['client-secret'], function (err, content) {
   }
 
   drive.authorize(JSON.parse(content), function (oauth2Client) {
-    var compiler = webpack(webpackConfig);
+    const compiler = webpack(webpackConfig);
 
     app.use(webpackDevMiddleware(compiler, {
       publicPath: "/" // Same as `output.publicPath` in most cases.
