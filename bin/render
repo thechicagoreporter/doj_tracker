@@ -1,0 +1,33 @@
+#!/usr/bin/env node
+
+require('babel-register');
+
+const fs = require('fs');
+const argv = require('minimist')(process.argv.slice(2));
+const app = require('../lib/app').default;
+const drive = require('../lib/google-drive');
+const render = require('../lib/render').default;
+
+const docUrl = argv._[0];
+
+fs.readFile(argv['client-secret'], function (err, content) {
+  if (err) {
+    process.stderr.write(`Error loading client secret file: ${err}\n`);
+    process.exit(1);
+  }
+
+  drive.authorize(JSON.parse(content), (oauth2Client) => {
+    app.locals.oauth2Client = oauth2Client;
+    app.locals.docUrl = docUrl;
+    render(app, '/', (content, err) => {
+      if (err) {
+        console.log(err);
+        process.exit(1);
+      }
+
+      console.log(content);
+      process.exit();
+    });
+  });
+
+});

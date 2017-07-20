@@ -25,6 +25,20 @@ Run the local development server
 
     npm run serve
 
+Deployment
+----------
+
+For now, while we're in development of this app, we're deploying both HTML and assets to S3.  In order to deploy to the appropriate S3 bucket, you'll need to set the following environment variables with you AWS credentials:
+
+  * AWS\_ACCESS\_KEY
+  * AWS\_SECRET\_KEY
+
+Then run this npm script to build the project and publish it:
+
+    npm run publish:staging
+
+TODO: Add separate staging and production deployment instructions
+
 Data prep
 ---------
 

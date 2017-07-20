@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint lib src",
     "sheet2archieml": "./bin/dlsheet --client-secret client_id.json https://docs.google.com/spreadsheets/d/1cj157YGWSDV-c0kBkndZ4XC85tsYSea148mhaP-tpX0/edit | ./bin/sheet2json | ./bin/transformsheetdata | ./bin/json2archieml --prop=recommendations > data.archieml",
-    "serve": "node app.js --client-secret client_id.json https://docs.google.com/document/d/16IQIgNn2DXD5AMlMZE2SsrYJCBWJhSykrelscAY5ek4/edit"
+    "serve": "node app.js --client-secret client_id.json https://docs.google.com/document/d/16IQIgNn2DXD5AMlMZE2SsrYJCBWJhSykrelscAY5ek4/edit",
+    "build": "webpack && ./bin/render --client-secret client_id.json https://docs.google.com/document/d/16IQIgNn2DXD5AMlMZE2SsrYJCBWJhSykrelscAY5ek4/edit > dist/index.html",
+    "publish:staging": "npm run build && s3-cli put --acl-public dist/index.html s3://s3.amazonaws.com/projects.chicagoreporter.com/graphics/dojtracker/index.html && s3-cli put --acl-public dist/bundle.js s3://s3.amazonaws.com/projects.chicagoreporter.com/graphics/dojtracker/bundle.js"
   },
   "keywords": [
     "CPD",
@@ -33,6 +35,7 @@
     "moment": "^2.18.1",
     "node-sass": "^4.5.3",
     "nunjucks": "^3.0.1",
+    "s3-cli": "^0.13.0",
     "sass-loader": "^6.0.6",
     "slugify": "^1.1.0",
     "style-loader": "^0.18.2",

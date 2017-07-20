@@ -7,3 +7,5 @@ client_id.json
 data.archieml
 # Ignore generated bundles
 dist
+# Ignore environment variable file
+.env
