@@ -11,58 +11,60 @@
 
     <body>
         <div class="tracker-container">
-            <h1>{{ title }}</h1>
+            <div class="tracker">
+                <h1>{{ title }}</h1>
 
-            <div class="intro">
-                {{ intro_text|safe }}
-            </div>
-
-            <div class="filters">
-                <div class="filter-set">
-                    <h2 class="filter-set__label">Status</h2>
-
-                    {% for status in statuses %}
-                    <a href="#" class="status-filter status-filter--{{ status.slug }}" data-status="{{ status.status }}">{{ status.status }}</a>
-                    {% endfor %}
+                <div class="intro">
+                    {{ intro_text|safe }}
                 </div>
-            </div>
 
-            {% for category in categories %}
-            <div class="category" data-slug="{{ category.slug }}">
-                <h2 class="category__name"><a href="#">{{ category.name }}</a></h2>
+                <div class="filters">
+                    <div class="filter-set">
+                        <h2 class="filter-set__label">Status</h2>
 
-                {% for recommendation in category.recommendations %}
-                <div data-id="{{ recommendation.id }}"
-                  data-status="{{ recommendation.status }}"
-                  class="recommendation recommendation--{{ recommendation.statusSlug }}">
-                    <h3 class="recommendation__gist">{{ recommendation.recommendation_gist }}</h3>
-
-                    <div><span class="recommendation__status recommendation__status--{{ recommendation.statusSlug }}">{{ recommendation.status }}</span></div>
-
-                    <div class="recommendation__specific">
-                        {{ recommendation.recommendation_specific }}
+                        {% for status in statuses %}
+                        <a href="#" class="status-filter status-filter--{{ status.slug }}" data-status="{{ status.status }}">{{ status.status }}</a>
+                        {% endfor %}
                     </div>
+                </div>
 
-                    <ul class="agencies">
-                        {% for agency in recommendation.agency_responsible %}
-                        <li class="agency">{{ agency }}</li>
-                        {% endfor %}
-                    </ul>
+                {% for category in categories %}
+                <div class="category" data-slug="{{ category.slug }}">
+                    <h2 class="category__name"><a href="#">{{ category.name }}</a></h2>
 
-                    <ul class="recommendation__updates">
-                        {% for update in recommendation.updates %}
-                        <li class="update">
-                          <h4 class="update__date">{{ update.date }}</h3>
-                          <div class="update__notes">
-                              {{ update.notes | safe }}
-                          </div>
-                        </li>
-                        {% endfor %}
-                    </ul>
+                    {% for recommendation in category.recommendations %}
+                    <div data-id="{{ recommendation.id }}"
+                      data-status="{{ recommendation.status }}"
+                      class="recommendation recommendation--{{ recommendation.statusSlug }}">
+                        <h3 class="recommendation__gist">{{ recommendation.recommendation_gist }}</h3>
+
+                        <div><span class="recommendation__status recommendation__status--{{ recommendation.statusSlug }}">{{ recommendation.status }}</span></div>
+
+                        <div class="recommendation__specific">
+                            {{ recommendation.recommendation_specific }}
+                        </div>
+
+                        <ul class="agencies">
+                            {% for agency in recommendation.agency_responsible %}
+                            <li class="agency">{{ agency }}</li>
+                            {% endfor %}
+                        </ul>
+
+                        <ul class="recommendation__updates">
+                            {% for update in recommendation.updates %}
+                            <li class="update">
+                              <h4 class="update__date">{{ update.date }}</h3>
+                              <div class="update__notes">
+                                  {{ update.notes | safe }}
+                              </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endfor %}
                 </div>
                 {% endfor %}
             </div>
-            {% endfor %}
         </div>
         <script>
             document.querySelectorAll('.tracker-container').forEach(function(el) {

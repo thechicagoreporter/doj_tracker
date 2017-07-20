@@ -8,7 +8,19 @@ $unclear-color: gray;
 }
 
 .tracker-container {
+  text-align: center;
   @include sans-serif-font;
+}
+
+.tracker {
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .tracker {
+    max-width: 768px;
+    margin: 0 auto;
+  }
 }
 
 .filter-set {
