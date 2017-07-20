@@ -70,26 +70,24 @@ $unclear-color: gray;
 .recommendation {
   padding: 2em;
   margin-bottom: 2em;
-}
-
-.recommendation__gist {
-  margin-top: 0;
+  border-top: 4px solid;
+  background-color: #F2F3F4;
 }
 
 .recommendation--not-implemented {
-  background-color: $not-implemented-color;
+  border-top-color: $not-implemented-color !important;
 }
 
 .recommendation--partially-implemented {
-  background-color: $partially-implemented-color;
+  border-top-color: $partially-implemented-color !important;
 }
 
 .recommendation--implemented {
-  background-color: $implemented-color;
+  border-top-color: $implemented-color !important;
 }
 
 .recommendation--unclear {
-  background-color: $unclear-color;
+  border-top-color: $unclear-color !important;
 }
 
 .recommendation--collapsed,
@@ -97,9 +95,31 @@ $unclear-color: gray;
   display: none;
 }
 
+.recommendation__gist {
+  margin-top: 0;
+}
 
 .recommendation__status {
+  display: inline-block;
   margin-bottom: 1em;
+  padding: 0.4em;
+  color: white;
+}
+
+.recommendation__status--not-implemented {
+  background-color: $not-implemented-color;
+}
+
+.recommendation__status--partially-implemented {
+  background-color: $partially-implemented-color;
+}
+
+.recommendation__status--implemented {
+  background-color: $implemented-color;
+}
+
+.recommendation__status--unclear {
+  background-color: $unclear-color;
 }
 
 .recommendation__updates {

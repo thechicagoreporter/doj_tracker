@@ -34,7 +34,7 @@
                   class="recommendation recommendation--{{ recommendation.statusSlug }}">
                     <h3 class="recommendation__gist">{{ recommendation.recommendation_gist }}</h3>
 
-                    <div class="recommendation__status">{{ recommendation.status }}</div>
+                    <div><span class="recommendation__status recommendation__status--{{ recommendation.statusSlug }}">{{ recommendation.status }}</span></div>
 
                     <div class="recommendation__specific">
                         {{ recommendation.recommendation_specific }}
