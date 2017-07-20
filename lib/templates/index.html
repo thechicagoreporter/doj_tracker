@@ -8,6 +8,12 @@
 
     <body>
         <div class="tracker-container">
+            <h1>{{ data.title }}</h1>
+
+            <div class="intro">
+                {{ data.intro_text|safe }}
+            </div>
+
             <div class="filters">
                 <div class="filter-set">
                     <h2 class="filter-set__label">Status</h2>
