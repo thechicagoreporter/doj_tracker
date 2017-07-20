@@ -1,5 +1,5 @@
 export const TOGGLE_CATEGORY = "TOGGLE_CATEGORY";
-export const FILTER_STATUS = "FILTER_STATUS";
+export const TOGGLE_STATUS_FILTER = "TOGGLE_STATUS_FILTER";
 
 export const toggleCategory = function toggleCategoryActionCreator(slug) {
   return {
@@ -8,9 +8,9 @@ export const toggleCategory = function toggleCategoryActionCreator(slug) {
   };
 };
 
-export const filterStatus = function filterStatusActionCreator(statusFilter) {
+export const toggleStatusFilter = function toggleStatusFilterActionCreator(statusFilter) {
   return {
-    type: FILTER_STATUS,
+    type: TOGGLE_STATUS_FILTER,
     statusFilter,
   };
 };

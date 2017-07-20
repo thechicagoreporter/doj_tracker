@@ -1,7 +1,7 @@
 import './index.scss';
 
 import { createStore } from 'redux';
-import { filterStatus, toggleCategory } from './actions';
+import { toggleStatusFilter, toggleCategory } from './actions';
 import { trackerApp } from './reducers';
 import{ addClass, removeClass, addEventListener } from './util';
 
@@ -17,8 +17,14 @@ export class App {
         collapsed: true,
       });
     });
+    const statusEls = this.container.querySelectorAll('.status-filter')
+    const statuses = new Set();
+    statusEls.forEach((el) => {
+      statuses.add(this.getStatusFromEl(el));
+    });
     const initialState = {
       categories,
+      statuses,
     };
 
     this.store = createStore(trackerApp, initialState);
@@ -32,16 +38,21 @@ export class App {
     );
 
     addEventListener(
-      this.container.querySelectorAll(".filters__status"),
-      "change",
-      this.changeStatusFilter.bind(this)
+      this.container.querySelectorAll(".status-filter"),
+      "click",
+      this.clickStatusFilter.bind(this)
     );
 
     this.render();
   }
 
+  getStatusFromEl(el) {
+    return el.getAttribute("data-status");
+  }
+
   render() {
     const state = this.store.getState();
+    console.log(state);
 
     state.categories.forEach((category) => {
       let classFn = removeClass;
@@ -61,25 +72,31 @@ export class App {
       classFn(recommendationEls, "recommendation--collapsed");
     });
 
-    if (state.statusFilter) {
-      addClass(
-        this.container.querySelectorAll(".recommendation"),
-        "recommendation--hidden"
-      );
+    addClass(
+      this.container.querySelectorAll(".recommendation"),
+      "recommendation--hidden"
+    );
 
+    removeClass(
+      this.container.querySelectorAll(".status-filter"),
+      "status-filter--selected",
+    );
+
+    state.statuses.forEach((statusFilter) => {
       removeClass(
         this.container.querySelectorAll(
-          `.recommendation[data-status="${state.statusFilter}"]`
+          `.recommendation[data-status="${statusFilter}"]`
         ),
         "recommendation--hidden"
       );
-    }
-    else {
-      removeClass(
-        this.container.querySelectorAll(".recommendation"),
-        "recommendation--hidden"
+
+      addClass(
+        this.container.querySelectorAll(
+          `.status-filter[data-status="${statusFilter}"]`
+        ),
+        "status-filter--selected"
       );
-    }
+    });
   }
 
   clickCategoryName(evt) {
@@ -92,8 +109,9 @@ export class App {
     this.store.dispatch(toggleCategory(slug));
   }
 
-  changeStatusFilter(evt) {
-    const statusFilter = evt.target.options[evt.target.selectedIndex].value;
-    this.store.dispatch(filterStatus(statusFilter));
+  clickStatusFilter(evt) {
+    evt.preventDefault();
+    const statusFilter = this.getStatusFromEl(evt.target);
+    this.store.dispatch(toggleStatusFilter(statusFilter));
   }
 }

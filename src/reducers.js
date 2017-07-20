@@ -1,7 +1,8 @@
-import { TOGGLE_CATEGORY, FILTER_STATUS } from './actions';
+import { TOGGLE_CATEGORY, TOGGLE_STATUS_FILTER } from './actions';
 
 const initialState = {
   categories: [],
+  statuses: new Set(),
 };
 
 export const trackerApp = function trackerAppReducer(state = initialState, action) {
@@ -19,9 +20,16 @@ export const trackerApp = function trackerAppReducer(state = initialState, actio
         }),
       });
 
-    case FILTER_STATUS:
+    case TOGGLE_STATUS_FILTER:
+      const newStatuses = new Set(state.statuses);
+      if (state.statuses.has(action.statusFilter)) {
+        newStatuses.delete(action.statusFilter);
+      }
+      else {
+        newStatuses.add(action.statusFilter);
+      }
       return Object.assign({}, state, {
-        statusFilter: action.statusFilter
+        statuses: newStatuses,
       });
 
     default:

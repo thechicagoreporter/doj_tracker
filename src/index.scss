@@ -11,6 +11,46 @@ $unclear-color: gray;
   @include sans-serif-font;
 }
 
+.filter-set {
+  text-align: center;
+}
+
+.status-filter {
+  display: inline-block;
+  text-decoration: none;
+  padding: 0.5em;
+  white-space: nowrap;
+}
+
+.status-filter--selected {
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+}
+
+.status-filter--not-implemented {
+  &.status-filter--selected {
+    border-bottom-color: $not-implemented-color;
+  }
+}
+
+.status-filter--partially-implemented {
+  &.status-filter--selected {
+    border-bottom-color: $partially-implemented-color;
+  }
+}
+
+.status-filter--implemented {
+  &.status-filter--selected {
+    border-bottom-color: $implemented-color;
+  }
+}
+
+.status-filter--unclear {
+  &.status-filter--selected {
+    border-bottom-color: $unclear-color;
+  }
+}
+
 .category__name a {
   text-decoration: none;
   color: black;
@@ -28,8 +68,12 @@ $unclear-color: gray;
 }
 
 .recommendation {
-  padding: 4em;
-  margin-bottom: 4em;
+  padding: 2em;
+  margin-bottom: 2em;
+}
+
+.recommendation__gist {
+  margin-top: 0;
 }
 
 .recommendation--not-implemented {
