@@ -11,23 +11,23 @@
 
     <body>
         <div class="tracker-container">
-            <h1>{{ data.title }}</h1>
+            <h1>{{ title }}</h1>
 
             <div class="intro">
-                {{ data.intro_text|safe }}
+                {{ intro_text|safe }}
             </div>
 
             <div class="filters">
                 <div class="filter-set">
                     <h2 class="filter-set__label">Status</h2>
 
-                    {% for status in data.statuses %}
+                    {% for status in statuses %}
                     <a href="#" class="status-filter status-filter--{{ status.slug }}" data-status="{{ status.status }}">{{ status.status }}</a>
                     {% endfor %}
                 </div>
             </div>
 
-            {% for category in data.categories %}
+            {% for category in categories %}
             <div class="category" data-slug="{{ category.slug }}">
                 <h2 class="category__name"><a href="#">{{ category.name }}</a></h2>
 
