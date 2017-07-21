@@ -27,6 +27,11 @@ export const removeClass = function removeCssClass(els, className) {
   });
 };
 
+export const setClass = function setCssClass(els, className, condition) {
+  const f = condition ? addClass : removeClass;
+  f(els, className);
+};
+
 export const addEventListener = function addEventListenerForEls(
   els,
   eventName,
