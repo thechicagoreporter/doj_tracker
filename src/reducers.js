@@ -9,16 +9,22 @@ const initialState = {
 export const trackerApp = function trackerAppReducer(state = initialState, action) {
   switch (action.type) {
     case TOGGLE_CATEGORY: {
-      return Object.assign({}, state, {
-        categories: state.categories.map((c) => {
-          if (c.slug === action.slug) {
-            return Object.assign({}, c, {
-              collapsed: !c.collapsed,
-            });
-          }
+      const categories = [];
+      const categoryLookup = {};
+      state.categories.forEach((c) => {
+        let updated = c;
+        if (c.slug === action.slug) {
+          updated = Object.assign({}, c, {
+            collapsed: !c.collapsed,
+          });
+        }
 
-          return c;
-        }),
+        categories.push(updated);
+        categoryLookup[updated.name] = updated;
+      });
+      return Object.assign({}, state, {
+        categories,
+        categoryLookup,
       });
     }
 

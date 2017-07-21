@@ -2,7 +2,12 @@
 import { createStore } from 'redux';
 import { toggleStatusFilter, toggleCategory, toggleRecommendation } from './actions';
 import { trackerApp } from './reducers';
-import { addClass, removeClass, addEventListener } from './util';
+import { addEventListener } from './util';
+import {
+  categories as categoriesView,
+  statusFilters as statusFiltersView,
+  recommendations as recommendationsView,
+} from './views';
 
 import './index.scss';
 
@@ -10,75 +15,6 @@ function getStatusFromEl(el) {
   return el.getAttribute('data-status');
 }
 
-const renderCategories = function categoriesRenderer(el, state) {
-  state.categories.forEach((category) => {
-    let classFn = removeClass;
-
-    if (category.collapsed) {
-      classFn = addClass;
-    }
-
-    const categoryNameEl = el.querySelectorAll(
-      `.category[data-slug="${category.slug}"] .category__name`,
-    );
-    classFn(categoryNameEl, 'category__name--collapsed');
-
-    const recommendationEls = el.querySelectorAll(
-      `.category[data-slug="${category.slug}"] .recommendation`,
-    );
-    classFn(recommendationEls, 'recommendation--category-collapsed');
-  });
-
-  return el;
-};
-
-const applyStatusFilters = function statusFilterRenderer(el, state) {
-  addClass(
-    el.querySelectorAll('.recommendation'),
-    'recommendation--hidden',
-  );
-
-  removeClass(
-    el.querySelectorAll('.status-filter'),
-    'status-filter--selected',
-  );
-
-  state.statuses.forEach((statusFilter) => {
-    removeClass(
-      el.querySelectorAll(
-        `.recommendation[data-status="${statusFilter}"]`,
-      ),
-      'recommendation--hidden',
-    );
-
-    addClass(
-      el.querySelectorAll(
-        `.status-filter[data-status="${statusFilter}"]`,
-      ),
-      'status-filter--selected',
-    );
-  });
-
-  return el;
-};
-
-const renderRecommendations = function recommendationRenderer(el, state) {
-  state.recommendations.forEach((r) => {
-    const classFn = r.collapsed ? addClass : removeClass;
-
-    const categoryNameEl = el.querySelectorAll(
-      `.recommendation[data-id="${r.id}"] .recommendation__gist`,
-    );
-    classFn(categoryNameEl, 'recommendation__gist--collapsed');
-
-    const recommendationEls = el.querySelectorAll(
-      `.recommendation[data-id="${r.id}"]`,
-    );
-    classFn(recommendationEls, 'recommendation--collapsed');
-  });
-
-  return el;
-};
 
 // eslint-disable-next-line import/prefer-default-export
 export class App {
@@ -114,13 +50,31 @@ export class App {
    * Build initial state from data attributes in the DOM.
    */
   getInitialState() {
-    // Get a list of recommendation categories
+    // Get a list of recommendation categories, a lookup of categories by name,
+    // a list of recommendations and a lookup of recommendations by id.
     const categoryEls = this.container.querySelectorAll('.category');
     const categories = [];
-    categoryEls.forEach((el) => {
-      categories.push({
-        slug: el.getAttribute('data-slug'),
+    const categoryLookup = {};
+    const recommendations = [];
+    const recommendationLookup = {};
+    categoryEls.forEach((catEl) => {
+      const category = {
+        name: catEl.querySelectorAll('.category__name')[0].textContent,
+        slug: catEl.getAttribute('data-slug'),
         collapsed: true,
+      };
+      categories.push(category);
+      categoryLookup[category.name] = category;
+
+      catEl.querySelectorAll('.recommendation').forEach((recEl) => {
+        const recommendation = {
+          id: recEl.getAttribute('data-id'),
+          collapsed: true,
+          status: getStatusFromEl(recEl),
+          category: category.name,
+        };
+        recommendations.push(recommendation);
+        recommendationLookup[recommendation.id] = recommendation;
       });
     });
 
@@ -131,32 +85,22 @@ export class App {
       statuses.add(getStatusFromEl(el));
     });
 
-    // Build a list of recommendations and a lookup by id.
-    const recommendations = [];
-    const recommendationLookup = {};
-    this.container.querySelectorAll('.recommendation').forEach((el) => {
-      const recommendation = {
-        id: el.getAttribute('data-id'),
-        collapsed: true,
-      };
-      recommendations.push(recommendation);
-      recommendationLookup[recommendation.id] = recommendation;
-    });
 
     return {
       categories,
-      statuses,
+      categoryLookup,
       recommendations,
       recommendationLookup,
+      statuses,
     };
   }
 
   render() {
     const state = this.store.getState();
 
-    renderCategories(this.container, state);
-    applyStatusFilters(this.container, state);
-    renderRecommendations(this.container, state);
+    categoriesView(this.container, state);
+    statusFiltersView(this.container, state);
+    recommendationsView(this.container, state);
   }
 
   clickCategoryName(evt) {
