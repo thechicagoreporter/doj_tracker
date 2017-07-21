@@ -63,7 +63,8 @@ $unclear-color: gray;
   }
 }
 
-.category__name a {
+.category__name a,
+.recommendation__gist a {
   text-decoration: none;
   color: black;
 
@@ -72,7 +73,8 @@ $unclear-color: gray;
   }
 }
 
-.category__name--collapsed a {
+.category__name--collapsed a,
+.recommendation__gist--collapsed a {
   &::after {
     padding-left: 0.2em;
     content: '▸';
@@ -102,13 +104,27 @@ $unclear-color: gray;
   border-top-color: $unclear-color !important;
 }
 
-.recommendation--collapsed,
+.recommendation--collapsed {
+  .recommendation__status,
+  .recommendation__specific,
+  .agencies,
+  .recommendation__updates {
+    // Hide everything but the gist when a recommendation is collapsed
+    display: none;
+  }
+}
+
+.recommendation--category-collapsed,
 .recommendation--hidden {
   display: none;
 }
 
 .recommendation__gist {
   margin-top: 0;
+}
+
+.recommendation__gist--collapsed {
+  margin-bottom: 0;
 }
 
 .recommendation__status {

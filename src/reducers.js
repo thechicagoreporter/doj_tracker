@@ -1,4 +1,4 @@
-import { TOGGLE_CATEGORY, TOGGLE_STATUS_FILTER } from './actions';
+import { TOGGLE_CATEGORY, TOGGLE_STATUS_FILTER, TOGGLE_RECOMMENDATION } from './actions';
 
 const initialState = {
   categories: [],
@@ -31,6 +31,28 @@ export const trackerApp = function trackerAppReducer(state = initialState, actio
       }
       return Object.assign({}, state, {
         statuses: newStatuses,
+      });
+    }
+
+    case TOGGLE_RECOMMENDATION: {
+      const recommendations = state.recommendations.map((r) => {
+        if (r.id === action.recommendation.id) {
+          return Object.assign({}, r, {
+            collapsed: !r.collapsed,
+          });
+        }
+
+        return r;
+      });
+      const recommendationsLookup = {};
+
+      recommendations.forEach((r) => {
+        recommendationsLookup[r.id] = r;
+      });
+
+      return Object.assign({}, state, {
+        recommendations,
+        recommendationsLookup,
       });
     }
 
