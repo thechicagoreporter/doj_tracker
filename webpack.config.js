@@ -12,6 +12,11 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "babel-loader"
+      },
+      {
         // TODO: Extract style sheets into a dedicated file.
         // See https://github.com/webpack-contrib/sass-loader#in-production
         test: /\.scss$/,
