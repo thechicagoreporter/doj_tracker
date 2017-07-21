@@ -84,6 +84,8 @@ Design philosophy
 
 For the client-side code, avoid using libraries to manipulate the DOM or render HTML, [even jQuery](http://youmightnotneedjquery.com/).  This makes the page load lighter and also makes the code as accessible as possible to JavaScript developers who may be unfamiliar with a particular library.
 
-### Use Redux
+### Use central state
 
-[Redux](http://redux.js.org/) is a bit to wrap your head around, but after trying to avoid using something like this, I found I was doing stuff like storing state in CSS classes.  Doing things like this made for more confusing logic.
+Coming from doing a lot of React programming, I've come to like lifting state to have a single point of authority for application state.  I also like making DOM updates based on this state.  The alternative, which will be familiar to people who built complex, jQuery-based applications, is to store state in the DOM itself, or attached data.  This quickly gets unwieldy.
+
+[Redux](http://redux.js.org/) is a bit to wrap your head around, but provides a clean set of idioms for managing state changes.  We're using it for this project.
