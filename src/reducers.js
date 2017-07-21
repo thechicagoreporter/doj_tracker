@@ -1,17 +1,16 @@
 import { TOGGLE_CATEGORY, TOGGLE_STATUS_FILTER, TOGGLE_RECOMMENDATION } from './actions';
 
-const initialState = {
-  categories: [],
-  statuses: new Set(),
-};
-
-// eslint-disable-next-line import/prefer-default-export
-export const trackerApp = function trackerAppReducer(state = initialState, action) {
+export const categories = function categoriesReducer(
+  state = { items: [], byName: {} },
+  action,
+) {
   switch (action.type) {
     case TOGGLE_CATEGORY: {
-      const categories = [];
-      const categoryLookup = {};
-      state.categories.forEach((c) => {
+      const cats = {
+        items: [],
+        byName: {},
+      };
+      state.items.forEach((c) => {
         let updated = c;
         if (c.slug === action.slug) {
           updated = Object.assign({}, c, {
@@ -19,47 +18,59 @@ export const trackerApp = function trackerAppReducer(state = initialState, actio
           });
         }
 
-        categories.push(updated);
-        categoryLookup[updated.name] = updated;
+        cats.items.push(updated);
+        cats.byName[updated.name] = updated;
       });
-      return Object.assign({}, state, {
-        categories,
-        categoryLookup,
-      });
+      return cats;
     }
 
+    default:
+      return state;
+  }
+};
+
+export const statuses = function statusesReducer(state = new Set(), action) {
+  switch (action.type) {
     case TOGGLE_STATUS_FILTER: {
-      const newStatuses = new Set(state.statuses);
-      if (state.statuses.has(action.statusFilter)) {
+      const newStatuses = new Set(state);
+      if (state.has(action.statusFilter)) {
         newStatuses.delete(action.statusFilter);
       } else {
         newStatuses.add(action.statusFilter);
       }
-      return Object.assign({}, state, {
-        statuses: newStatuses,
-      });
+
+      return newStatuses;
     }
 
+    default:
+      return state;
+  }
+};
+
+export const recommendations = function recommendationsReducer(
+  state = { items: [], byId: {} },
+  action,
+) {
+  switch (action.type) {
     case TOGGLE_RECOMMENDATION: {
-      const recommendations = state.recommendations.map((r) => {
+      const recs = {
+        items: [],
+        byId: {},
+      };
+
+      state.items.forEach((r) => {
+        let updated = r;
         if (r.id === action.recommendation.id) {
-          return Object.assign({}, r, {
+          updated = Object.assign({}, r, {
             collapsed: !r.collapsed,
           });
         }
 
-        return r;
-      });
-      const recommendationsLookup = {};
-
-      recommendations.forEach((r) => {
-        recommendationsLookup[r.id] = r;
+        recs.items.push(updated);
+        recs.byId[updated.id] = updated;
       });
 
-      return Object.assign({}, state, {
-        recommendations,
-        recommendationsLookup,
-      });
+      return recs;
     }
 
     default:

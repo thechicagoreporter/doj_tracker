@@ -1,7 +1,7 @@
 
-import { createStore } from 'redux';
+import { combineReducers, createStore } from 'redux';
 import { toggleStatusFilter, toggleCategory, toggleRecommendation } from './actions';
-import { trackerApp } from './reducers';
+import * as reducers from './reducers';
 import { addEventListener } from './util';
 import {
   categories as categoriesView,
@@ -11,10 +11,11 @@ import {
 
 import './index.scss';
 
+const trackerApp = combineReducers(reducers);
+
 function getStatusFromEl(el) {
   return el.getAttribute('data-status');
 }
-
 
 // eslint-disable-next-line import/prefer-default-export
 export class App {
@@ -53,18 +54,22 @@ export class App {
     // Get a list of recommendation categories, a lookup of categories by name,
     // a list of recommendations and a lookup of recommendations by id.
     const categoryEls = this.container.querySelectorAll('.category');
-    const categories = [];
-    const categoryLookup = {};
-    const recommendations = [];
-    const recommendationLookup = {};
+    const categories = {
+      items: [],
+      byName: {},
+    };
+    const recommendations = {
+      items: [],
+      byId: {},
+    };
     categoryEls.forEach((catEl) => {
       const category = {
         name: catEl.querySelectorAll('.category__name')[0].textContent,
         slug: catEl.getAttribute('data-slug'),
         collapsed: true,
       };
-      categories.push(category);
-      categoryLookup[category.name] = category;
+      categories.items.push(category);
+      categories.byName[category.name] = category;
 
       catEl.querySelectorAll('.recommendation').forEach((recEl) => {
         const recommendation = {
@@ -73,8 +78,8 @@ export class App {
           status: getStatusFromEl(recEl),
           category: category.name,
         };
-        recommendations.push(recommendation);
-        recommendationLookup[recommendation.id] = recommendation;
+        recommendations.items.push(recommendation);
+        recommendations.byId[recommendation.id] = recommendation;
       });
     });
 
@@ -85,12 +90,9 @@ export class App {
       statuses.add(getStatusFromEl(el));
     });
 
-
     return {
       categories,
-      categoryLookup,
       recommendations,
-      recommendationLookup,
       statuses,
     };
   }
@@ -127,7 +129,7 @@ export class App {
       .parentNode
       .getAttribute('data-id');
     const state = this.store.getState();
-    const recommendation = state.recommendationLookup[recommendationId];
+    const recommendation = state.recommendations.byId[recommendationId];
 
     this.store.dispatch(toggleRecommendation(recommendation));
   }

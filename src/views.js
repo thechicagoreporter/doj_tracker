@@ -8,7 +8,7 @@
 import { addClass, removeClass, setClass } from './util';
 
 export const categories = function categoriesView(el, state) {
-  state.categories.forEach((category) => {
+  state.categories.items.forEach((category) => {
     const categoryNameEl = el.querySelectorAll(
       `.category[data-slug="${category.slug}"] .category__name`,
     );
@@ -19,14 +19,14 @@ export const categories = function categoriesView(el, state) {
 };
 
 export const recommendations = function recommendationsView(el, state) {
-  state.recommendations.forEach((r) => {
+  state.recommendations.items.forEach((r) => {
     const gistEl = el.querySelectorAll(
       `.recommendation[data-id="${r.id}"] .recommendation__gist`,
     );
     const recommendationEls = el.querySelectorAll(
       `.recommendation[data-id="${r.id}"]`,
     );
-    const category = state.categoryLookup[r.category];
+    const category = state.categories.byName[r.category];
 
     setClass(gistEl, 'recommendation__gist--collapsed', r.collapsed);
 
@@ -55,4 +55,3 @@ export const statusFilters = function statusFiltersView(el, state) {
 
   return el;
 };
-
