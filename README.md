@@ -7,23 +7,60 @@ Assumptions
 -----------
 
 * git
-* Node.js
+* Node.js - This was developed and tested under version 6.11.1, the LTS version as of July 27, 2017.
 
 Installation
 ------------
 
-Clone the repository:
+### Clone the repository
 
     git clone https://github.com/thechicagoreporter/doj_tracker.git
 
-Install build dependencies:
+### Install build dependencies
 
     npm install
+
+### Create Google Credentials
+
+TODO: Should we just use a service account?
+
+This application uses the Google Drive API to pull the settlements data from a Google Document.  The Drive API uses OAuth 2.0 for authentication, which you can read about [here](https://developers.google.com/drive/v3/web/about-auth).
+
+Navigate to this [Drive API wizard](https://console.developers.google.com/flows/enableapi?apiid=drive) in your browser.
+
+Select an existing project, or create a new one.
+
+Click the "Go to credentials" button.
+
+In the "Where will you be calling the API from?" select element, choose "Other UI (e.g. Windows, CLI tool)".
+
+In the "What data will you be accessing?"  choose "User data".
+
+Click the "What credentials do I need?" button.
+
+Enter a name in the "Name" text input, such as "My workstation".
+
+Click the "Create client ID" button.
+
+Enter "DOJ Tracker" in the "Product name shown to users" text input.
+
+Click the "Continue" button.
+
+Click the "Download" button and save the file as `client_id.json` in the projectdirectory that you cloned with git.
+
+Click the "Done" button.
 
 Run the local development server
 --------------------------------
 
     npm run serve
+
+The first time you run this command, you will see a prompt like this:
+
+	Authorize this app by visiting this url: https://accounts.google.com/o/oauth2/auth?access_type=offline&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive.readonly&response_type=code&client_id=757802846504-lpo28bffqnot23kgnhq3l4q6u9ioaedh.apps.googleusercontent.com&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob
+	Enter the code from that page here:
+
+Visit the URL in the message and follow the dialog to allow access to the "DOJ Tracker" app.  You will be presented with a code that you should copy and paste after the "Enter the code from that page here" prompt.
 
 Deployment
 ----------
