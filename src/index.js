@@ -7,6 +7,7 @@ import {
   categories as categoriesView,
   statusFilters as statusFiltersView,
   recommendations as recommendationsView,
+  statusChart as statusChartView,
 } from './views';
 
 import './index.scss';
@@ -84,16 +85,25 @@ export class App {
     });
 
     // Build a set of filtered statuses.  Initially, this will be all statuses.
-    const statusEls = this.container.querySelectorAll('.status-filter');
-    const statuses = new Set();
+    const statusEls = this.container.querySelectorAll('.status-chart__bar');
+    const selectedStatuses = new Set();
+    const statuses = [];
+
     statusEls.forEach((el) => {
-      statuses.add(getStatusFromEl(el));
+      const statusName = getStatusFromEl(el);
+      selectedStatuses.add(statusName);
+      statuses.push({
+        status: statusName,
+        count: parseInt(el.getAttribute('data-count'), 10),
+        slug: el.getAttribute('data-slug'),
+      });
     });
 
     return {
       categories,
       recommendations,
       statuses,
+      selectedStatuses,
     };
   }
 
@@ -103,6 +113,7 @@ export class App {
     categoriesView(this.container, state);
     statusFiltersView(this.container, state);
     recommendationsView(this.container, state);
+    statusChartView(this.container.querySelector('.status-chart'), state);
   }
 
   clickCategoryName(evt) {

@@ -29,17 +29,24 @@ export const categories = function categoriesReducer(
   }
 };
 
-export const statuses = function statusesReducer(state = new Set(), action) {
+export const statuses = function selectedStatusesReducer(state = []) {
+  return state;
+};
+
+export const selectedStatuses = function selectedStatusesReducer(
+  state = new Set(),
+  action,
+) {
   switch (action.type) {
     case TOGGLE_STATUS_FILTER: {
-      const newStatuses = new Set(state);
+      const newSelectedStatuses = new Set(state);
       if (state.has(action.statusFilter)) {
-        newStatuses.delete(action.statusFilter);
+        newSelectedStatuses.delete(action.statusFilter);
       } else {
-        newStatuses.add(action.statusFilter);
+        newSelectedStatuses.add(action.statusFilter);
       }
 
-      return newStatuses;
+      return newSelectedStatuses;
     }
 
     default:

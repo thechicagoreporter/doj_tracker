@@ -18,6 +18,27 @@
                     {{ intro_text|safe }}
                 </div>
 
+                <dl class="status-chart-legend">
+                  {% for status in statuses %}
+                  <div class="status-chart-legend__item">
+                    <dt class="status-chart-legend__color status-chart-legend__color--{{ status.slug }}"></dt>
+                    <dd class="status-chart-legend__label">{{ status.status }}</dd>
+                  </div>
+                  {% endfor %}
+                </dl>
+
+
+                <div class="status-chart">
+                    {% for status in statuses %}
+                    <div class="status-chart__bar status-chart__bar--{{ status.slug }}"
+                         style="width: {{ status.pctRecommendations * 100 }}%"
+                         data-status="{{ status.status }}"
+                         data-count="{{ status.recommendations.length }}"
+                         data-slug="{{ status.slug }}">
+                    </div>
+                    {% endfor %}
+                </div>
+
                 <div class="filters">
                     <div class="filter-set">
                         <h2 class="filter-set__label">Status</h2>

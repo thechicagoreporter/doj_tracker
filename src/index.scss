@@ -23,6 +23,85 @@ $unclear-color: gray;
   }
 }
 
+.status-chart {
+  width: 100%;
+
+  &:after {
+    // Clear children
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+.status-chart-legend__item {
+  display: inline-block;
+  margin-bottom: 0.2em;
+  margin-right: 1em;
+}
+
+.status-chart-legend__color,
+.status-chart-legend__label {
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: middle;
+
+}
+
+.status-chart-legend__color {
+  width: 1em;
+  height: 1em;
+}
+
+.status-chart-legend__label {
+  margin-left: 0;
+  font-size: 0.6em;
+}
+
+.status-chart-legend__color--implemented {
+  background-color: $implemented-color;
+}
+
+.status-chart-legend__color--partially-implemented {
+  background-color: $partially-implemented-color;
+}
+
+.status-chart-legend__color--not-implemented {
+  background-color: $not-implemented-color;
+}
+
+.status-chart-legend__color--unclear {
+  background-color: $unclear-color;
+}
+
+.status-chart__bar {
+  position: relative;
+  float: left;
+  color: white;
+  min-height: 4em;
+}
+
+.status-chart__bar--not-implemented {
+  background-color: $not-implemented-color;
+}
+
+.status-chart__bar--partially-implemented {
+  background-color: $partially-implemented-color;
+}
+
+.status-chart__bar--implemented {
+  background-color: $implemented-color;
+}
+
+.status-chart__bar--unclear {
+  background-color: $unclear-color;
+}
+
+.status-chart__bar-label {
+  padding: 0.1em;
+  font-size: 0.8em;
+}
+
 .filter-set {
   text-align: center;
 }

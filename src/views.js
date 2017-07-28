@@ -32,7 +32,7 @@ export const recommendations = function recommendationsView(el, state) {
 
     setClass(recommendationEls, 'recommendation--collapsed', r.collapsed);
     setClass(recommendationEls, 'recommendation--category-collapsed', category.collapsed);
-    setClass(recommendationEls, 'recommendation--hidden', !state.statuses.has(r.status));
+    setClass(recommendationEls, 'recommendation--hidden', !state.selectedStatuses.has(r.status));
   });
 
   return el;
@@ -44,7 +44,7 @@ export const statusFilters = function statusFiltersView(el, state) {
     'status-filter--selected',
   );
 
-  state.statuses.forEach((statusFilter) => {
+  state.selectedStatuses.forEach((statusFilter) => {
     addClass(
       el.querySelectorAll(
         `.status-filter[data-status="${statusFilter}"]`,
@@ -54,4 +54,15 @@ export const statusFilters = function statusFiltersView(el, state) {
   });
 
   return el;
+};
+
+export const statusChart = function statusChartView(el, state) {
+  state.statuses.forEach((s) => {
+    const bar = el.querySelector(`.status-chart__bar[data-slug="${s.slug}"]`);
+    // eslint-disable-next-line no-undef
+    const barLabel = document.createElement('span');
+    barLabel.setAttribute('class', 'status-chart__bar-label');
+    barLabel.innerHTML = s.count;
+    bar.appendChild(barLabel);
+  });
 };
