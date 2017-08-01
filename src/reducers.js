@@ -1,27 +1,20 @@
 import { TOGGLE_CATEGORY, TOGGLE_STATUS_FILTER, TOGGLE_RECOMMENDATION } from './actions';
 
 export const categories = function categoriesReducer(
-  state = { items: [], byName: {} },
+  state = [],
   action,
 ) {
   switch (action.type) {
     case TOGGLE_CATEGORY: {
-      const cats = {
-        items: [],
-        byName: {},
-      };
-      state.items.forEach((c) => {
-        let updated = c;
+      return state.map((c) => {
         if (c.slug === action.slug) {
-          updated = Object.assign({}, c, {
+          return Object.assign({}, c, {
             collapsed: !c.collapsed,
           });
         }
 
-        cats.items.push(updated);
-        cats.byName[updated.name] = updated;
+        return c;
       });
-      return cats;
     }
 
     default:
@@ -30,6 +23,15 @@ export const categories = function categoriesReducer(
 };
 
 export const statuses = function selectedStatusesReducer(state = []) {
+  return state;
+};
+
+export const title = function titleReducer(state = 'DOJ Tracker') {
+  return state;
+};
+
+// eslint-disable-next-line camelcase
+export const intro_text = function introTextReducer(state = '') {
   return state;
 };
 

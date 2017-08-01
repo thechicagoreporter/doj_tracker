@@ -1,43 +1,18 @@
-export const addClass = function addCssClass(els, className) {
-  els.forEach((el) => {
-    if (el.classList) {
-      el.classList.add(className);
-    } else {
-      // eslint-disable-next-line no-param-reassign
-      el.className += ` ${className}`;
-    }
+// eslint-disable-next-line import/prefer-default-export
+export const hydrateState = (state) => {
+  const byId = {};
+  state.recommendations.items.forEach((r) => {
+    byId[r.id] = r;
   });
-};
-
-export const removeClass = function removeCssClass(els, className) {
-  els.forEach((el) => {
-    if (el.classList) {
-      el.classList.remove(className);
-    } else {
-      const classNameOptions = className.split(' ').join('|');
-      // eslint-disable-next-line no-param-reassign
-      el.className = el.className.replace(
-        new RegExp(
-          `(^|\\b)${classNameOptions}(\\b|$)`,
-          'gi',
-        ),
-        ' ',
-      );
-    }
-  });
-};
-
-export const setClass = function setCssClass(els, className, condition) {
-  const f = condition ? addClass : removeClass;
-  f(els, className);
-};
-
-export const addEventListener = function addEventListenerForEls(
-  els,
-  eventName,
-  eventHandler,
-) {
-  els.forEach((el) => {
-    el.addEventListener(eventName, eventHandler);
-  });
+  return Object.assign(
+    {},
+    state,
+    {
+      recommendations: {
+        items: state.recommendations.items,
+        byId,
+      },
+      selectedStatuses: new Set(state.selectedStatuses),
+    },
+  );
 };

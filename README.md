@@ -117,10 +117,6 @@ The client-side JavaScript uses:
 Design philosophy
 -----------------
 
-### Avoid DOM manipulation, view libraries
-
-For the client-side code, avoid using libraries to manipulate the DOM or render HTML, [even jQuery](http://youmightnotneedjquery.com/).  This makes the page load lighter and also makes the code as accessible as possible to JavaScript developers who may be unfamiliar with a particular library.
-
 ### Use central state
 
 Coming from doing a lot of React programming, I've come to like lifting state to have a single point of authority for application state.  I also like making DOM updates based on this state.  The alternative, which will be familiar to people who built complex, jQuery-based applications, is to store state in the DOM itself, or attached data.  This quickly gets unwieldy.
