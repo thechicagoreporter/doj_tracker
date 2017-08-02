@@ -31,7 +31,7 @@ class Recommendation extends React.Component {
   render() {
     const gistClassName = modifierClassNames(
       'recommendation__gist',
-      this.props.category.collapsed,
+      this.props.recommendation.collapsed,
       'collapsed',
     );
 
