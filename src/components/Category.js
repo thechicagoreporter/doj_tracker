@@ -1,14 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { modifierClassNames } from '../util';
 import Recommendation from './Recommendation';
-
-const getCategoryNameClassName = (category) => {
-  const classes = ['category__name'];
-  if (category.collapsed) {
-    classes.push('category__name--collapsed');
-  }
-  return classes.join(' ');
-};
 
 class Category extends React.Component {
   constructor() {
@@ -18,22 +11,25 @@ class Category extends React.Component {
   }
 
   render() {
-    let recommendations = [];
+    const recommendations = this.props.category.recommendations
+      .map(this.props.getRecommendationById)
+      .filter(r => this.props.statusSelected(r.status))
+      .map(r => (
+        <Recommendation key={r.id}
+          recommendation={r}
+          category={this.props.category}
+          onGistClick={this.props.onGistClick} />
+      ));
 
-    if (!this.props.category.collapsed) {
-      recommendations = this.props.category.recommendations
-        .map(this.props.getRecommendationById)
-        .filter(r => this.props.statusSelected(r.status))
-        .map(r => (
-          <Recommendation key={r.id}
-            recommendation={r}
-            onGistClick={this.props.onGistClick} />
-        ));
-    }
+    const categoryNameClassName = modifierClassNames(
+      'category__name',
+      this.props.category.collapsed,
+      'collapsed',
+    );
 
     return (
       <div className="category">
-        <h2 className={getCategoryNameClassName(this.props.category)}>
+        <h2 className={categoryNameClassName}>
           <a href="#" onClick={this.handleClick}>{this.props.category.name}</a>
         </h2>
 

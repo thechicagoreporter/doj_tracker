@@ -167,6 +167,22 @@ $unclear-color: gray;
   background-color: #F2F3F4;
 }
 
+.recommendation--collapsed {
+  .recommendation__status,
+  .recommendation__specific,
+  .agencies,
+  .recommendation__updates {
+    // Hide everything but the gist when a recommendation is collapsed
+    display: none;
+  }
+}
+
+.recommendation--category-collapsed,
+.recommendation--hidden {
+  display: none;
+}
+
+
 .recommendation--not-implemented {
   border-top-color: $not-implemented-color !important;
 }

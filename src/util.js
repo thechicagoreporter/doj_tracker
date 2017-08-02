@@ -1,4 +1,20 @@
-// eslint-disable-next-line import/prefer-default-export
+export const modifierClassNames = (
+  className,
+  condition,
+  trueModifier,
+  falseModifier,
+) => {
+  const classNames = [className];
+
+  if (condition) {
+    classNames.push(`${className}--${trueModifier}`);
+  } else if (falseModifier) {
+    classNames.push(`${className}--${falseModifier}`);
+  }
+
+  return classNames.join(' ');
+};
+
 export const hydrateState = (state) => {
   const byId = {};
   state.recommendations.items.forEach((r) => {
