@@ -1,6 +1,14 @@
+export const SEARCH = 'SEARCH';
 export const TOGGLE_CATEGORY = 'TOGGLE_CATEGORY';
 export const TOGGLE_RECOMMENDATION = 'TOGGLE_RECOMMENDATION';
 export const TOGGLE_STATUS_FILTER = 'TOGGLE_STATUS_FILTER';
+
+export const search = function searchActionCreator(q) {
+  return {
+    type: SEARCH,
+    q,
+  };
+};
 
 export const toggleCategory = function toggleCategoryActionCreator(slug) {
   return {

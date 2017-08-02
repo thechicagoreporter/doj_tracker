@@ -1,18 +1,16 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { combineReducers, createStore } from 'redux';
+import { createStore } from 'redux';
 import TrackerApp from './components/TrackerApp';
-import * as reducers from './reducers';
+import { root as rootReducer } from './reducers';
 import { hydrateState } from './util';
 import './index.scss';
-
-const trackerApp = combineReducers(reducers);
 
 // eslint-disable-next-line import/prefer-default-export
 export const renderApp = (container, initialState) => {
   // Create a new Redux store instance
-  const store = createStore(trackerApp, hydrateState(initialState));
+  const store = createStore(rootReducer, hydrateState(initialState));
   const state = store.getState();
 
   // Render the component

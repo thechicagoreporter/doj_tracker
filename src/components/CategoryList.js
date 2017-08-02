@@ -7,7 +7,7 @@ const CategoryList = ({
   onCategoryClick,
   onGistClick,
   getRecommendationById,
-  statusSelected,
+  recommendationShown,
 }) => (
   <div className="categories">
     {categories.map(category => (
@@ -16,7 +16,7 @@ const CategoryList = ({
         onCategoryClick={onCategoryClick}
         onGistClick={onGistClick}
         getRecommendationById={getRecommendationById}
-        statusSelected={statusSelected} />
+        recommendationShown={recommendationShown} />
     ))}
   </div>
 );
@@ -28,7 +28,7 @@ CategoryList.propTypes = {
   getRecommendationById: PropTypes.func,
   onGistClick: PropTypes.func,
   onCategoryClick: PropTypes.func,
-  statusSelected: PropTypes.func,
+  recommendationShown: PropTypes.func,
 };
 
 export default CategoryList;

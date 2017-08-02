@@ -4,6 +4,7 @@ import React from 'react';
 import StatusChartLegend from './StatusChartLegend';
 import StatusChart from './StatusChart';
 import Intro from './Intro';
+import ActiveSearchForm from '../containers/ActiveSearchForm';
 import SelectedStatusFilters from '../containers/SelectedStatusFilters';
 import VisibleCategoryList from '../containers/VisibleCategoryList';
 
@@ -13,6 +14,7 @@ const TrackerApp = ({ title, intro_text, statuses }) => (
     <Intro text={intro_text} />
     <StatusChartLegend statuses={statuses} />
     <StatusChart statuses={statuses} />
+    <ActiveSearchForm />
     <SelectedStatusFilters />
     <VisibleCategoryList />
   </div>

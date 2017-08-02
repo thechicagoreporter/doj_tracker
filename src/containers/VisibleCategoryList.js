@@ -5,7 +5,7 @@ import CategoryList from '../components/CategoryList';
 const mapStateToProps = state => ({
   categories: state.categories,
   getRecommendationById: id => state.recommendations.byId[id],
-  statusSelected: status => state.selectedStatuses.has(status),
+  recommendationShown: r => state.recommendations.filteredIds.has(r.id),
 });
 
 const mapDispatchToProps = dispatch => ({

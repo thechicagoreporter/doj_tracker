@@ -1,4 +1,9 @@
-import { TOGGLE_CATEGORY, TOGGLE_STATUS_FILTER, TOGGLE_RECOMMENDATION } from './actions';
+import {
+  SEARCH,
+  TOGGLE_CATEGORY,
+  TOGGLE_STATUS_FILTER,
+  TOGGLE_RECOMMENDATION,
+} from '../actions';
 
 export const categories = function categoriesReducer(
   state = [],
@@ -30,6 +35,21 @@ export const title = function titleReducer(state = 'DOJ Tracker') {
   return state;
 };
 
+export const search = function searchReducer(state = {}) {
+  return state;
+};
+
+export const q = function qReducer(state = null, action) {
+  switch (action.type) {
+    case SEARCH: {
+      return action.q;
+    }
+
+    default:
+      return state;
+  }
+};
+
 // eslint-disable-next-line camelcase
 export const intro_text = function introTextReducer(state = '') {
   return state;
@@ -57,29 +77,21 @@ export const selectedStatuses = function selectedStatusesReducer(
 };
 
 export const recommendations = function recommendationsReducer(
-  state = { items: [], byId: {} },
+  state = { allIds: [], byId: {} },
   action,
 ) {
   switch (action.type) {
     case TOGGLE_RECOMMENDATION: {
-      const recs = {
-        items: [],
-        byId: {},
-      };
+      const id = action.recommendation.id;
+      const recommendation = state.byId[id];
 
-      state.items.forEach((r) => {
-        let updated = r;
-        if (r.id === action.recommendation.id) {
-          updated = Object.assign({}, r, {
-            collapsed: !r.collapsed,
-          });
-        }
-
-        recs.items.push(updated);
-        recs.byId[updated.id] = updated;
+      return Object.assign({}, state, {
+        byId: Object.assign({}, state.byId, {
+          [id]: Object.assign({}, recommendation, {
+            collapsed: !recommendation.collapsed,
+          }),
+        }),
       });
-
-      return recs;
     }
 
     default:

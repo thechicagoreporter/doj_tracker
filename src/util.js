@@ -1,3 +1,5 @@
+import { Search } from 'js-search';
+
 export const modifierClassNames = (
   className,
   condition,
@@ -16,19 +18,25 @@ export const modifierClassNames = (
 };
 
 export const hydrateState = (state) => {
-  const byId = {};
-  state.recommendations.items.forEach((r) => {
-    byId[r.id] = r;
+  const filteredIds = new Set();
+  const search = new Search('id');
+  search.addIndex('recommendation_gist');
+
+  state.recommendations.allIds.forEach((id) => {
+    const r = state.recommendations.byId[id];
+    filteredIds.add(r.id);
+    search.addDocument(r);
   });
+
   return Object.assign(
     {},
     state,
     {
-      recommendations: {
-        items: state.recommendations.items,
-        byId,
-      },
+      recommendations: Object.assign({}, state.recommendations, {
+        filteredIds,
+      }),
       selectedStatuses: new Set(state.selectedStatuses),
+      search,
     },
   );
 };

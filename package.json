@@ -53,6 +53,7 @@
     "url": "https://github.com/thechicagoreporter/doj_tracker.git"
   },
   "dependencies": {
+    "js-search": "^1.4.2",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",

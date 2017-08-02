@@ -103,6 +103,17 @@ $unclear-color: gray;
   font-size: 0.8em;
 }
 
+.search-form {
+  margin-top: 1em;
+  text-align: center;
+
+  input[type="text"] {
+    font-size: 1.2em;
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
 .filter-set {
   text-align: center;
 }

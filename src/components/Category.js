@@ -13,7 +13,7 @@ class Category extends React.Component {
   render() {
     const recommendations = this.props.category.recommendations
       .map(this.props.getRecommendationById)
-      .filter(r => this.props.statusSelected(r.status))
+      .filter(this.props.recommendationShown)
       .map(r => (
         <Recommendation key={r.id}
           recommendation={r}
@@ -54,7 +54,7 @@ Category.propTypes = {
   getRecommendationById: PropTypes.func,
   onGistClick: PropTypes.func,
   onCategoryClick: PropTypes.func,
-  statusSelected: PropTypes.func,
+  recommendationShown: PropTypes.func,
 };
 
 export default Category;
