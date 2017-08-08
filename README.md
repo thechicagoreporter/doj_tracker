@@ -62,6 +62,35 @@ The first time you run this command, you will see a prompt like this:
 
 Visit the URL in the message and follow the dialog to allow access to the "DOJ Tracker" app.  You will be presented with a code that you should copy and paste after the "Enter the code from that page here" prompt.
 
+Configuration
+-------------
+
+Configuration is through environment variables and largely relates to deployment.
+
+### AWS\_ACCESS\_KEY
+
+AWS access key credential used to publish static assets to S3.
+
+### AWS\_SECRET\_KEY
+
+AWS access key secret used to publish static assets to S3.
+
+### WP\_USERNAME
+
+WordPress service account user name used to publish the app HTML into WordPress.
+
+### WP\_PASSWORD
+
+WordPress service account password used to publish the app HTML into WordPress.
+
+### WP\_POST\_TITLE
+
+Title of WordPress post where app is published.
+
+### WP\_POST\_ID
+
+If defined, existing WordPress post that will be updated.
+
 Deployment
 ----------
 
