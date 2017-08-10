@@ -155,7 +155,10 @@ $unclear-color: gray;
   }
 }
 
-.category__name a,
+.recommendations {
+  margin-top: 2em;
+}
+
 .recommendation__gist a {
   text-decoration: none;
   color: black;
@@ -165,7 +168,6 @@ $unclear-color: gray;
   }
 }
 
-.category__name--collapsed a,
 .recommendation__gist--collapsed a {
   &::after {
     padding-left: 0.2em;
@@ -181,6 +183,7 @@ $unclear-color: gray;
 }
 
 .recommendation--collapsed {
+  .recommendation__category,
   .recommendation__status,
   .recommendation__specific,
   .agencies,
@@ -190,11 +193,9 @@ $unclear-color: gray;
   }
 }
 
-.recommendation--category-collapsed,
 .recommendation--hidden {
   display: none;
 }
-
 
 .recommendation--not-implemented {
   border-top-color: $not-implemented-color !important;
@@ -218,6 +219,11 @@ $unclear-color: gray;
 
 .recommendation__gist--collapsed {
   margin-bottom: 0;
+}
+
+.recommendation__category {
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 .recommendation__status {

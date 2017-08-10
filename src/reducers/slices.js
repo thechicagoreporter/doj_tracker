@@ -1,31 +1,8 @@
 import {
   SEARCH,
-  TOGGLE_CATEGORY,
   TOGGLE_STATUS_FILTER,
   TOGGLE_RECOMMENDATION,
 } from '../actions';
-
-export const categories = function categoriesReducer(
-  state = [],
-  action,
-) {
-  switch (action.type) {
-    case TOGGLE_CATEGORY: {
-      return state.map((c) => {
-        if (c.slug === action.slug) {
-          return Object.assign({}, c, {
-            collapsed: !c.collapsed,
-          });
-        }
-
-        return c;
-      });
-    }
-
-    default:
-      return state;
-  }
-};
 
 export const statuses = function selectedStatusesReducer(state = []) {
   return state;

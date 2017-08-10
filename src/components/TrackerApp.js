@@ -6,7 +6,7 @@ import StatusChart from './StatusChart';
 import Intro from './Intro';
 import ActiveSearchForm from '../containers/ActiveSearchForm';
 import SelectedStatusFilters from '../containers/SelectedStatusFilters';
-import VisibleCategoryList from '../containers/VisibleCategoryList';
+import VisibleRecommendationList from '../containers/VisibleRecommendationList';
 
 const TrackerApp = ({ title, introText, statuses }) => (
   <div className="tracker">
@@ -16,7 +16,7 @@ const TrackerApp = ({ title, introText, statuses }) => (
     <StatusChart statuses={statuses} />
     <ActiveSearchForm />
     <SelectedStatusFilters />
-    <VisibleCategoryList />
+    <VisibleRecommendationList />
   </div>
 );
 

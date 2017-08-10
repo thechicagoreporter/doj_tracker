@@ -14,10 +14,6 @@ const getClassName = (props) => {
     classNames.push('recommendation--collapsed');
   }
 
-  if (props.category.collapsed) {
-    classNames.push('recommendation--category-collapsed');
-  }
-
   return classNames.join(' ');
 };
 
@@ -42,6 +38,8 @@ class Recommendation extends React.Component {
             {this.props.recommendation.recommendation_gist}
           </a>
         </h3>
+
+        <div className="recommendation__category">{this.props.recommendation.category}</div>
 
         <div>
           <span
@@ -69,10 +67,8 @@ class Recommendation extends React.Component {
 }
 
 Recommendation.propTypes = {
-  category: PropTypes.shape({
-    collapsed: PropTypes.bool,
-  }),
   recommendation: PropTypes.shape({
+    category: PropTypes.string,
     agency_responsible: PropTypes.arrayOf(PropTypes.string),
     collapsed: PropTypes.bool,
     id: PropTypes.string,
