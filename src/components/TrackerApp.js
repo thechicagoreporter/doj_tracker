@@ -8,10 +8,10 @@ import ActiveSearchForm from '../containers/ActiveSearchForm';
 import SelectedStatusFilters from '../containers/SelectedStatusFilters';
 import VisibleCategoryList from '../containers/VisibleCategoryList';
 
-const TrackerApp = ({ title, intro_text, statuses }) => (
+const TrackerApp = ({ title, introText, statuses }) => (
   <div className="tracker">
     <h1>{title}</h1>
-    <Intro text={intro_text} />
+    <Intro text={introText} />
     <StatusChartLegend statuses={statuses} />
     <StatusChart statuses={statuses} />
     <ActiveSearchForm />
@@ -22,7 +22,7 @@ const TrackerApp = ({ title, intro_text, statuses }) => (
 
 TrackerApp.propTypes = {
   title: PropTypes.string,
-  intro_text: PropTypes.string,
+  introText: PropTypes.string,
   statuses: PropTypes.arrayOf(PropTypes.object),
 };
 
