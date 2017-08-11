@@ -13,11 +13,18 @@ const filter = function filterReducer(state, action) {
         searchIds = state.search.search(state.q).map(r => r.id);
       }
 
-      const recommendations = Object.assign({}, state.recommendations, {
-        filteredIds: new Set(searchIds.filter((id) => {
+      let filteredIds;
+      if (state.selectedStatuses.size) {
+        filteredIds = new Set(searchIds.filter((id) => {
           const r = state.recommendations.byId[id];
           return state.selectedStatuses.has(r.status);
-        })),
+        }));
+      } else {
+        filteredIds = new Set(searchIds);
+      }
+
+      const recommendations = Object.assign({}, state.recommendations, {
+        filteredIds,
       });
 
       return Object.assign({}, state, {
