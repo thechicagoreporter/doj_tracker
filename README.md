@@ -55,6 +55,12 @@ Run the local development server
 
     npm run serve
 
+You may get the error: /usr/bin/env: ‘node’: No such file or directory. This may be because the package manager installed it under nodejs. In which case do a symlink:
+
+    sudo ln -s /usr/bin/nodejs /usr/bin/node
+
+and then trying serving again.
+
 The first time you run this command, you will see a prompt like this:
 
 	Authorize this app by visiting this url: https://accounts.google.com/o/oauth2/auth?access_type=offline&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive.readonly&response_type=code&client_id=757802846504-lpo28bffqnot23kgnhq3l4q6u9ioaedh.apps.googleusercontent.com&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob
