@@ -11,7 +11,7 @@ const getBarStyle = status => ({
 
 const StatusChart = ({ statuses }) => (
   <div className="status-chart">
-    {statuses.map(status => (
+    {statuses.all.map(status => (
       <div className={getBarClassName(status)}
            style={getBarStyle(status)}
            key={status.slug}>
@@ -23,10 +23,12 @@ const StatusChart = ({ statuses }) => (
 );
 
 StatusChart.propTypes = {
-  statuses: PropTypes.arrayOf(PropTypes.shape({
-    slug: PropTypes.string,
-    count: PropTypes.number,
-  })),
+  statuses: PropTypes.shape({
+    all: PropTypes.arrayOf(PropTypes.shape({
+      slug: PropTypes.string,
+      status: PropTypes.string,
+    })),
+  }),
 };
 
 export default StatusChart;

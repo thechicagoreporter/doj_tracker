@@ -14,10 +14,10 @@ const filter = function filterReducer(state, action) {
       }
 
       let filteredIds;
-      if (state.selectedStatuses.size) {
+      if (state.statuses.selected.size) {
         filteredIds = new Set(searchIds.filter((id) => {
           const r = state.recommendations.byId[id];
-          return state.selectedStatuses.has(r.status);
+          return state.statuses.selected.has(r.status);
         }));
       } else {
         filteredIds = new Set(searchIds);

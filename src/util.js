@@ -35,7 +35,9 @@ export const hydrateState = (state) => {
       recommendations: Object.assign({}, state.recommendations, {
         filteredIds,
       }),
-      selectedStatuses: new Set(state.selectedStatuses),
+      statuses: Object.assign({}, state.statuses, {
+        selected: new Set(state.statuses.selected),
+      }),
       search,
     },
   );

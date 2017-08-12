@@ -23,7 +23,7 @@ const TrackerApp = ({ title, introText, statuses }) => (
 TrackerApp.propTypes = {
   title: PropTypes.string,
   introText: PropTypes.string,
-  statuses: PropTypes.arrayOf(PropTypes.object),
+  statuses: PropTypes.object,
 };
 
 export default TrackerApp;

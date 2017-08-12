@@ -4,10 +4,6 @@ import {
   TOGGLE_RECOMMENDATION,
 } from '../actions';
 
-export const statuses = function selectedStatusesReducer(state = []) {
-  return state;
-};
-
 export const title = function titleReducer(state = 'DOJ Tracker') {
   return state;
 };
@@ -32,20 +28,22 @@ export const intro_text = function introTextReducer(state = '') {
   return state;
 };
 
-export const selectedStatuses = function selectedStatusesReducer(
-  state = new Set(),
+export const statuses = function statusesReducer(
+  state = { all: [], selected: [] },
   action,
 ) {
   switch (action.type) {
     case TOGGLE_STATUS_FILTER: {
-      const newSelectedStatuses = new Set(state);
-      if (state.has(action.statusFilter)) {
+      const newSelectedStatuses = new Set(state.selected);
+      if (state.selected.has(action.statusFilter)) {
         newSelectedStatuses.delete(action.statusFilter);
       } else {
         newSelectedStatuses.add(action.statusFilter);
       }
 
-      return newSelectedStatuses;
+      return Object.assign({}, state, {
+        selected: newSelectedStatuses,
+      });
     }
 
     default:

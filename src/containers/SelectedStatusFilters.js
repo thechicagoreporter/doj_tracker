@@ -16,8 +16,8 @@ const getClassName = (status, selected) => {
 };
 
 const mapStateToProps = state => ({
-  items: state.statuses,
-  isSelected: status => state.selectedStatuses.has(status.status),
+  items: state.statuses.all,
+  isSelected: status => state.statuses.selected.has(status.status),
   getClassName,
   getLabel: status => status.status,
 });
