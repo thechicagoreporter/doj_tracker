@@ -3,6 +3,7 @@ import React from 'react';
 import Filter from './Filter';
 
 const FilterSet = ({
+  label,
   items,
   onFilterClick,
   isSelected,
@@ -10,6 +11,7 @@ const FilterSet = ({
   getLabel,
 }) => (
   <div className="filter-set">
+    <div className="filter-set__label">{label}</div>
     <div>
       {items.map(item => (
         <Filter item={item}
@@ -25,6 +27,7 @@ const FilterSet = ({
 
 
 FilterSet.propTypes = {
+  label: PropTypes.string,
   items: PropTypes.arrayOf(PropTypes.shape({
     slug: PropTypes.string,
   })),

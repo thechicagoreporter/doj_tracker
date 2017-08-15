@@ -118,42 +118,53 @@ $unclear-color: gray;
   margin-top: 1em;
 }
 
-.filter-set {}
+.filter-set {
+  margin-top: 1em;
+}
+
+.filter-set__label {
+  text-transform: uppercase;
+  font-size: 0.8em;
+  margin-bottom: 0.6em;
+}
 
 .filter {
   display: inline-block;
   text-decoration: none;
   margin-right: 0.8em;
-  padding: 0.5em;
+  margin-bottom: 0.4em;
+  padding: 0.3em;
   white-space: nowrap;
+  border: 1px solid black;
+  font-size: 0.8em;
 }
 
 .filter--selected {
-  border-bottom-width: 2px;
-  border-bottom-style: solid;
+  color: white;
+  background-color: gray;
 }
 
 .filter--not-implemented {
   &.filter--selected {
-    border-bottom-color: $not-implemented-color;
+    background-color: $not-implemented-color;
   }
 }
 
 .filter--partially-implemented {
   &.filter--selected {
-    border-bottom-color: $partially-implemented-color;
+    background-color: $partially-implemented-color;
   }
 }
 
 .filter--implemented {
   &.filter--selected {
-    border-bottom-color: $implemented-color;
+    background-color: $implemented-color;
   }
 }
 
 .filter--unclear {
   &.filter--selected {
-    border-bottom-color: $unclear-color;
+    background-color: $unclear-color;
   }
 }
 

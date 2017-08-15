@@ -4,6 +4,7 @@ import FilterSet from '../components/FilterSet';
 import { getFilterClassName } from '../util';
 
 const mapStateToProps = state => ({
+  label: 'By Category',
   items: state.categories.all,
   isSelected: category => state.categories.selected.has(category.category),
   getClassName: getFilterClassName,
