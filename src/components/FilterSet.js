@@ -9,19 +9,17 @@ const FilterSet = ({
   getClassName,
   getLabel,
 }) => (
-  <div className="filters">
-      <div className="filter-set">
-          <div>
-            {items.map(item => (
-              <Filter item={item}
-                key={item.slug}
-                onFilterClick={onFilterClick}
-                selected={isSelected(item)}
-                getClassName={getClassName}
-                getLabel={getLabel} />
-            ))}
-          </div>
-      </div>
+  <div className="filter-set">
+    <div>
+      {items.map(item => (
+        <Filter item={item}
+          key={item.slug}
+          onFilterClick={onFilterClick}
+          selected={isSelected(item)}
+          getClassName={getClassName}
+          getLabel={getLabel} />
+      ))}
+    </div>
   </div>
 );
 

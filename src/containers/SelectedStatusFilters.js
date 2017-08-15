@@ -1,24 +1,12 @@
 import { connect } from 'react-redux';
 import { toggleStatusFilter } from '../actions';
 import FilterSet from '../components/FilterSet';
-
-const getClassName = (status, selected) => {
-  const classes = [
-    'status-filter',
-    `status-filter--${status.slug}`,
-  ];
-
-  if (selected) {
-    classes.push('status-filter--selected');
-  }
-
-  return classes.join(' ');
-};
+import { getFilterClassName } from '../util';
 
 const mapStateToProps = state => ({
   items: state.statuses.all,
   isSelected: status => state.statuses.selected.has(status.status),
-  getClassName,
+  getClassName: getFilterClassName,
   getLabel: status => status.status,
 });
 

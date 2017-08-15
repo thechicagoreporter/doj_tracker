@@ -1,5 +1,6 @@
 import {
   SEARCH,
+  TOGGLE_CATEGORY_FILTER,
   TOGGLE_STATUS_FILTER,
   TOGGLE_RECOMMENDATION,
 } from '../actions';
@@ -28,6 +29,29 @@ export const intro_text = function introTextReducer(state = '') {
   return state;
 };
 
+export const categories = function categoriesReducer(
+  state = { all: [], selected: [] },
+  action,
+) {
+  switch (action.type) {
+    case TOGGLE_CATEGORY_FILTER: {
+      const newSelectedCategories = new Set(state.selected);
+      if (state.selected.has(action.filter)) {
+        newSelectedCategories.delete(action.filter);
+      } else {
+        newSelectedCategories.add(action.filter);
+      }
+
+      return Object.assign({}, state, {
+        selected: newSelectedCategories,
+      });
+    }
+
+    default:
+      return state;
+  }
+};
+
 export const statuses = function statusesReducer(
   state = { all: [], selected: [] },
   action,
@@ -35,10 +59,10 @@ export const statuses = function statusesReducer(
   switch (action.type) {
     case TOGGLE_STATUS_FILTER: {
       const newSelectedStatuses = new Set(state.selected);
-      if (state.selected.has(action.statusFilter)) {
-        newSelectedStatuses.delete(action.statusFilter);
+      if (state.selected.has(action.filter)) {
+        newSelectedStatuses.delete(action.filter);
       } else {
-        newSelectedStatuses.add(action.statusFilter);
+        newSelectedStatuses.add(action.filter);
       }
 
       return Object.assign({}, state, {

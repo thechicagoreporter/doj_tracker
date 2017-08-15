@@ -118,7 +118,7 @@ $unclear-color: gray;
   text-align: center;
 }
 
-.status-filter {
+.filter {
   display: inline-block;
   text-decoration: none;
   margin-right: 0.8em;
@@ -126,31 +126,31 @@ $unclear-color: gray;
   white-space: nowrap;
 }
 
-.status-filter--selected {
+.filter--selected {
   border-bottom-width: 2px;
   border-bottom-style: solid;
 }
 
-.status-filter--not-implemented {
-  &.status-filter--selected {
+.filter--not-implemented {
+  &.filter--selected {
     border-bottom-color: $not-implemented-color;
   }
 }
 
-.status-filter--partially-implemented {
-  &.status-filter--selected {
+.filter--partially-implemented {
+  &.filter--selected {
     border-bottom-color: $partially-implemented-color;
   }
 }
 
-.status-filter--implemented {
-  &.status-filter--selected {
+.filter--implemented {
+  &.filter--selected {
     border-bottom-color: $implemented-color;
   }
 }
 
-.status-filter--unclear {
-  &.status-filter--selected {
+.filter--unclear {
+  &.filter--selected {
     border-bottom-color: $unclear-color;
   }
 }

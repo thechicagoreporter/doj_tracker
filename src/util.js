@@ -35,10 +35,26 @@ export const hydrateState = (state) => {
       recommendations: Object.assign({}, state.recommendations, {
         filteredIds,
       }),
+      categories: Object.assign({}, state.categories, {
+        selected: new Set(state.categories.selected),
+      }),
       statuses: Object.assign({}, state.statuses, {
         selected: new Set(state.statuses.selected),
       }),
       search,
     },
   );
+};
+
+export const getFilterClassName = (category, selected) => {
+  const classes = [
+    'filter',
+    `filter--${category.slug}`,
+  ];
+
+  if (selected) {
+    classes.push('filter--selected');
+  }
+
+  return classes.join(' ');
 };

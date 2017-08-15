@@ -5,6 +5,7 @@ import StatusChartLegend from './StatusChartLegend';
 import StatusChart from './StatusChart';
 import Intro from './Intro';
 import ActiveSearchForm from '../containers/ActiveSearchForm';
+import SelectedCategoryFilters from '../containers/SelectedCategoryFilters';
 import SelectedStatusFilters from '../containers/SelectedStatusFilters';
 import VisibleRecommendationList from '../containers/VisibleRecommendationList';
 
@@ -15,7 +16,10 @@ const TrackerApp = ({ title, introText, statuses }) => (
     <StatusChartLegend statuses={statuses} />
     <StatusChart statuses={statuses} />
     <ActiveSearchForm />
-    <SelectedStatusFilters />
+    <div className="filters">
+      <SelectedStatusFilters />
+      <SelectedCategoryFilters />
+    </div>
     <VisibleRecommendationList />
   </div>
 );
