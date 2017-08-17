@@ -25,7 +25,10 @@ class RecommendationList extends React.Component {
 
   componentDidMount() {
     if (this.scrollToRecEl) {
-      // TODO: Scroll to this element
+      // HACK: This doesn't work in Chrome without the setTimeout
+      setTimeout(() => {
+        this.scrollToRecEl.scrollIntoView(true);
+      }, 1);
     }
   }
 }
