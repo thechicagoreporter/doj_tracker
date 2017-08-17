@@ -37,6 +37,7 @@ FilterSet.propTypes = {
   getClassName: PropTypes.func,
   getLabel: PropTypes.func,
   initialRender: PropTypes.bool,
+  collectionName: PropTypes.string,
 };
 
 export default FilterSet;

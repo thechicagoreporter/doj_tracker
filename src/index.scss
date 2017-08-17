@@ -118,6 +118,29 @@ $unclear-color: gray;
   margin-top: 1em;
 }
 
+.filters__drawer {
+  margin-top: 1em;
+}
+
+.filters__toggle-button {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.8em;
+
+  &::after {
+    content: '▼';
+  }
+}
+
+.filters__toggle-button--collapsed {
+  &::after {
+    padding-left: 0.2em;
+    content: '▸';
+  }
+}
+
 .filter-set {
   margin-top: 1em;
 }

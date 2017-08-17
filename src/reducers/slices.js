@@ -3,6 +3,7 @@ import {
   TOGGLE_CATEGORY_FILTER,
   TOGGLE_STATUS_FILTER,
   TOGGLE_RECOMMENDATION,
+  TOGGLE_FILTER_DRAWER,
 } from '../actions';
 
 export const title = function titleReducer(state = 'DOJ Tracker') {
@@ -119,4 +120,18 @@ export const recommendations = function recommendationsReducer(
 
 export const initialRender = function initialRender(state = true) {
   return state;
+};
+
+export const filterDrawerCollapsed = function filterDrawerCollapsedReducer(
+  state = true,
+  action,
+) {
+  switch (action.type) {
+    case TOGGLE_FILTER_DRAWER: {
+      return !state;
+    }
+
+    default:
+      return state;
+  }
 };
