@@ -10,17 +10,29 @@ export const search = function searchActionCreator(q) {
   };
 };
 
-export const toggleCategoryFilter = function toggleCategoryFilterActionCreator(filter) {
+export const toggleCategoryFilter = function toggleCategoryFilterActionCreator(
+  filter,
+  initialFilters,
+  initialRender,
+) {
   return {
     type: TOGGLE_CATEGORY_FILTER,
     filter,
+    initialFilters,
+    initialRender,
   };
 };
 
-export const toggleStatusFilter = function toggleStatusFilterActionCreator(filter) {
+export const toggleStatusFilter = function toggleStatusFilterActionCreator(
+  filter,
+  initialFilters,
+  initialRender,
+) {
   return {
     type: TOGGLE_STATUS_FILTER,
     filter,
+    initialFilters,
+    initialRender,
   };
 };
 

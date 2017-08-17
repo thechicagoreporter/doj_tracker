@@ -38,6 +38,14 @@ export const categories = function categoriesReducer(
       const newSelectedCategories = new Set(state.selected);
       if (state.selected.has(action.filter)) {
         newSelectedCategories.delete(action.filter);
+      } else if (action.initialRender &&
+                 (action.filter === action.initialFilter)) {
+        // This is the first time we're handling this action, there is
+        // an initial filter set from a router parameter and it matches
+        // the filter that is being toggled.
+        // Since it will not be in the set of selected filters (because
+        // it was set from a route parameter) we can't remove it. But we
+        // want to make sure we don't add it.  So, do nothing.
       } else {
         newSelectedCategories.add(action.filter);
       }
@@ -61,6 +69,14 @@ export const statuses = function statusesReducer(
       const newSelectedStatuses = new Set(state.selected);
       if (state.selected.has(action.filter)) {
         newSelectedStatuses.delete(action.filter);
+      } else if (action.initialRender &&
+                 (action.initialFilters.statuses.has(action.filter))) {
+        // This is the first time we're handling this action, there is
+        // an initial filter set from a router parameter and it matches
+        // the filter that is being toggled.
+        // Since it will not be in the set of selected filters (because
+        // it was set from a route parameter) we can't remove it. But we
+        // want to make sure we don't add it.  So, do nothing.
       } else {
         newSelectedStatuses.add(action.filter);
       }
@@ -96,4 +112,8 @@ export const recommendations = function recommendationsReducer(
     default:
       return state;
   }
+};
+
+export const initialRender = function initialRender(state = true) {
+  return state;
 };

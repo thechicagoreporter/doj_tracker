@@ -58,3 +58,17 @@ export const getFilterClassName = (category, selected) => {
 
   return classes.join(' ');
 };
+
+export const toTitleCase = s => s.replace(/\w\S*/g, txt => (
+  txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+));
+
+export const unslugify = slug => (
+  slug ? slug.split('-').map((bit) => {
+    if (bit === 'and' || bit === 'or') {
+      return bit;
+    }
+
+    return toTitleCase(bit);
+  }).join(' ') : slug
+);

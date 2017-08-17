@@ -3,17 +3,26 @@ import { toggleCategoryFilter } from '../actions';
 import FilterSet from '../components/FilterSet';
 import { getFilterClassName } from '../util';
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, ownProps) => ({
   label: 'By Category',
   items: state.categories.all,
-  isSelected: category => state.categories.selected.has(category.category),
+  isSelected: category => (
+    state.categories.selected.has(category.category) ||
+    (state.initialRender &&
+     ownProps.initialFilters.categories.has(category.category))
+  ),
   getClassName: getFilterClassName,
   getLabel: category => category.category,
+  initialRender: state.initialRender,
 });
 
-const mapDispatchToProps = dispatch => ({
-  onFilterClick: (category) => {
-    dispatch(toggleCategoryFilter(category.category));
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  onFilterClick: (category, initialRender) => {
+    dispatch(toggleCategoryFilter(
+      category.category,
+      ownProps.initialFilters,
+      initialRender,
+    ));
   },
 });
 

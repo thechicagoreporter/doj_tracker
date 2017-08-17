@@ -5,6 +5,7 @@ import { createStore } from 'redux';
 import {
   HashRouter,
   Route,
+  Switch,
 } from 'react-router-dom';
 import TrackerApp from './components/TrackerApp';
 import { root as rootReducer } from './reducers';
@@ -17,15 +18,32 @@ export const renderApp = (container, initialState) => {
   const store = createStore(rootReducer, hydrateState(initialState));
   const state = store.getState();
 
+  // Usually, when using React Router, you have paths mapping to different
+  // components.  In our case, we're rendering the same component for all
+  // paths. This is because we're just filtering and scrolling, but still
+  // rendering the same things.
+  const paths = [
+    '/recommendations/:id',
+    '/categories/:categorySlug',
+    '/statuses/:statusSlug',
+    '/',
+  ];
+  const children = paths.map((path, i) => (
+    <Route key={i} path={path} render={props => (
+      <TrackerApp statuses={state.statuses}
+        title={state.title}
+        introText={state.intro_text}
+        {...props.match.params} />
+    )} />
+  ));
+
   // Render the component
   render(
     <Provider store={store}>
       <HashRouter>
-      <Route path="/" render={() => (
-        <TrackerApp statuses={state.statuses}
-          title={state.title}
-          introText={state.intro_text} />
-        )} />
+        <Switch>
+          {children}
+        </Switch>
       </HashRouter>
     </Provider>,
     container,

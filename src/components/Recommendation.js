@@ -32,7 +32,7 @@ class Recommendation extends React.Component {
     );
 
     return (
-      <div className={getClassName(this.props)}>
+      <div className={getClassName(this.props)} ref={this.props.scrollToRef}>
         <h3 className={gistClassName}>
           <a href="#" onClick={this.handleGistClick}>
             {this.props.recommendation.recommendation_gist}
@@ -79,6 +79,7 @@ Recommendation.propTypes = {
     updates: PropTypes.arrayOf(PropTypes.object),
   }),
   onGistClick: PropTypes.func,
+  scrollToRef: PropTypes.func,
 };
 
 export default Recommendation;

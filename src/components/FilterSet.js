@@ -9,6 +9,7 @@ const FilterSet = ({
   isSelected,
   getClassName,
   getLabel,
+  initialRender,
 }) => (
   <div className="filter-set">
     <div className="filter-set__label">{label}</div>
@@ -16,7 +17,7 @@ const FilterSet = ({
       {items.map(item => (
         <Filter item={item}
           key={item.slug}
-          onFilterClick={onFilterClick}
+          onFilterClick={f => onFilterClick(f, initialRender)}
           selected={isSelected(item)}
           getClassName={getClassName}
           getLabel={getLabel} />
@@ -35,6 +36,7 @@ FilterSet.propTypes = {
   onFilterClick: PropTypes.func,
   getClassName: PropTypes.func,
   getLabel: PropTypes.func,
+  initialRender: PropTypes.bool,
 };
 
 export default FilterSet;
