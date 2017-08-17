@@ -46,7 +46,8 @@ const TrackerApp = ({
       <StatusChart statuses={statuses} />
       <ActiveSearchForm />
       <Filters initialFilters={initialFilters} />
-      <VisibleRecommendationList id={id} initialFilters={initialFilters} />
+      <VisibleRecommendationList detailId={id}
+        initialFilters={initialFilters} />
     </div>
   );
 };

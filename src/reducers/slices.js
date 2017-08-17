@@ -99,11 +99,14 @@ export const recommendations = function recommendationsReducer(
     case TOGGLE_RECOMMENDATION: {
       const id = action.recommendation.id;
       const recommendation = state.byId[id];
+      const collapsed = action.initialRender && action.detailId === id ?
+        true :
+        !recommendation.collapsed;
 
       return Object.assign({}, state, {
         byId: Object.assign({}, state.byId, {
           [id]: Object.assign({}, recommendation, {
-            collapsed: !recommendation.collapsed,
+            collapsed,
           }),
         }),
       });

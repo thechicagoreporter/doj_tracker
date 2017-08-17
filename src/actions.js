@@ -36,9 +36,15 @@ export const toggleStatusFilter = function toggleStatusFilterActionCreator(
   };
 };
 
-export const toggleRecommendation = function toggleRecommendationActionCreator(r) {
+export const toggleRecommendation = function toggleRecommendationActionCreator(
+  r,
+  detailId,
+  initialRender,
+) {
   return {
     type: TOGGLE_RECOMMENDATION,
     recommendation: r,
+    detailId,
+    initialRender,
   };
 };

@@ -66,7 +66,8 @@ const mapStateToProps = (state, ownProps) => {
 
     // If an id has been specified in the route and it matches
     // this particular recommendation, make sure it's expanded.
-    if (ownProps.id && r.id === ownProps.id) {
+    if (state.initialRender && ownProps.detailId &&
+        r.id === ownProps.detailId) {
       return {
         ...r,
         collapsed: false,
@@ -78,13 +79,18 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     recommendations,
-    detailId: ownProps.id,
+    detailId: ownProps.detailId,
+    initialRender: state.initialRender,
   };
 };
 
-const mapDispatchToProps = dispatch => ({
-  onGistClick: (recommendation) => {
-    dispatch(toggleRecommendation(recommendation));
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  onGistClick: (recommendation, initialRender) => {
+    dispatch(toggleRecommendation(
+      recommendation,
+      ownProps.detailId,
+      initialRender,
+    ));
   },
 });
 
