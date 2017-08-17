@@ -28,22 +28,19 @@ export const hydrateState = (state) => {
     search.addDocument(r);
   });
 
-  return Object.assign(
-    {},
-    state,
-    {
-      recommendations: Object.assign({}, state.recommendations, {
-        filteredIds,
-      }),
-      categories: Object.assign({}, state.categories, {
-        selected: new Set(state.categories.selected),
-      }),
-      statuses: Object.assign({}, state.statuses, {
-        selected: new Set(state.statuses.selected),
-      }),
-      search,
-    },
-  );
+  return {
+    ...state,
+    recommendations: Object.assign({}, state.recommendations, {
+      filteredIds,
+    }),
+    categories: Object.assign({}, state.categories, {
+      selected: new Set(state.categories.selected),
+    }),
+    statuses: Object.assign({}, state.statuses, {
+      selected: new Set(state.statuses.selected),
+    }),
+    search,
+  };
 };
 
 export const getFilterClassName = (category, selected) => {

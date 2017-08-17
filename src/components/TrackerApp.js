@@ -7,7 +7,10 @@ import Intro from './Intro';
 import ActiveSearchForm from '../containers/ActiveSearchForm';
 import Filters from './Filters';
 import VisibleRecommendationList from '../containers/VisibleRecommendationList';
+import VisibleOrderByControls from '../containers/VisibleOrderByControls';
+import OrderByControl from './OrderByControl';
 import { unslugify } from '../util';
+import { LAST_UPDATED } from '../constants';
 
 /**
  * Return initial filter sets.
@@ -46,6 +49,9 @@ const TrackerApp = ({
       <StatusChart statuses={statuses} />
       <ActiveSearchForm />
       <Filters initialFilters={initialFilters} />
+      <VisibleOrderByControls>
+        <OrderByControl orderBy={LAST_UPDATED} label="Last Updated" />
+      </VisibleOrderByControls>
       <VisibleRecommendationList detailId={id}
         initialFilters={initialFilters} />
     </div>

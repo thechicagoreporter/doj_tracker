@@ -1,4 +1,5 @@
 export const SEARCH = 'SEARCH';
+export const SET_ORDER_BY = 'SET_ORDER_BY';
 export const TOGGLE_RECOMMENDATION = 'TOGGLE_RECOMMENDATION';
 export const TOGGLE_STATUS_FILTER = 'TOGGLE_STATUS_FILTER';
 export const TOGGLE_CATEGORY_FILTER = 'TOGGLE_CATEGORY_FILTER';
@@ -53,5 +54,12 @@ export const toggleRecommendation = function toggleRecommendationActionCreator(
 export const toggleFilterDrawer = function toggleFilterDrawerActionCreator() {
   return {
     type: TOGGLE_FILTER_DRAWER,
+  };
+};
+
+export const setOrderBy = function setOrderByActionCreator(orderBy) {
+  return {
+    type: SET_ORDER_BY,
+    orderBy,
   };
 };

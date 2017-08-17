@@ -1,10 +1,12 @@
 import {
   SEARCH,
+  SET_ORDER_BY,
   TOGGLE_CATEGORY_FILTER,
   TOGGLE_STATUS_FILTER,
   TOGGLE_RECOMMENDATION,
   TOGGLE_FILTER_DRAWER,
 } from '../actions';
+import { LAST_UPDATED } from '../constants';
 
 export const title = function titleReducer(state = 'DOJ Tracker') {
   return state;
@@ -129,6 +131,20 @@ export const filterDrawerCollapsed = function filterDrawerCollapsedReducer(
   switch (action.type) {
     case TOGGLE_FILTER_DRAWER: {
       return !state;
+    }
+
+    default:
+      return state;
+  }
+};
+
+export const orderBy = function orderByReducer(
+  state = LAST_UPDATED,
+  action,
+) {
+  switch (action.type) {
+    case SET_ORDER_BY: {
+      return action.orderBy;
     }
 
     default:

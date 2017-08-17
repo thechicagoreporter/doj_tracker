@@ -151,7 +151,8 @@ $unclear-color: gray;
   margin-bottom: 0.6em;
 }
 
-.filter {
+.filter,
+.order-by-control {
   display: inline-block;
   text-decoration: none;
   margin-right: 0.8em;
@@ -162,7 +163,8 @@ $unclear-color: gray;
   font-size: 0.8em;
 }
 
-.filter--selected {
+.filter--selected,
+.order-by-control--selected {
   color: white;
   background-color: gray;
 }
@@ -189,6 +191,12 @@ $unclear-color: gray;
   &.filter--selected {
     background-color: $unclear-color;
   }
+}
+
+.order-by-controls__label {
+  text-transform: uppercase;
+  font-size: 0.8em;
+  margin-bottom: 0.6em;
 }
 
 .recommendations {

@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { toggleRecommendation } from '../actions';
 import RecommendationList from '../components/RecommendationList';
+import { LAST_UPDATED } from '../constants';
 
 /**
  * Filter recommendation ids based on status, category
@@ -24,6 +25,20 @@ const applyFilters = (ids, selectedFilters, getRecommendation) => (
     }, true);
   })
 );
+
+const sorters = {
+  [LAST_UPDATED]: (a, b) => {
+    if (a.lastUpdated > b.lastUpdated) {
+      return -1;
+    }
+
+    if (a.lastUpdated < b.lastUpdated) {
+      return 1;
+    }
+
+    return a.id - b.id;
+  },
+};
 
 const mapStateToProps = (state, ownProps) => {
   // If a query is specified, get a list of recommendation IDs that match
@@ -59,6 +74,8 @@ const mapStateToProps = (state, ownProps) => {
     id => state.recommendations.byId[id],
   );
 
+  const sorter = sorters[state.orderBy];
+
   // Get a list of recommendations with the filters applied
   const recommendations = filteredIds.map((id) => {
     // Retrieve the full recommendation object for an ID
@@ -75,7 +92,7 @@ const mapStateToProps = (state, ownProps) => {
     }
 
     return r;
-  });
+  }).sort(sorter);
 
   return {
     recommendations,
