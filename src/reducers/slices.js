@@ -151,3 +151,7 @@ export const orderBy = function orderByReducer(
       return state;
   }
 };
+
+export const lede = function leadReducer(state = '') {
+  return state;
+};

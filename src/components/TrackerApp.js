@@ -1,16 +1,17 @@
 /* eslint camelcase: 0 */
 import PropTypes from 'prop-types';
 import React from 'react';
-import StatusChartLegend from './StatusChartLegend';
-import StatusChart from './StatusChart';
-import Intro from './Intro';
-import ActiveSearchForm from '../containers/ActiveSearchForm';
-import Filters from './Filters';
-import VisibleRecommendationList from '../containers/VisibleRecommendationList';
-import VisibleOrderByControls from '../containers/VisibleOrderByControls';
-import OrderByControl from './OrderByControl';
-import { unslugify } from '../util';
 import { LAST_UPDATED } from '../constants';
+import { unslugify } from '../util';
+import ActiveSearchForm from '../containers/ActiveSearchForm';
+import Lede from '../containers/Lede';
+import VisibleOrderByControls from '../containers/VisibleOrderByControls';
+import VisibleRecommendationList from '../containers/VisibleRecommendationList';
+import Filters from './Filters';
+import Intro from './Intro';
+import OrderByControl from './OrderByControl';
+import StatusChart from './StatusChart';
+import StatusChartLegend from './StatusChartLegend';
 
 /**
  * Return initial filter sets.
@@ -44,6 +45,7 @@ const TrackerApp = ({
   return (
     <div className="tracker">
       <h1>{title}</h1>
+      <Lede />
       <Intro text={introText} />
       <StatusChartLegend statuses={statuses} />
       <StatusChart statuses={statuses} />
