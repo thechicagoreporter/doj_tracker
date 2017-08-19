@@ -8,7 +8,7 @@ import Lede from '../containers/Lede';
 import VisibleOrderByControls from '../containers/VisibleOrderByControls';
 import VisibleRecommendationList from '../containers/VisibleRecommendationList';
 import Filters from './Filters';
-import Intro from './Intro';
+import Intro from '../containers/Intro';
 import OrderByControl from './OrderByControl';
 import StatusChart from './StatusChart';
 import StatusChartLegend from './StatusChartLegend';

@@ -2,9 +2,10 @@ import {
   SEARCH,
   SET_ORDER_BY,
   TOGGLE_CATEGORY_FILTER,
+  TOGGLE_INTRO,
+  TOGGLE_FILTER_DRAWER,
   TOGGLE_STATUS_FILTER,
   TOGGLE_RECOMMENDATION,
-  TOGGLE_FILTER_DRAWER,
 } from '../actions';
 import { LAST_UPDATED } from '../constants';
 
@@ -154,4 +155,18 @@ export const orderBy = function orderByReducer(
 
 export const lede = function leadReducer(state = '') {
   return state;
+};
+
+export const introCollapsed = function introCollapsedReducer(
+  state = true,
+  action,
+) {
+  switch (action.type) {
+    case TOGGLE_INTRO: {
+      return !state;
+    }
+
+    default:
+      return state;
+  }
 };

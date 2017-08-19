@@ -1,9 +1,10 @@
 export const SEARCH = 'SEARCH';
 export const SET_ORDER_BY = 'SET_ORDER_BY';
-export const TOGGLE_RECOMMENDATION = 'TOGGLE_RECOMMENDATION';
-export const TOGGLE_STATUS_FILTER = 'TOGGLE_STATUS_FILTER';
 export const TOGGLE_CATEGORY_FILTER = 'TOGGLE_CATEGORY_FILTER';
 export const TOGGLE_FILTER_DRAWER = 'TOGGLE_FILTER_DRAWER';
+export const TOGGLE_INTRO = 'TOGGLE_INTRO';
+export const TOGGLE_RECOMMENDATION = 'TOGGLE_RECOMMENDATION';
+export const TOGGLE_STATUS_FILTER = 'TOGGLE_STATUS_FILTER';
 
 export const search = function searchActionCreator(q) {
   return {
@@ -61,5 +62,11 @@ export const setOrderBy = function setOrderByActionCreator(orderBy) {
   return {
     type: SET_ORDER_BY,
     orderBy,
+  };
+};
+
+export const toggleIntro = function toggleIntroActionCreator() {
+  return {
+    type: TOGGLE_INTRO,
   };
 };

@@ -23,6 +23,33 @@ $unclear-color: gray;
   }
 }
 
+.intro {
+  margin-top: 1em;
+}
+
+.intro__toggle {
+  display: block;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  font-size: 0.8em;
+
+  &::after {
+    content: '▼';
+  }
+}
+
+.intro__toggle--collapsed {
+  &::after {
+    padding-left: 0.2em;
+    content: '▸';
+  }
+}
+
+.intro__inner--collapsed {
+  display: none;
+}
+
 .lede {
   font-size: 1.2em;
 }
