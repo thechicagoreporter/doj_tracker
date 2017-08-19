@@ -12,6 +12,7 @@ import Intro from '../containers/Intro';
 import OrderByControl from './OrderByControl';
 import StatusChart from './StatusChart';
 import StatusChartLegend from './StatusChartLegend';
+import styles from './TrackerApp.css';
 
 /**
  * Return initial filter sets.
@@ -43,7 +44,7 @@ const TrackerApp = ({
 }) => {
   const initialFilters = getInitialFilters(statusSlug, categorySlug);
   return (
-    <div className="tracker">
+    <div className={styles.tracker}>
       <h1>{title}</h1>
       <Lede />
       <Intro text={introText} />

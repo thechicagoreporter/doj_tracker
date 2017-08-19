@@ -1,0 +1,43 @@
+@value notImplemented, partiallyImplemented, implemented, unclear  from '../colors.css';
+
+.legend {}
+
+.item {
+  display: inline-block;
+  margin-bottom: 0.2em;
+  margin-right: 1em;
+}
+
+.color,
+.label {
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: middle;
+
+}
+
+.color {
+  width: 1em;
+  height: 1em;
+}
+
+.label {
+  margin-left: 1em;
+  font-size: 0.6em;
+}
+
+.color.implemented {
+  background-color: implemented;
+}
+
+.color.partiallyImplemented {
+  background-color: partiallyImplemented;
+}
+
+.color.notImplemented {
+  background-color: notImplemented;
+}
+
+.color.unclear {
+  background-color: unclear;
+}

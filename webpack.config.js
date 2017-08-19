@@ -18,17 +18,25 @@ module.exports = {
       },
       {
         // TODO: Extract style sheets into a dedicated file.
-        // See https://github.com/webpack-contrib/sass-loader#in-production
-        test: /\.scss$/,
+        test: /\.css$/,
         use: [
           {
             loader: "style-loader" // creates style nodes from JS strings
           },
           {
-            loader: "css-loader" // translates CSS into CommonJS
+            loader: "css-loader", // translates CSS into CommonJS
+            options: {
+              modules: true,
+              localIdentName: '[name]__[local]___[hash:base64:5]'
+            }
           },
           {
-            loader: "sass-loader" // compiles Sass to CSS
+            loader: "postcss-loader",
+            options: {
+              plugins: loader => [
+                require('postcss-modules-values')
+              ]
+            }
           }
         ]
       }

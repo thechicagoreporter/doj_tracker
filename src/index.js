@@ -10,7 +10,7 @@ import {
 import TrackerApp from './components/TrackerApp';
 import { root as rootReducer } from './reducers';
 import { hydrateState } from './util';
-import './index.scss';
+import './index.css';
 
 // eslint-disable-next-line import/prefer-default-export
 export const renderApp = (container, initialState) => {

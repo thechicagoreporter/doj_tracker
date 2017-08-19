@@ -1,0 +1,7 @@
+.control {
+  composes: button from './base.css';
+}
+
+.controlSelected {
+  composes: button from './base.css' buttonSelected from './base.css';
+}

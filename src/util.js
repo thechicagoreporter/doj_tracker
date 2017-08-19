@@ -1,21 +1,6 @@
+import classNames from 'classnames/bind';
 import { Search } from 'js-search';
-
-export const modifierClassNames = (
-  className,
-  condition,
-  trueModifier,
-  falseModifier,
-) => {
-  const classNames = [className];
-
-  if (condition) {
-    classNames.push(`${className}--${trueModifier}`);
-  } else if (falseModifier) {
-    classNames.push(`${className}--${falseModifier}`);
-  }
-
-  return classNames.join(' ');
-};
+import filterStyles from './components/Filter.css';
 
 export const hydrateState = (state) => {
   const filteredIds = new Set();
@@ -43,17 +28,24 @@ export const hydrateState = (state) => {
   };
 };
 
+export const camelCase = (status, sep = ' ') => {
+  const bits = status.split(sep).map((bit) => {
+    const firstC = bit.charAt(0).toUpperCase();
+    const rest = bit.substr(1).toLowerCase();
+    return `${firstC}${rest}`;
+  });
+  bits[0] = bits[0].toLowerCase();
+
+  return bits.join('');
+};
+
 export const getFilterClassName = (category, selected) => {
-  const classes = [
-    'filter',
-    `filter--${category.slug}`,
-  ];
-
-  if (selected) {
-    classes.push('filter--selected');
-  }
-
-  return classes.join(' ');
+  const cx = classNames.bind(filterStyles);
+  return cx({
+    filter: !selected,
+    [camelCase(category.slug, '-')]: true,
+    filterSelected: selected,
+  });
 };
 
 export const toTitleCase = s => s.replace(/\w\S*/g, txt => (
@@ -69,3 +61,4 @@ export const unslugify = slug => (
     return toTitleCase(bit);
   }).join(' ') : slug
 );
+

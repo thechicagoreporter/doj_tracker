@@ -1,6 +1,9 @@
+import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { modifierClassNames } from '../util';
+import styles from './FilterDrawerToggle.css';
+
+const cx = classNames.bind(styles);
 
 class FilterDrawerToggle extends React.Component {
   constructor() {
@@ -10,11 +13,10 @@ class FilterDrawerToggle extends React.Component {
   }
 
   render() {
-    const className = modifierClassNames(
-      'filters__toggle-button',
-      this.props.collapsed,
-      'collapsed',
-    );
+    const className = cx({
+      button: true,
+      collapsed: this.props.collapsed,
+    });
     return (
       <a href="#"
         className={className}

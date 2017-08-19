@@ -1,0 +1,13 @@
+.form {
+  margin-top: 1em;
+  text-align: center;
+
+  input[type="text"] {
+  }
+}
+
+.searchInput {
+  font-size: 1.2em;
+  width: 100%;
+  max-width: 400px;
+}

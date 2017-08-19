@@ -1,0 +1,25 @@
+@value notImplemented, partiallyImplemented, implemented, unknown from '../colors.css';
+
+.filter {
+  composes: button from './base.css';
+}
+
+.filterSelected {
+  composes: button from './base.css' buttonSelected from './base.css';
+}
+
+.filterSelected.notImplemented {
+  background-color: notImplemented; 
+}
+
+.filterSelected.implemented {
+  background-color: partiallyImplemented;
+}
+
+.filterSelected.implemented {
+  background-color: implemented;
+}
+
+.filterSelected.unclear {
+  background-color: unclear;
+}

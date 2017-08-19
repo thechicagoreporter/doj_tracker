@@ -1,8 +1,9 @@
+import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { toggleIntro } from '../actions';
-import { modifierClassNames } from '../util';
+import styles from './Intro.css';
 
 const getHtml = text => ({
   __html: text,
@@ -27,24 +28,24 @@ class Intro extends React.Component {
   }
 
   render() {
-    const innerClassName = modifierClassNames(
-      'intro__inner',
-      this.props.collapsed,
-      'collapsed',
-    );
+    const cx = classNames.bind(styles);
 
-    const toggleClassName = modifierClassNames(
-      'intro__toggle',
-      this.props.collapsed,
-      'collapsed',
-    );
+    const innerClassName = cx({
+      inner: true,
+      collapsed: this.props.collapsed,
+    });
+
+    const toggleClassName = cx({
+      toggle: true,
+      collapsed: this.props.collapsed,
+    });
 
     const label = this.props.collapsed ?
       'Read more' :
       'Hide';
 
     return (
-      <div className="intro">
+      <div className={styles.intro}>
         <a href="#"
           className={toggleClassName}
           onClick={this.handleToggleClick}>

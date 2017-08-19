@@ -1,7 +1,10 @@
+import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { setOrderBy } from '../actions';
-import { modifierClassNames } from '../util';
+import styles from './OrderByControl.css';
+
+const cx = classNames.bind(styles);
 
 class OrderByControl extends React.Component {
   constructor() {
@@ -11,11 +14,10 @@ class OrderByControl extends React.Component {
   }
 
   render() {
-    const className = modifierClassNames(
-      'order-by-control',
-      this.props.selected,
-      'selected',
-    );
+    const className = cx({
+      control: !this.props.selected,
+      controlSelected: this.props.selected,
+    });
     return (
       <a href="#"
         onClick={this.handleClick}

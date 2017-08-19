@@ -1,21 +1,17 @@
+import classNames from 'classnames/bind';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { modifierClassNames } from '../util';
 import AgencyList from './AgencyList';
 import UpdateList from './UpdateList';
+import styles from './Recommendation.css';
+import { camelCase } from '../util';
 
-const getClassName = (props) => {
-  const classNames = [
-    'recommendation',
-    `recommendation--${props.recommendation.statusSlug}`,
-  ];
+const cx = classNames.bind(styles);
 
-  if (props.recommendation.collapsed) {
-    classNames.push('recommendation--collapsed');
-  }
-
-  return classNames.join(' ');
-};
+const getClassName = props => cx(
+  'recommendation',
+  camelCase(props.recommendation.statusSlug, '-'),
+);
 
 class Recommendation extends React.Component {
   constructor() {
@@ -25,37 +21,43 @@ class Recommendation extends React.Component {
   }
 
   render() {
-    const gistClassName = modifierClassNames(
-      'recommendation__gist',
-      this.props.recommendation.collapsed,
-      'collapsed',
-    );
+    const gistLinkClassName = cx({
+      gistLink: true,
+      collapsed: this.props.recommendation.collapsed,
+    });
+
+    const expansionClassName = cx({
+      expansion: true,
+      collapsed: this.props.recommendation.collapsed,
+    });
 
     return (
       <div className={getClassName(this.props)} ref={this.props.scrollToRef}>
-        <h3 className={gistClassName}>
-          <a href="#" onClick={this.handleGistClick}>
+        <h3 className={styles.gist}>
+          <a href="#" className={gistLinkClassName} onClick={this.handleGistClick}>
             {this.props.recommendation.recommendation_gist}
           </a>
         </h3>
 
-        <div className="recommendation__category">{this.props.recommendation.category}</div>
+        <div className={expansionClassName}>
+          <div className={styles.category}>{this.props.recommendation.category}</div>
 
-        <div>
-          <span
-            className={`recommendation__status recommendation__status--${this.props.recommendation.statusSlug}`}>
+          <div>
+            <span
+              className={cx('status', camelCase(this.props.recommendation.statusSlug, '-'))}>
 
-            {this.props.recommendation.status}
-          </span>
+              {this.props.recommendation.status}
+            </span>
+          </div>
+
+          <div className={styles.specific}>
+              {this.props.recommendation.recommendation_specific}
+          </div>
+
+          <AgencyList agencies={this.props.recommendation.agency_responsible} />
+
+          <UpdateList updates={this.props.recommendation.updates} />
         </div>
-
-        <div className="recommendation__specific">
-            {this.props.recommendation.recommendation_specific}
-        </div>
-
-        <AgencyList agencies={this.props.recommendation.agency_responsible} />
-
-        <UpdateList updates={this.props.recommendation.updates} />
       </div>
     );
   }

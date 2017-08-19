@@ -3,9 +3,10 @@ import React from 'react';
 import SelectedCategoryFilters from '../containers/SelectedCategoryFilters';
 import SelectedStatusFilters from '../containers/SelectedStatusFilters';
 import VisibleFilterDrawer from '../containers/VisibleFilterDrawer';
+import styles from './Filters.css';
 
 const Filters = ({ initialFilters }) => (
-  <div className="filters">
+  <div className={styles.filters}>
     <SelectedStatusFilters initialFilters={initialFilters} />
     <VisibleFilterDrawer>
       <SelectedCategoryFilters collectionName="categories"

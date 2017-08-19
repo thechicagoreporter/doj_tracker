@@ -1,0 +1,75 @@
+@value notImplemented, partiallyImplemented, implemented, unclear from '../colors.css';
+
+.gist {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.gistLink {
+  text-decoration: none;
+  color: black;
+}
+
+.gistLink::after {
+  content: '▼';
+}
+
+.gistLink.collapsed::after {
+  padding-left: 0.2em;
+  content: '▸';
+}
+
+.recommendation {
+  padding: 2em;
+  margin-bottom: 2em;
+  border-top: 4px solid;
+  background-color: #F2F3F4;
+}
+
+.expansion.collapsed {
+  display: none;
+}
+
+.recommendation.notImplemented {
+  border-top-color: notImplemented !important;
+}
+
+.recommendation.partiallyImplemented {
+  border-top-color: partiallyImplemented !important;
+}
+
+.recommendation.implemented {
+  border-top-color: implemented !important;
+}
+
+.recommendation.unclear {
+  border-top-color: unclear !important;
+}
+
+.category {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.status {
+  display: inline-block;
+  margin-bottom: 1em;
+  padding: 0.4em;
+  color: white;
+}
+
+.status.notImplemented {
+  background-color: notImplemented;
+}
+
+.status.partiallyImplemented {
+  background-color: partiallyImplemented;
+}
+
+.status.implemented {
+  background-color: implemented;
+}
+
+.status.unclear {
+  background-color: unclear;
+}

@@ -1,0 +1,40 @@
+@value notImplemented, partiallyImplemented, implemented, unclear  from '../colors.css';
+
+.chart {
+  width: 100%;
+}
+
+.chart:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.bar {
+  position: relative;
+  float: left;
+  color: white;
+  min-height: 4em;
+}
+
+.bar.notImplemented {
+  background-color: notImplemented;
+}
+
+.bar.partiallyImplemented {
+  background-color: partiallyImplemented;
+}
+
+.bar.implemented {
+  background-color: implemented;
+}
+
+.bar.unclear {
+  background-color: unclear;
+}
+
+.barLabel {
+  display: block;
+  padding: 0.6em;
+  font-size: 0.8em;
+}

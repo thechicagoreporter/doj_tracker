@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import styles from './AgencyList.css';
 
 const AgencyList = ({ agencies }) => (
-  <ul className="agencies">
+  <ul className={styles.agencies}>
     {agencies.map(agency => (
-      <li key={agency} className="agency">{agency}</li>
+      <li key={agency} className={styles.agency}>{agency}</li>
     ))}
   </ul>
 );

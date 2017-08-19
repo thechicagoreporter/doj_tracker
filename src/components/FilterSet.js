@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Filter from './Filter';
+import styles from './FilterSet.css';
 
 const FilterSet = ({
   label,
@@ -11,8 +12,8 @@ const FilterSet = ({
   getLabel,
   initialRender,
 }) => (
-  <div className="filter-set">
-    <div className="filter-set__label">{label}</div>
+  <div className={styles.set}>
+    <div className={styles.label}>{label}</div>
     <div>
       {items.map(item => (
         <Filter item={item}

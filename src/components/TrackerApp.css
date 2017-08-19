@@ -1,0 +1,11 @@
+.tracker {
+  text-align: left;
+  font-family: sans-serif;
+}
+
+@media (min-width: 768px) {
+  .tracker {
+    max-width: 768px;
+    margin: 0 auto;
+  }
+}

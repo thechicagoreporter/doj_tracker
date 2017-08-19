@@ -1,12 +1,17 @@
+import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { camelCase } from '../util';
+import styles from './StatusChartLegend.css';
+
+const cx = classNames.bind(styles);
 
 const StatusChartLegend = ({ statuses }) => (
-  <dl className="status-chart-legend">
+  <dl className={styles.legend}>
     {statuses.all.map(status => (
-      <div key={status.slug} className="status-chart-legend__item">
-        <dt className={`status-chart-legend__color status-chart-legend__color--${status.slug}`}></dt>
-        <dd className="status-chart-legend__label">{status.status}</dd>
+      <div key={status.slug} className={styles.item}>
+        <dt className={cx('color', camelCase(status.status))} />
+        <dd className={styles.label}>{status.status}</dd>
       </div>
     ))}
   </dl>

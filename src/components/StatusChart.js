@@ -1,8 +1,13 @@
+import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { camelCase } from '../util';
+import styles from './StatusChart.css';
+
+const cx = classNames.bind(styles);
 
 const getBarClassName = status => (
-  `status-chart__bar status-chart__bar--${status.slug}`
+  cx('bar', camelCase(status.status))
 );
 
 const getBarStyle = status => ({
@@ -10,13 +15,13 @@ const getBarStyle = status => ({
 });
 
 const StatusChart = ({ statuses }) => (
-  <div className="status-chart">
+  <div className={styles.chart}>
     {statuses.all.map(status => (
       <div className={getBarClassName(status)}
            style={getBarStyle(status)}
            key={status.slug}>
 
-           <span className="status-chart__bar-label">{status.count}</span>
+           <span className={styles.barLabel}>{status.count}</span>
       </div>
     ))}
   </div>

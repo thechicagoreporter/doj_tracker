@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Recommendation from './Recommendation';
+import styles from './RecommendationList.css';
 
 class RecommendationList extends React.Component {
   render() {
     return (
-      <div className="recommendations">
+      <div className={styles.recommendations}>
         {this.props.recommendations.map(r => (
           <Recommendation
             key={r.id}
