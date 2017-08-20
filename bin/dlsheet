@@ -4,6 +4,6 @@ require('babel-register');
 
 var argv = require('minimist')(process.argv.slice(2));
 
-var main = require('../lib/cli/dlsheet').default;
+var main = require('../src/cli/dlsheet').default;
 
 main(argv);

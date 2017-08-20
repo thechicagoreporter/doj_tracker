@@ -4,9 +4,9 @@ require('babel-register');
 
 const fs = require('fs');
 const argv = require('minimist')(process.argv.slice(2));
-const app = require('../lib/app').default;
-const drive = require('../lib/google-drive');
-const render = require('../lib/render').default;
+const app = require('../src/server/app').default;
+const drive = require('../src/google-drive');
+const render = require('../src/server/render').default;
 
 const docUrl = argv._[0];
 

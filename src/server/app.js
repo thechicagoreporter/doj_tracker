@@ -5,9 +5,9 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import { root as rootReducer } from '../src/reducers';
-import { hydrateState } from '../src/util';
-import { dldoc } from './google-drive';
+import { root as rootReducer } from '../reducers';
+import { hydrateState } from '../util';
+import { dldoc } from '../google-drive';
 import {
    recommendationLookup,
    addCategories,
@@ -15,9 +15,9 @@ import {
    markdownifyIntro,
    groupByStatus,
    processLede,
- } from './transforms';
+ } from '../transforms';
 import renderFullPage from './render-full-page';
-import TrackerApp from '../src/components/TrackerApp';
+import TrackerApp from '../components/TrackerApp';
 
 const app = express();
 

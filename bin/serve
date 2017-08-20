@@ -11,8 +11,8 @@ require.extensions['.css'] = () => {
 
 const fs = require('fs');
 const argv = require('minimist')(process.argv.slice(2));
-const app = require('../lib/app').default; 
-const drive = require('../lib/google-drive');
+const app = require('../src/server/app').default; 
+const drive = require('../src/google-drive');
 const webpackDevMiddleware = require("webpack-dev-middleware");
 const webpack = require("webpack");
 const webpackConfig = require("../webpack.config");
