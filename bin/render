@@ -3,12 +3,15 @@
 require('babel-register');
 
 const fs = require('fs');
+const path = require('path');
 const argv = require('minimist')(process.argv.slice(2));
 const app = require('../src/server/app').default;
 const drive = require('../src/google-drive');
 const render = require('../src/server/render').default;
 
 const docUrl = argv._[0];
+const tokenFilename = process.env.TOKEN_FILENAME || 'doj_tracker.json';
+const tokenPath = path.join(drive.DEFAULT_TOKEN_DIR, tokenFilename);
 
 fs.readFile(argv['client-secret'], function (err, content) {
   if (err) {
@@ -16,7 +19,11 @@ fs.readFile(argv['client-secret'], function (err, content) {
     process.exit(1);
   }
 
-  drive.authorize(JSON.parse(content), (oauth2Client) => {
+  const authOptions = {
+    tokenPath: tokenPath,
+  };
+
+  drive.authorize(JSON.parse(content), authOptions, (oauth2Client) => {
     app.locals.oauth2Client = oauth2Client;
     app.locals.docUrl = docUrl;
     render(app, '/', (content, err) => {

@@ -10,6 +10,7 @@ require.extensions['.css'] = () => {
 };
 
 const fs = require('fs');
+const path = require('path');
 const argv = require('minimist')(process.argv.slice(2));
 const app = require('../src/server/app').default; 
 const drive = require('../src/google-drive');
@@ -18,6 +19,8 @@ const webpack = require("webpack");
 const webpackConfig = require("../webpack.config");
 
 const docUrl = argv._[0];
+const tokenFilename = process.env.TOKEN_FILENAME || 'doj_tracker.json';
+const tokenPath = path.join(drive.DEFAULT_TOKEN_DIR, tokenFilename);
 
 fs.readFile(argv['client-secret'], function (err, content) {
   if (err) {
@@ -25,7 +28,11 @@ fs.readFile(argv['client-secret'], function (err, content) {
     return;
   }
 
-  drive.authorize(JSON.parse(content), function (oauth2Client) {
+  const authOptions = {
+    tokenPath: tokenPath,
+  };
+
+  drive.authorize(JSON.parse(content), authOptions, function (oauth2Client) {
     const compiler = webpack(webpackConfig);
 
     app.use(webpackDevMiddleware(compiler, {

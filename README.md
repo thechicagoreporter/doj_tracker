@@ -73,6 +73,10 @@ Configuration
 
 Configuration is through environment variables and largely relates to deployment.
 
+### TOKEN\_PATH
+
+Path where Google Drive API OAuth token will be stored.  Defaults to `${HOME}/.credentials/doj_tracker.json`.
+
 ### AWS\_ACCESS\_KEY
 
 AWS access key credential used to publish static assets to S3.

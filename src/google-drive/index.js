@@ -6,27 +6,28 @@ import * as google from 'googleapis';
 import GoogleAuth from 'google-auth-library';
 
 const SCOPES = ['https://www.googleapis.com/auth/drive.readonly'];
-const TOKEN_DIR = path.join(
+export const DEFAULT_TOKEN_DIR = path.join(
   (process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE),
   '.credentials',
 );
-const TOKEN_PATH = path.join(TOKEN_DIR, 'dlsheet.json');
 
 /**
  * Store token to disk be used in later program executions.
  *
  * @param {Object} token The token to store to disk.
+ * @param {string} tokenPath Path to file to store the token.
  */
-const storeToken = function storeTokenToDisk(token) {
+const storeToken = function storeTokenToDisk(token, tokenPath) {
+  const tokenDir = path.dirname(tokenPath);
   try {
-    fs.mkdirSync(TOKEN_DIR);
+    fs.mkdirSync(tokenDir);
   } catch (err) {
     if (err.code !== 'EEXIST') {
       throw err;
     }
   }
-  fs.writeFile(TOKEN_PATH, JSON.stringify(token));
-  process.stderr.write(`Token stored to ${TOKEN_PATH}\n`);
+  fs.writeFile(tokenPath, JSON.stringify(token));
+  process.stderr.write(`Token stored to ${tokenPath}\n`);
 };
 
 /**
@@ -34,10 +35,15 @@ const storeToken = function storeTokenToDisk(token) {
  * execute the given callback with the authorized OAuth2 client.
  *
  * @param {google.auth.OAuth2} oauth2Client The OAuth2 client to get token for.
+ * @param {string} tokenPath Path to file to store the newly-created token.
  * @param {getEventsCallback} callback The callback to call with the authorized
  *     client.
  */
-const getNewToken = function getNewOauth2Token(oauth2Client, callback) {
+const getNewToken = function getNewOauth2Token(
+  oauth2Client,
+  tokenPath,
+  callback,
+) {
   const authUrl = oauth2Client.generateAuthUrl({
     access_type: 'offline',
     scope: SCOPES,
@@ -56,7 +62,7 @@ const getNewToken = function getNewOauth2Token(oauth2Client, callback) {
       }
       // eslint-disable-next-line no-param-reassign
       oauth2Client.credentials = token;
-      storeToken(token);
+      storeToken(token, tokenPath);
       callback(oauth2Client);
     });
   });
@@ -67,9 +73,16 @@ const getNewToken = function getNewOauth2Token(oauth2Client, callback) {
  * given callback function.
  *
  * @param {Object} credentials The authorization client credentials.
+ * @param {Object} options Options for authorization.
+ * @param {string} options.tokenPath The path of the file containing a storked
+ *   authorization token, or where a newly created token will be stored.
  * @param {function} callback The callback to call with the authorized client.
  */
-export const authorize = function oauth2Authorize(credentials, callback) {
+export const authorize = function oauth2Authorize(
+  credentials,
+  options = {},
+  callback,
+) {
   const clientSecret = credentials.installed.client_secret;
   const clientId = credentials.installed.client_id;
   const redirectUrl = credentials.installed.redirect_uris[0];
@@ -77,9 +90,9 @@ export const authorize = function oauth2Authorize(credentials, callback) {
   const oauth2Client = new auth.OAuth2(clientId, clientSecret, redirectUrl);
 
   // Check if we have previously stored a token
-  fs.readFile(TOKEN_PATH, (err, token) => {
+  fs.readFile(options.tokenPath, (err, token) => {
     if (err) {
-      getNewToken(oauth2Client, callback);
+      getNewToken(oauth2Client, options.tokenPath, callback);
     } else {
       oauth2Client.credentials = JSON.parse(token);
 
