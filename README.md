@@ -68,10 +68,32 @@ The first time you run this command, you will see a prompt like this:
 
 Visit the URL in the message and follow the dialog to allow access to the "DOJ Tracker" app.  You will be presented with a code that you should copy and paste after the "Enter the code from that page here" prompt.
 
-Configuration
--------------
+Local Testing with WordPress
+----------------------
+
+For local testing of publication to WordPress and the interaction between styles defined in this app and the Chicago Reporter site, I used the [Varying Vagrant Vagrants](https://varyingvagrantvagrants.org/) (VVV) Vagrant configuration recommended by INN for developing with the [Chicago Reporter's WordPress theme](https://github.com/INN/umbrella-chicagoreporter).  INN has [documentation](https://github.com/INN/docs/blob/master/staffing/onboarding/vvv-setup.md) for setting up VVV on your system.
+
+After getting VVV set up and creating a local Chicago Reporter site, the site should be available at http://chicagoreporter.vagrant.dev/.
+
+WordPress Configuration
+-----------------------
+
+You'll need to install the [Application Passwords](https://wordpress.org/plugins/application-passwords/) plugin which essentially allows creating application-specific API keys.
+
+Create a service user account that will be used for publishing to WordPress using the WordPress REST API.  Make sure this role has adequate permissions to edit posts.  The "Editor" role worked for me.
+
+In the user management section of the WordPress admin, create an application password for the service user account.  Make sure to make a note of the password somewhere.
+
+Create a new post where the tracker HTML will be uploaded.  While a post will be created the first time you publish if you don't specify a post ID, it's easier to get everything set up beforehand.  You might want to create a separate post for staging.  In either case, make sure you make note of the post IDs, which you can find from the URL parameter of the post in the WordPress admin.
+
+Tracker Configuration
+---------------------
 
 Configuration is through environment variables and largely relates to deployment.
+
+### DOCUMENT\_URL
+
+URL to Google Document containing ArchieML that provides data for this app.
 
 ### TOKEN\_PATH
 
@@ -84,6 +106,18 @@ AWS access key credential used to publish static assets to S3.
 ### AWS\_SECRET\_KEY
 
 AWS access key secret used to publish static assets to S3.
+
+### S3\_URL
+
+URL to the S3 bucket where static assets will be published, beginning with `s3://`.
+
+### S3\_HTTP\_URL
+
+URL to the S3 bucket where static assets will be published, beginning with `http://`.
+
+### WP\_URL
+
+Root URL for the WordPress site where this app will be published.
 
 ### WP\_USERNAME
 

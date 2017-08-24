@@ -11,7 +11,10 @@ const main = function cliMain(argv) {
     $('script').each((i, el) => {
       const src = $(el).attr('src');
       if (src) {
-        const staticUrl = argv._[0];
+        let staticUrl = argv._[0];
+        if (staticUrl[staticUrl.length -1] !== '/') {
+          staticUrl = `${staticUrl}/`;
+        }
         $(el).attr('src', `${staticUrl}${src}`);
       }
     });
