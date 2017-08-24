@@ -27,34 +27,50 @@ class Recommendation extends React.Component {
       collapsed: this.props.recommendation.collapsed,
     });
 
+    const lastUpdated = this.props.recommendation.updates[0].date;
+
     return (
       <div className={getClassName(this.props)} ref={this.props.scrollToRef}>
         <h3 className={styles.gist}>
           {this.props.recommendation.recommendation_gist}
         </h3>
 
-        <div className={expansionClassName}>
-          <div className={styles.category}>{this.props.recommendation.category}</div>
-
+        <dl className={styles.propertyList}>
           <div>
-            <span
-              className={cx('status', camelCase(this.props.recommendation.statusSlug, '-'))}>
-
-              {this.props.recommendation.status}
-            </span>
+            <dt className={styles.label}>Status</dt>
+            <dd className={cx('value', 'status', camelCase(this.props.recommendation.statusSlug, '-'))}>
+               {this.props.recommendation.status}
+            </dd>
           </div>
 
+          <div>
+            <dt className={styles.label}>Category</dt>
+            <dd className={cx('value', 'category')}>{this.props.recommendation.category}</dd>
+          </div>
+
+          <div>
+            <dt className={styles.label}>Agencies responsible</dt>
+            <dd className={styles.value}>
+              <AgencyList agencies={this.props.recommendation.agency_responsible} />
+            </dd>
+          </div>
+
+          <div>
+            <dt className={styles.label}>Last updated</dt>
+            <dt className={styles.value}>{lastUpdated}</dt>
+          </div>
+        </dl>
+
+        <ShowMoreButton onClick={this.handleShowMoreClick}
+          collapsed={this.props.recommendation.collapsed} />
+
+        <div className={expansionClassName}>
           <div className={styles.specific}>
               {this.props.recommendation.recommendation_specific}
           </div>
 
-          <AgencyList agencies={this.props.recommendation.agency_responsible} />
-
           <UpdateList updates={this.props.recommendation.updates} />
         </div>
-
-        <ShowMoreButton onClick={this.handleShowMoreClick}
-          collapsed={this.props.recommendation.collapsed} />
       </div>
     );
   }

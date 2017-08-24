@@ -4,10 +4,17 @@
   text-decoration: none;
   text-align: center;
   margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 .button::after {
+  padding-left: 0.2em;
+  padding-top: -0.2em;
   content: '▲';
+}
+
+.button.collapsed {
+  margin-bottom: 0;
 }
 
 .button.collapsed::after {

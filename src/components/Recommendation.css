@@ -32,14 +32,28 @@
   border-top-color: unclear !important;
 }
 
+.propertyList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.label {
+  composes: label from './base.css';
+}
+
+.value {
+  margin-left: 0;
+  margin-bottom: 1em;
+}
+
 .category {
   margin-top: 1em;
-  margin-bottom: 1em;
 }
 
 .status {
   display: inline-block;
-  margin-bottom: 1em;
   padding: 0.4em;
   color: white;
 }
