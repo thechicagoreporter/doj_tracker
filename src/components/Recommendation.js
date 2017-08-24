@@ -2,6 +2,7 @@ import classNames from 'classnames/bind';
 import React from 'react';
 import PropTypes from 'prop-types';
 import AgencyList from './AgencyList';
+import ShowMoreButton from './ShowMoreButton';
 import UpdateList from './UpdateList';
 import styles from './Recommendation.css';
 import { camelCase } from '../util';
@@ -17,15 +18,10 @@ class Recommendation extends React.Component {
   constructor() {
     super();
 
-    this.handleGistClick = this.handleGistClick.bind(this);
+    this.handleShowMoreClick = this.handleShowMoreClick.bind(this);
   }
 
   render() {
-    const gistLinkClassName = cx({
-      gistLink: true,
-      collapsed: this.props.recommendation.collapsed,
-    });
-
     const expansionClassName = cx({
       expansion: true,
       collapsed: this.props.recommendation.collapsed,
@@ -34,9 +30,7 @@ class Recommendation extends React.Component {
     return (
       <div className={getClassName(this.props)} ref={this.props.scrollToRef}>
         <h3 className={styles.gist}>
-          <a href="#" className={gistLinkClassName} onClick={this.handleGistClick}>
-            {this.props.recommendation.recommendation_gist}
-          </a>
+          {this.props.recommendation.recommendation_gist}
         </h3>
 
         <div className={expansionClassName}>
@@ -58,13 +52,15 @@ class Recommendation extends React.Component {
 
           <UpdateList updates={this.props.recommendation.updates} />
         </div>
+
+        <ShowMoreButton onClick={this.handleShowMoreClick}
+          collapsed={this.props.recommendation.collapsed} />
       </div>
     );
   }
 
-  handleGistClick(evt) {
-    evt.preventDefault();
-    this.props.onGistClick(this.props.recommendation);
+  handleShowMoreClick() {
+    this.props.onToggleRecommendation(this.props.recommendation);
   }
 }
 
@@ -80,7 +76,7 @@ Recommendation.propTypes = {
     statusSlug: PropTypes.string,
     updates: PropTypes.arrayOf(PropTypes.object),
   }),
-  onGistClick: PropTypes.func,
+  onToggleRecommendation: PropTypes.func,
   scrollToRef: PropTypes.func,
 };
 

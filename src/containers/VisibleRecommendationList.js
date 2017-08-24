@@ -102,7 +102,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  onGistClick: (recommendation, initialRender) => {
+  onToggleRecommendation: (recommendation, initialRender) => {
     dispatch(toggleRecommendation(
       recommendation,
       ownProps.detailId,

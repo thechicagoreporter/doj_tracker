@@ -11,7 +11,12 @@ class RecommendationList extends React.Component {
           <Recommendation
             key={r.id}
             recommendation={r}
-            onGistClick={rec => this.props.onGistClick(rec, this.props.initialRender)}
+            onToggleRecommendation={
+              rec => this.props.onToggleRecommendation(
+                rec,
+                this.props.initialRender,
+              )
+            }
             scrollToRef={el => this.scrollToRef(el, r.id)} />
         ))}
       </div>
@@ -38,7 +43,7 @@ RecommendationList.propTypes = {
   recommendations: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string,
   })),
-  onGistClick: PropTypes.func,
+  onToggleRecommendation: PropTypes.func,
   detailId: PropTypes.string,
   initialRender: PropTypes.bool,
 };
