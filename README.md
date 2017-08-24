@@ -135,6 +135,10 @@ Title of WordPress post where app is published.
 
 If defined, existing WordPress post that will be updated.
 
+### Putting configuration in an environment file
+
+TODO: Add example .env file
+
 Deployment
 ----------
 
