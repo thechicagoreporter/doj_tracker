@@ -35,7 +35,6 @@ const getInitialFilters = (statusSlug, categorySlug) => {
 };
 
 const TrackerApp = ({
-  title,
   introText,
   statuses,
   id,
@@ -45,7 +44,6 @@ const TrackerApp = ({
   const initialFilters = getInitialFilters(statusSlug, categorySlug);
   return (
     <div className={styles.tracker}>
-      <h1>{title}</h1>
       <Lede />
       <Intro text={introText} />
       <StatusChartLegend statuses={statuses} />
@@ -62,7 +60,6 @@ const TrackerApp = ({
 };
 
 TrackerApp.propTypes = {
-  title: PropTypes.string,
   introText: PropTypes.string,
   statuses: PropTypes.object,
   id: PropTypes.string,
