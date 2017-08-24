@@ -1,4 +1,4 @@
-@value notImplemented, partiallyImplemented, implemented, unclear  from '../colors.css';
+@value notImplemented, babySteps, partiallyImplemented, implemented, unclear  from '../colors.css';
 
 .chart {
   width: 100%;
@@ -19,6 +19,10 @@
 
 .bar.notImplemented {
   background-color: notImplemented;
+}
+
+.bar.babySteps {
+  background-color: babySteps;
 }
 
 .bar.partiallyImplemented {

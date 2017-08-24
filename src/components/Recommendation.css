@@ -1,4 +1,4 @@
-@value notImplemented, partiallyImplemented, implemented, unclear from '../colors.css';
+@value notImplemented, babySteps, partiallyImplemented, implemented, unclear from '../colors.css';
 
 .gist {
   margin-top: 0;
@@ -17,19 +17,23 @@
 }
 
 .recommendation.notImplemented {
-  border-top-color: notImplemented !important;
+  border-top-color: notImplemented;
+}
+
+.recommendation.babySteps {
+  border-top-color: babySteps;
 }
 
 .recommendation.partiallyImplemented {
-  border-top-color: partiallyImplemented !important;
+  border-top-color: partiallyImplemented;
 }
 
 .recommendation.implemented {
-  border-top-color: implemented !important;
+  border-top-color: implemented;
 }
 
 .recommendation.unclear {
-  border-top-color: unclear !important;
+  border-top-color: unclear;
 }
 
 .propertyList {
@@ -60,6 +64,10 @@
 
 .status.notImplemented {
   background-color: notImplemented;
+}
+
+.status.babySteps {
+  background-color: babySteps;
 }
 
 .status.partiallyImplemented {

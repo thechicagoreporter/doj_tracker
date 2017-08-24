@@ -1,4 +1,4 @@
-@value notImplemented, partiallyImplemented, implemented, unclear  from '../colors.css';
+@value notImplemented, babySteps, partiallyImplemented, implemented, unclear  from '../colors.css';
 
 .legend {}
 
@@ -28,6 +28,10 @@
 
 .color.implemented {
   background-color: implemented;
+}
+
+.color.babySteps {
+  background-color: babySteps;
 }
 
 .color.partiallyImplemented {
