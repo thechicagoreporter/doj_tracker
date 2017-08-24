@@ -48,7 +48,7 @@ export const recommendationLookup = function recommendationLookupTransform(data)
 
         // Include a lastUpdated property for each recommendation that
         // is in ISO-8601 format that we can use for sorting.
-        newR.lastUpdated = moment(r.updates[0].date, 'MMMM D, YYYY')
+        newR.lastUpdated = moment(newR.updates[0].date, 'MMMM D, YYYY')
           .format('YYYY-MM-DD');
       }
 
