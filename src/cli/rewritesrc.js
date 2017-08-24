@@ -12,7 +12,7 @@ const main = function cliMain(argv) {
       const src = $(el).attr('src');
       if (src) {
         let staticUrl = argv._[0];
-        if (staticUrl[staticUrl.length -1] !== '/') {
+        if (staticUrl[staticUrl.length - 1] !== '/') {
           staticUrl = `${staticUrl}/`;
         }
         $(el).attr('src', `${staticUrl}${src}`);
