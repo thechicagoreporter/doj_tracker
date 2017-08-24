@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 
 require('babel-register');
+require.extensions['.css'] = () => {
+  return;
+};
 
 const fs = require('fs');
 const path = require('path');
