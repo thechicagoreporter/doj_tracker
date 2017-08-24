@@ -61,8 +61,10 @@ class Recommendation extends React.Component {
           </div>
         </dl>
 
-        <ShowMoreButton onClick={this.handleShowMoreClick}
-          collapsed={this.props.recommendation.collapsed} />
+        <div className={styles.showMoreCtaContainer}>
+          <ShowMoreButton onClick={this.handleShowMoreClick}
+            collapsed={this.props.recommendation.collapsed} />
+        </div>
 
         <div className={expansionClassName}>
           <div className={styles.specific}>

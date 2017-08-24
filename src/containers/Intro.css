@@ -1,22 +1,17 @@
 .intro {
   margin-top: 1em;
+  margin-bottom: 1em;
+  text-align: center;
 }
 
 .toggle {
-  display: block;
-  text-transform: uppercase;
-  text-decoration: none;
-  text-align: center;
-  font-size: 0.8em;
+  composes: button from '../components/base.css';
+  composes: buttonStrong from '../components/base.css';
 }
 
-.toggle::after {
-  content: '▼';
-}
-
-.toggle.collapsed::after {
-  padding-left: 0.2em;
-  content: '▸';
+.inner {
+  text-align: left;
+  margin-top: 1em;
 }
 
 .inner.collapsed {

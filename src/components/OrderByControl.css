@@ -1,7 +1,8 @@
 .control {
-  composes: button from './base.css';
+  composes: filterButton from './base.css';
 }
 
 .controlSelected {
-  composes: button from './base.css' buttonSelected from './base.css';
+  composes: filterButton from './base.css';
+  composes: filterButtonSelected from './base.css';
 }

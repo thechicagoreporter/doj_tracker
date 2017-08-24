@@ -42,7 +42,7 @@ class Intro extends React.Component {
 
     const label = this.props.collapsed ?
       'Read more' :
-      'Hide';
+      'Show less';
 
     return (
       <div className={styles.intro}>

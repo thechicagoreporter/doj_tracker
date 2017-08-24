@@ -1,6 +1,31 @@
 .button {
   display: inline-block;
   text-decoration: none;
+  color: #fff;
+  background-color: #3d9999;
+  padding: 0.5em 1.5em;
+  font-family: "Open Sans Condensed", sans-serif;
+}
+
+.button:hover {
+  text-decoration: none;
+  color: #fff;
+  background-color: #28aeae;
+}
+
+.buttonStrong {
+  text-transform: uppercase;
+  font-weight: 700;
+  background-color: #000;
+}
+
+.buttonStrong:hover {
+  background-color: #c30;
+}
+
+.filterButton {
+  display: inline-block;
+  text-decoration: none;
   margin-right: 0.8em;
   margin-bottom: 0.4em;
   padding: 0.3em;
@@ -9,10 +34,11 @@
   font-size: 0.8em;
 }
 
-.buttonSelected {
+.filterButtonSelected {
   color: white;
   background-color: gray;
 }
+
 
 .label {
   text-transform: uppercase;

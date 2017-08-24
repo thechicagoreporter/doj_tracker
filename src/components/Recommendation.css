@@ -81,3 +81,11 @@
 .status.unclear {
   background-color: unclear;
 }
+
+.showMoreCtaContainer {
+  text-align: center;
+}
+
+.expansion {
+  margin-top: 1em;
+}
