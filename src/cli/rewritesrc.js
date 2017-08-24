@@ -18,7 +18,7 @@ const main = function cliMain(argv) {
         $(el).attr('src', `${staticUrl}${src}`);
       }
     });
-    console.log($('body').html());
+    process.stdout.write($('body').html());
   });
 };
 

@@ -165,3 +165,13 @@ export const processLede = function processLedeTransform(data) {
     lede,
   };
 };
+export const prune = function pruneTransform(data) {
+  return {
+    title: data.title,
+    intro_text: data.intro_text,
+    categories: data.categories,
+    statuses: data.statuses,
+    recommendations: data.recommendations,
+    lede: data.lede,
+  };
+};

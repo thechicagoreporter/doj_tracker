@@ -10,10 +10,10 @@ const main = function cliMain(argv) {
     const $ = cheerio.load(html);
     if (argv._.length) {
       argv._.forEach((sel) => {
-        console.log($.html(sel));
+        process.stdout.write($.html(sel));
       });
     } else {
-      console.log(html);
+      process.stdout.write(html);
     }
   });
 };

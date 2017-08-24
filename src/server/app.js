@@ -15,6 +15,7 @@ import {
    markdownifyIntro,
    groupByStatus,
    processLede,
+   prune,
  } from '../transforms';
 import renderFullPage from './render-full-page';
 import TrackerApp from '../components/TrackerApp';
@@ -28,6 +29,7 @@ const transform = flow(
   markdownifyIntro,
   groupByStatus,
   processLede,
+  prune,
 );
 
 app.use((req, res, next) => {
