@@ -142,16 +142,13 @@ TODO: Add example .env file
 Deployment
 ----------
 
-For now, while we're in development of this app, we're deploying both HTML and assets to S3.  In order to deploy to the appropriate S3 bucket, you'll need to set the following environment variables with you AWS credentials:
+Source the needed configuration environment variables and run this npm script to build the project and publish it:
 
-  * AWS\_ACCESS\_KEY
-  * AWS\_SECRET\_KEY
+    sh -ac '. ./.env; npm run publish'
 
-Then run this npm script to build the project and publish it:
+To handle different deployments, say to staging and production, you could put the environment variable definitions in multiple .env files.
 
-    npm run publish:staging
-
-TODO: Add separate staging and production deployment instructions
+   sh -ac '. ./.env.staging; npm run publish'
 
 Data prep
 ---------

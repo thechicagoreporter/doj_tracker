@@ -9,8 +9,7 @@
     "sheet2archieml": "./bin/dlsheet --client-secret client_id.json https://docs.google.com/spreadsheets/d/1cj157YGWSDV-c0kBkndZ4XC85tsYSea148mhaP-tpX0/edit | ./bin/sheet2json | ./bin/transformsheetdata | ./bin/json2archieml --prop=recommendations > data.archieml",
     "serve": "./bin/serve --client-secret client_id.json $DOCUMENT_URL",
     "build": "webpack && ./bin/render --client-secret client_id.json $DOCUMENT_URL > dist/index.html",
-    "publish:dev": "npm run build && s3-cli put --acl-public dist/bundle.js ${S3_URL}bundle.js && cat ./dist/index.html | ./bin/cssselect '#tracker-container' '#tracker-bundle' '#tracker-init' | ./bin/rewritesrc $S3_HTTP_URL | ./bin/wppublish $WP_URL/wp-json",
-    "publish:staging": "npm run build && s3-cli put --acl-public dist/index.html s3://projects.chicagoreporter.com/graphics/dojtracker/index.html && s3-cli put --acl-public dist/bundle.js s3://projects.chicagoreporter.com/graphics/dojtracker/bundle.js"
+    "publish": "npm run build && s3-cli put --acl-public dist/bundle.js ${S3_URL}bundle.js && cat ./dist/index.html | ./bin/cssselect '#tracker-container' '#tracker-bundle' '#tracker-init' | ./bin/rewritesrc $S3_HTTP_URL | ./bin/wppublish $WP_URL/wp-json"
   },
   "keywords": [
     "CPD",
