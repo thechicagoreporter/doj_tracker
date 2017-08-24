@@ -15,14 +15,12 @@ class SearchForm extends React.Component {
   render() {
     return (
       <form className={styles.form}>
-        <h2>Search</h2>
-
         <input name="q"
           className={styles.searchInput}
           type="text"
           value={this.state.q}
           onChange={this.handleInputChange}
-          placeholder="Enter a search term" />
+          placeholder="Search. ex: taser, body camera" />
       </form>
     );
   }
