@@ -17,8 +17,8 @@ class ShowMoreButton extends React.Component {
       this.props.expandedText;
 
     const buttonClass = cx({
-      button: true,
       collapsed: this.props.collapsed,
+      expanded: !this.props.collapsed,
     });
 
     return (

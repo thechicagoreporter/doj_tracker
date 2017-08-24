@@ -14,8 +14,8 @@ class FilterDrawerToggle extends React.Component {
 
   render() {
     const className = cx({
-      button: true,
       collapsed: this.props.collapsed,
+      expanded: !this.props.collapsed,
     });
     return (
       <a href="#"

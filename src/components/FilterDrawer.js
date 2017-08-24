@@ -10,7 +10,7 @@ const FilterDrawer = ({ collapsed, filterCount, onToggleClick, children }) => {
       <FilterDrawerToggle collapsed={collapsed}
         filterCount={filterCount}
         onToggleClick={onToggleClick} />
-      <div className="filters__drawer-inner">
+      <div>
         {visibleChildren}
       </div>
     </div>

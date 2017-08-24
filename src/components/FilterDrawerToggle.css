@@ -1,16 +1,7 @@
-.button {
-  display: block;
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 0.8em;
+.expanded {
+  composes: collapsingLink from './base.css';
 }
 
-.button::after {
-  content: '▼';
-}
-
-.button.collapsed::after {
-  padding-left: 0.2em;
-  content: '▸';
+.collapsed {
+  composes: expandingLink from './base.css';
 }
