@@ -7,6 +7,108 @@ import slugify from 'slugify';
 import template from 'lodash/template';
 import maxBy from 'lodash/maxBy';
 import find from 'lodash/find';
+import flow from 'lodash/fp/flow';
+
+/*
+ * Convert date from a string to a moment for comparison.
+ */
+const parseUpdateDates = function parseUpdateDatesTransform(r) {
+  if (!r.updates) {
+    return r;
+  }
+
+  return {
+    ...r,
+    updates: r.updates.map(u => ({
+      ...u,
+      // Convert date from a string to a moment for comparison
+      date: moment(u.date, 'M/D/YYYY'),
+    })),
+  };
+};
+
+/**
+ * Sort a recommendation's updates in reverse chronological order.
+ */
+const sortUpdatesByDate = function sortUpdatesByDateTransform(r) {
+  if (!r.updates) {
+    return r;
+  }
+
+  return {
+    ...r,
+    updates: r.updates.sort((a, b) => {
+      if (a.date.isBefore(b.date)) {
+        return 1;
+      }
+
+      if (a.date.isAfter(b.date)) {
+        return -1;
+      }
+
+      return 0;
+    }),
+  };
+};
+
+const formatUpdateDates = function formatUpdateDatesTransform(r) {
+  if (!r.updates) {
+    return r;
+  }
+
+  return {
+    ...r,
+    updates: r.updates.map(u => ({
+      ...u,
+      // Convert moment back to a string that's in the display format
+      // that we want on the front end. That way we don't have
+      // to include moment on the client-side.
+      date: u.date.format('MMMM D, YYYY'),
+    })),
+  };
+};
+
+const addLastUpdated = function addLastUpdatedTransform(r) {
+  const lastUpdated = r.updates ?
+    moment(r.updates[0].date, 'MMMM D, YYYY')
+      .format('YYYY-MM-DD') :
+    null;
+
+  return {
+    ...r,
+    lastUpdated,
+  };
+};
+
+const addStatusSlug = function addStatusSlugTransform(r) {
+  return {
+    ...r,
+    statusSlug: slugify((r.status || '').toLowerCase()),
+  };
+};
+
+const setCollapsed = function setCollapsedTransform(r) {
+  return {
+    ...r,
+    collapsed: true,
+  };
+};
+
+const updateRecommendation = flow(
+  parseUpdateDates,
+  sortUpdatesByDate,
+  formatUpdateDates,
+  addLastUpdated,
+  addStatusSlug,
+  setCollapsed,
+);
+
+export const updateRecommendations = function updateRecommendationsTransform(data) {
+  return {
+    ...data,
+    recommendations: data.recommendations.map(updateRecommendation),
+  };
+};
 
 export const recommendationLookup = function recommendationLookupTransform(data) {
   const recommendations = {
@@ -15,48 +117,6 @@ export const recommendationLookup = function recommendationLookupTransform(data)
   };
 
   data.recommendations
-    .map((r) => {
-      const newR = {
-        ...r,
-      };
-
-      if (r.updates) {
-        newR.updates = r.updates.map(u => ({
-          ...u,
-          // Convert date from a string to a moment for comparison
-          date: moment(u.date, 'M/D/YYYY'),
-        }))
-        // Sort updates in reverse chronological order
-        .sort((a, b) => {
-          if (a.date.isBefore(b.date)) {
-            return 1;
-          }
-
-          if (a.date.isAfter(b.date)) {
-            return -1;
-          }
-
-          return 0;
-        })
-        .map(u => ({
-          ...u,
-          // Convert moment back to a string that's in the display format
-          // that we want on the front end. That way we don't have
-          // to include moment on the client-side.
-          date: u.date.format('MMMM D, YYYY'),
-        }));
-
-        // Include a lastUpdated property for each recommendation that
-        // is in ISO-8601 format that we can use for sorting.
-        newR.lastUpdated = moment(newR.updates[0].date, 'MMMM D, YYYY')
-          .format('YYYY-MM-DD');
-      }
-
-      newR.statusSlug = slugify((r.status || data.statuses[0]).toLowerCase());
-      newR.collapsed = true;
-
-      return newR;
-    })
     .forEach((r) => {
       recommendations.byId[r.id] = r;
       recommendations.allIds.push(r.id);

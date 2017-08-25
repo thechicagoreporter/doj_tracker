@@ -9,21 +9,23 @@ import { root as rootReducer } from '../reducers';
 import { hydrateState } from '../util';
 import { dldoc } from '../google-drive';
 import {
-   recommendationLookup,
-   addCategories,
-   reshapeStatuses,
-   renderLede,
-   renderIntro,
-   renderChartCaption,
-   groupByStatus,
-   prune,
- } from '../transforms';
+  updateRecommendations,
+  recommendationLookup,
+  addCategories,
+  reshapeStatuses,
+  renderLede,
+  renderIntro,
+  renderChartCaption,
+  groupByStatus,
+  prune,
+} from '../transforms';
 import renderFullPage from './render-full-page';
 import TrackerApp from '../components/TrackerApp';
 
 const app = express();
 
 const transform = flow(
+  updateRecommendations,
   recommendationLookup,
   addCategories,
   reshapeStatuses,
