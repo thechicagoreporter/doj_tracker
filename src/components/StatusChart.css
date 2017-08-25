@@ -1,4 +1,5 @@
 @value notImplemented, babySteps, partiallyImplemented, implemented, unclear  from '../colors.css';
+@value barHeight: 4em;
 
 .chart {
   width: 100%;
@@ -13,8 +14,6 @@
 .bar {
   position: relative;
   float: left;
-  color: white;
-  min-height: 4em;
 }
 
 .bar.notImplemented {
@@ -38,7 +37,23 @@
 }
 
 .barLabel {
-  display: block;
-  padding: 0.6em;
+  color: white;
   font-size: 0.8em;
+  height: barHeight;
+  line-height: barHeight;
+  padding-left: 0.3em;
+  font-weight: bold;
+}
+
+.barLabelNumber {}
+
+.barLabelWord {
+  display: none;
+  padding-left: 0.4em;
+}
+
+@media screen and (min-width: 375px) {
+  .barLabel {
+    padding-left: 0.4em;
+  }
 }

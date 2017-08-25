@@ -41,6 +41,7 @@ const TrackerApp = ({
   id,
   categorySlug,
   statusSlug,
+  window,
 }) => {
   const initialFilters = getInitialFilters(statusSlug, categorySlug);
   return (
@@ -49,7 +50,7 @@ const TrackerApp = ({
       <Intro />
       <figure className={styles.figure}>
         <StatusChartLegend statuses={statuses} />
-        <StatusChart statuses={statuses} />
+        <StatusChart statuses={statuses} window={window} />
         <StatusChartCaption />
       </figure>
       <ActiveSearchForm />
@@ -69,6 +70,7 @@ TrackerApp.propTypes = {
   id: PropTypes.string,
   categorySlug: PropTypes.string,
   statusSlug: PropTypes.string,
+  window: PropTypes.object,
 };
 
 export default TrackerApp;

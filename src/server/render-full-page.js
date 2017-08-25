@@ -15,7 +15,8 @@ const renderFullPage = (ctx, preloadedState) => (`
           <script id="tracker-init">
               dojtracker.renderApp(
                 document.querySelector('.tracker-container'),
-                ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
+                ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')},
+                window
               );
           </script>
       </body>

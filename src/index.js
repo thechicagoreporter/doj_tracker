@@ -13,7 +13,7 @@ import { hydrateState } from './util';
 import './index.css';
 
 // eslint-disable-next-line import/prefer-default-export
-export const renderApp = (container, initialState) => {
+export const renderApp = (container, initialState, window) => {
   // Create a new Redux store instance
   const store = createStore(rootReducer, hydrateState(initialState));
   const state = store.getState();
@@ -31,8 +31,7 @@ export const renderApp = (container, initialState) => {
   const children = paths.map((path, i) => (
     <Route key={i} path={path} render={props => (
       <TrackerApp statuses={state.statuses}
-        title={state.title}
-        introText={state.intro_text}
+        window={window}
         {...props.match.params} />
     )} />
   ));
