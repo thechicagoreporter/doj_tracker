@@ -7,10 +7,11 @@ import styles from './Filters.css';
 
 const Filters = ({ initialFilters }) => (
   <div className={styles.filters}>
-    <SelectedStatusFilters initialFilters={initialFilters} />
+    <SelectedCategoryFilters initialFilters={initialFilters} />
+
     <VisibleFilterDrawer>
-      <SelectedCategoryFilters collectionName="categories"
-        initialFilters={initialFilters} />
+      <SelectedStatusFilters collectionName="statuses"
+         initialFilters={initialFilters} />
     </VisibleFilterDrawer>
   </div>
 );
