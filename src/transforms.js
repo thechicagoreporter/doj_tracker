@@ -111,10 +111,11 @@ export const reshapeStatuses = function reshapeStatusesTransform(data) {
   });
 };
 
-export const markdownifyIntro = function markdownifyIntroTransform(data) {
-  return Object.assign({}, data, {
+export const renderIntro = function renderIntroTransform(data) {
+  return {
+    ...data,
     intro_text: marked(data.intro_text),
-  });
+  };
 };
 
 export const groupByStatus = function groupByStatusTransform(data) {
@@ -145,8 +146,15 @@ export const groupByStatus = function groupByStatusTransform(data) {
   });
 };
 
-export const processLede = function processLedeTransform(data) {
-  const tpl = template(data.lede);
+export const renderLede = function renderLedeTransform(data) {
+  return {
+    ...data,
+    lede: marked(data.lede),
+  };
+};
+
+export const renderChartCaption = function renderChartCaptionTransform(data) {
+  const tpl = template(data.chart_caption);
   const lastUpdatedId = maxBy(data.recommendations.allIds, id => (
     data.recommendations.byId[id].lastUpdated
   ));
@@ -159,19 +167,33 @@ export const processLede = function processLedeTransform(data) {
     numRecommendations: data.recommendations.allIds.length,
     numImplemented,
   };
-  const lede = tpl(ctx);
+  const caption = tpl(ctx);
   return {
     ...data,
-    lede,
+    chart_caption: marked(caption),
   };
 };
+
 export const prune = function pruneTransform(data) {
-  return {
-    title: data.title,
-    intro_text: data.intro_text,
-    categories: data.categories,
-    statuses: data.statuses,
-    recommendations: data.recommendations,
-    lede: data.lede,
-  };
+  const props = [
+    'title',
+    ['intro_text', 'introText'],
+    'categories',
+    'statuses',
+    'recommendations',
+    'lede',
+    ['chart_caption', 'chartCaption'],
+  ];
+  const pruned = {};
+
+  props.forEach((prop) => {
+    const oldProp = Array.isArray(prop) ?
+      prop[0] :
+      prop;
+    const newProp = Array.isArray(prop) ?
+      prop[1] :
+      prop;
+    pruned[newProp] = data[oldProp];
+  });
+  return pruned;
 };

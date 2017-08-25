@@ -4,14 +4,15 @@ import React from 'react';
 import { LAST_UPDATED } from '../constants';
 import { unslugify } from '../util';
 import ActiveSearchForm from '../containers/ActiveSearchForm';
-import Lede from '../containers/Lede';
 import VisibleOrderByControls from '../containers/VisibleOrderByControls';
 import VisibleRecommendationList from '../containers/VisibleRecommendationList';
+import Lede from '../containers/Lede';
 import Filters from './Filters';
 import Intro from '../containers/Intro';
 import OrderByControl from './OrderByControl';
 import StatusChart from './StatusChart';
 import StatusChartLegend from './StatusChartLegend';
+import StatusChartCaption from '../containers/StatusChartCaption';
 import styles from './TrackerApp.css';
 
 /**
@@ -35,7 +36,6 @@ const getInitialFilters = (statusSlug, categorySlug) => {
 };
 
 const TrackerApp = ({
-  introText,
   statuses,
   id,
   categorySlug,
@@ -45,9 +45,12 @@ const TrackerApp = ({
   return (
     <div className={styles.tracker}>
       <Lede />
-      <Intro text={introText} />
-      <StatusChartLegend statuses={statuses} />
-      <StatusChart statuses={statuses} />
+      <Intro />
+      <figure className={styles.figure}>
+        <StatusChartLegend statuses={statuses} />
+        <StatusChart statuses={statuses} />
+        <StatusChartCaption />
+      </figure>
       <ActiveSearchForm />
       <Filters initialFilters={initialFilters} />
       <VisibleOrderByControls>
@@ -60,7 +63,6 @@ const TrackerApp = ({
 };
 
 TrackerApp.propTypes = {
-  introText: PropTypes.string,
   statuses: PropTypes.object,
   id: PropTypes.string,
   categorySlug: PropTypes.string,

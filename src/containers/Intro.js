@@ -9,8 +9,8 @@ const getHtml = text => ({
   __html: text,
 });
 
-const mapStateToProps = (state, ownProps) => ({
-  text: ownProps.text,
+const mapStateToProps = state => ({
+  text: state.introText,
   collapsed: state.introCollapsed,
 });
 

@@ -12,9 +12,10 @@ import {
    recommendationLookup,
    addCategories,
    reshapeStatuses,
-   markdownifyIntro,
+   renderLede,
+   renderIntro,
+   renderChartCaption,
    groupByStatus,
-   processLede,
    prune,
  } from '../transforms';
 import renderFullPage from './render-full-page';
@@ -26,9 +27,10 @@ const transform = flow(
   recommendationLookup,
   addCategories,
   reshapeStatuses,
-  markdownifyIntro,
+  renderLede,
+  renderIntro,
+  renderChartCaption,
   groupByStatus,
-  processLede,
   prune,
 );
 
@@ -55,9 +57,7 @@ app.get('/', (req, res) => {
   // Render the component to a string
   const html = renderToString(
     <Provider store={store}>
-      <TrackerApp statuses={state.statuses}
-        title={state.title}
-        introText={state.intro_text} />
+      <TrackerApp statuses={state.statuses} />
     </Provider>,
   );
 

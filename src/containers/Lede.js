@@ -1,18 +1,22 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
-import styles from './Lede';
+import styles from './Lede.css';
 
 const mapStateToProps = state => ({
-  lede: state.lede,
+  text: state.lede,
 });
 
-const Lede = ({ lede }) => (
-  <div className={styles.lede}>{lede}</div>
+const getHtml = text => ({
+  __html: text,
+});
+
+const Lede = ({ text }) => (
+  <div className={styles.lede} dangerouslySetInnerHTML={getHtml(text)} />
 );
 
 Lede.propTypes = {
-  lede: PropTypes.string,
+  text: PropTypes.string,
 };
 
 export default connect(mapStateToProps)(Lede);

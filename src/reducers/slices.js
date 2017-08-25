@@ -29,7 +29,7 @@ export const q = function qReducer(state = null, action) {
 };
 
 // eslint-disable-next-line camelcase
-export const intro_text = function introTextReducer(state = '') {
+export const introText = function introTextReducer(state = '') {
   return state;
 };
 
@@ -154,6 +154,10 @@ export const orderBy = function orderByReducer(
 };
 
 export const lede = function leadReducer(state = '') {
+  return state;
+};
+
+export const chartCaption = function chartCaptionReducer(state = '') {
   return state;
 };
 

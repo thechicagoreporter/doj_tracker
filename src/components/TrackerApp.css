@@ -3,6 +3,10 @@
   font-family: sans-serif;
 }
 
+.figure {
+  margin: 0;
+}
+
 @media (min-width: 768px) {
   .tracker {
     max-width: 768px;
