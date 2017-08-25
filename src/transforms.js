@@ -94,6 +94,13 @@ const setCollapsed = function setCollapsedTransform(r) {
   };
 };
 
+const renderRecommendationSpecific = function renderRecommendationSpecificTransform(r) {
+  return {
+    ...r,
+    recommendation_specific: marked(r.recommendation_specific),
+  };
+};
+
 const updateRecommendation = flow(
   parseUpdateDates,
   sortUpdatesByDate,
@@ -101,6 +108,7 @@ const updateRecommendation = flow(
   addLastUpdated,
   addStatusSlug,
   setCollapsed,
+  renderRecommendationSpecific,
 );
 
 export const updateRecommendations = function updateRecommendationsTransform(data) {

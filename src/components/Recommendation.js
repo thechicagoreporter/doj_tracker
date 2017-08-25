@@ -14,6 +14,10 @@ const getClassName = props => cx(
   camelCase(props.recommendation.statusSlug, '-'),
 );
 
+const getSpecificHtml = s => ({
+  __html: s,
+});
+
 class Recommendation extends React.Component {
   constructor() {
     super();
@@ -67,9 +71,10 @@ class Recommendation extends React.Component {
         </div>
 
         <div className={expansionClassName}>
-          <div className={styles.specific}>
-              {this.props.recommendation.recommendation_specific}
-          </div>
+          <div className={styles.specific}
+            dangerouslySetInnerHTML={
+              getSpecificHtml(this.props.recommendation.recommendation_specific)
+            } />
 
           <UpdateList updates={this.props.recommendation.updates} />
         </div>
