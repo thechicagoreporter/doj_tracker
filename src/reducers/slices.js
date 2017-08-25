@@ -174,3 +174,7 @@ export const introCollapsed = function introCollapsedReducer(
       return state;
   }
 };
+
+export const credits = function creditsReducer(state = '') {
+  return state;
+};

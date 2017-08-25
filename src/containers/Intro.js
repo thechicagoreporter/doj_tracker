@@ -4,10 +4,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { toggleIntro } from '../actions';
 import styles from './Intro.css';
-
-const getHtml = text => ({
-  __html: text,
-});
+import { getHtml } from '../util';
 
 const mapStateToProps = state => ({
   text: state.introText,

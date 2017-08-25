@@ -242,6 +242,13 @@ export const renderChartCaption = function renderChartCaptionTransform(data) {
   };
 };
 
+export const renderCredits = function renderCreditsTransform(data) {
+  return {
+    ...data,
+    credits: marked(data.credits),
+  };
+};
+
 export const prune = function pruneTransform(data) {
   const props = [
     'title',
@@ -251,6 +258,7 @@ export const prune = function pruneTransform(data) {
     'recommendations',
     'lede',
     ['chart_caption', 'chartCaption'],
+    'credits',
   ];
   const pruned = {};
 
@@ -263,5 +271,6 @@ export const prune = function pruneTransform(data) {
       prop;
     pruned[newProp] = data[oldProp];
   });
+
   return pruned;
 };

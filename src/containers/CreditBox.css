@@ -1,0 +1,3 @@
+.creditBox {
+  composes: borderTop from '../components/base.css';
+}

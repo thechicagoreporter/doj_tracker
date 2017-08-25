@@ -62,3 +62,6 @@ export const unslugify = slug => (
   }).join(' ') : slug
 );
 
+export const getHtml = text => ({
+  __html: text,
+});

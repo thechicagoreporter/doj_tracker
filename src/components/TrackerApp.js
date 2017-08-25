@@ -13,6 +13,7 @@ import OrderByControl from './OrderByControl';
 import StatusChart from './StatusChart';
 import StatusChartLegend from './StatusChartLegend';
 import StatusChartCaption from '../containers/StatusChartCaption';
+import CreditBox from '../containers/CreditBox';
 import styles from './TrackerApp.css';
 
 /**
@@ -58,6 +59,7 @@ const TrackerApp = ({
       </VisibleOrderByControls>
       <VisibleRecommendationList detailId={id}
         initialFilters={initialFilters} />
+      <CreditBox />
     </div>
   );
 };

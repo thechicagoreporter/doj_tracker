@@ -1,15 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { getHtml } from '../util';
 import styles from './Update.css';
-
-const getHtml = update => ({
-  __html: update.notes,
-});
 
 const Update = ({ update }) => (
   <li className={styles.update}>
     <h4>{update.date}</h4>
-    <div dangerouslySetInnerHTML={getHtml(update)} />
+    <div dangerouslySetInnerHTML={getHtml(update.notes)} />
   </li>
 );
 

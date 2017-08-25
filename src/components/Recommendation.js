@@ -5,7 +5,7 @@ import AgencyList from './AgencyList';
 import ShowMoreButton from './ShowMoreButton';
 import UpdateList from './UpdateList';
 import styles from './Recommendation.css';
-import { camelCase } from '../util';
+import { camelCase, getHtml } from '../util';
 
 const cx = classNames.bind(styles);
 
@@ -13,10 +13,6 @@ const getClassName = props => cx(
   'recommendation',
   camelCase(props.recommendation.statusSlug, '-'),
 );
-
-const getSpecificHtml = s => ({
-  __html: s,
-});
 
 class Recommendation extends React.Component {
   constructor() {
@@ -73,7 +69,7 @@ class Recommendation extends React.Component {
         <div className={expansionClassName}>
           <div className={styles.specific}
             dangerouslySetInnerHTML={
-              getSpecificHtml(this.props.recommendation.recommendation_specific)
+              getHtml(this.props.recommendation.recommendation_specific)
             } />
 
           <UpdateList updates={this.props.recommendation.updates} />
