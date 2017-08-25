@@ -1,7 +1,7 @@
-@value notImplemented: pink;
-@value babySteps: orange;
-@value partiallyImplemented: yellow;
-@value implemented: green;
-@value unclear: gray;
+@value unclear: #d0d1e6;
+@value notImplemented: #a6bddb;
+@value babySteps: #74a9cf;
+@value partiallyImplemented: #2b8cbe;
+@value implemented: #045a8d;
 @value highlightBlockBackground: #eee;
 @value highlightColor: #c30;
