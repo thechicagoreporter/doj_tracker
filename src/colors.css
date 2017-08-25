@@ -1,7 +1,11 @@
+/* Status colors */
+/* From http://colorbrewer2.org/?type=sequential&scheme=PuBu&n=6 */
 @value unclear: #d0d1e6;
 @value notImplemented: #a6bddb;
 @value babySteps: #74a9cf;
 @value partiallyImplemented: #2b8cbe;
 @value implemented: #045a8d;
+
+/* Colors that mirror chicagoreporter.com */
 @value highlightBlockBackground: #eee;
 @value highlightColor: #c30;

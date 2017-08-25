@@ -1,4 +1,4 @@
-@value notImplemented, babySteps, partiallyImplemented, implemented, unknown from '../colors.css';
+@value notImplemented, babySteps, partiallyImplemented, implemented, unclear from '../colors.css';
 
 .filter {
   composes: filterButton from './base.css';
