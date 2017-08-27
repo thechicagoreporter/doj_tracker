@@ -22,12 +22,11 @@ class ShowMoreButton extends React.Component {
     });
 
     return (
-      <a href="#" className={buttonClass} onClick={this.handleClick}>{text}</a>
+      <button className={buttonClass} onClick={this.handleClick}>{text}</button>
     );
   }
 
-  handleClick(evt) {
-    evt.preventDefault();
+  handleClick() {
     this.props.onClick();
   }
 }
