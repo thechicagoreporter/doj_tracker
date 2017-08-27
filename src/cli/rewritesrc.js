@@ -1,6 +1,8 @@
 import { JSDOM } from 'jsdom';
+import { updateUrl } from './util';
 
 const main = function cliMain(argv) {
+  const staticUrl = argv._[0];
   const chunks = [];
 
   process.stdin.resume();
@@ -9,16 +11,9 @@ const main = function cliMain(argv) {
     const html = chunks.join();
     const dom = new JSDOM(html);
 
-    dom.window.document.querySelectorAll('script').forEach((el) => {
-      const src = el.getAttribute('src');
-      if (src) {
-        let staticUrl = argv._[0];
-        if (staticUrl[staticUrl.length - 1] !== '/') {
-          staticUrl = `${staticUrl}/`;
-        }
-        el.setAttribute('src', `${staticUrl}${src}`);
-      }
-    });
+    dom.window.document.querySelectorAll('script').forEach(
+      el => updateUrl(el, staticUrl, 'src'),
+    );
 
     process.stdout.write(dom.window.document.documentElement.innerHTML);
   });

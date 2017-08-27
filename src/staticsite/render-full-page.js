@@ -12,11 +12,13 @@ const renderFullPage = (ctx, preloadedState) => (`
       </head>
 
       <body>
-          <div id="tracker-container" class="tracker-container">${ctx.appHtml}</div>
+          <div id="tracker-container" class="tracker-container">
+            <div id="tracker-container-inner" class="tracker-container-inner">${ctx.appHtml}</div>
+          </div>
           <script id="tracker-bundle" src="app.bundle.js"></script>
           <script id="tracker-init">
               dojtracker.renderApp(
-                document.querySelector('.tracker-container'),
+                document.querySelector('.tracker-container-inner'),
                 ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')},
                 window
               );

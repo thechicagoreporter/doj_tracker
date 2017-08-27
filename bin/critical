@@ -3,6 +3,9 @@
 const path = require('path');
 const critical = require('critical');
 
+const argv = require('minimist')(process.argv.slice(2));
+const pathPrefix = argv.pathPrefix ? argv.pathPrefix : '/';
+
 critical.generate({
   // The path of the Webpack bundle
   base: path.join(path.resolve(__dirname), '..', 'dist/'),
@@ -11,6 +14,7 @@ critical.generate({
   inline: true,
   minify: true,
   extract: true,
+  pathPrefix: pathPrefix,
 
   // iPhone 6 dimensions, use whatever you like
   width: 375,
