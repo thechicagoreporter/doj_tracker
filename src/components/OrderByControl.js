@@ -19,17 +19,16 @@ class OrderByControl extends React.Component {
       controlSelected: this.props.selected,
     });
     return (
-      <a href="#"
+      <button
         onClick={this.handleClick}
         className={className}>
 
         {this.props.label}
-      </a>
+      </button>
     );
   }
 
-  handleClick(evt) {
-    evt.preventDefault();
+  handleClick() {
     setOrderBy(this.props.orderBy);
   }
 }

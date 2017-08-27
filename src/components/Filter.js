@@ -10,17 +10,16 @@ class Filter extends React.Component {
 
   render() {
     return (
-      <a href="#"
+      <button
         className={this.props.getClassName(this.props.item, this.props.selected)}
         onClick={this.handleClick}>
 
         {this.props.getLabel(this.props.item)}
-      </a>
+      </button>
     );
   }
 
-  handleClick(evt) {
-    evt.preventDefault();
+  handleClick() {
     this.props.onFilterClick(this.props.item);
   }
 }

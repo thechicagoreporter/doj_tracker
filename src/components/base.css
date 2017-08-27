@@ -65,12 +65,15 @@
   padding: 0.3em;
   white-space: nowrap;
   border: 1px solid black;
+  background-color: #fff;
+  color: #000;
   font-size: 0.8em;
+  font-family: sans-serif;
 }
 
 .filterButtonSelected {
   color: white;
-  background-color: gray;
+  background-color: #000;
 }
 
 .label {
