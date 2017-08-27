@@ -27,11 +27,16 @@
 
 .toggleLink {
   display: block;
+  border: none;
+  padding: 0;
+  width: 100%;
   text-align: center;
   text-decoration: none;
   font-size: 0.8em;
   margin-top: 1em;
   margin-bottom: 1em;
+  background: none;
+  font-family: sans-serif;
 }
 
 .toggleLink::after {

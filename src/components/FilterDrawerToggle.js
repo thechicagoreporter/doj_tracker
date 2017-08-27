@@ -18,9 +18,9 @@ class FilterDrawerToggle extends React.Component {
       expanded: !this.props.collapsed,
     });
     return (
-      <a href="#"
+      <button
         className={className}
-        onClick={this.handleClick}>{this.getLabel()}</a>
+        onClick={this.handleClick}>{this.getLabel()}</button>
     );
   }
 
@@ -32,8 +32,7 @@ class FilterDrawerToggle extends React.Component {
     return `Show more filters${extra}`;
   }
 
-  handleClick(evt) {
-    evt.preventDefault();
+  handleClick() {
     this.props.onToggleClick();
   }
 }
