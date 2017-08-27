@@ -1,4 +1,4 @@
-import cheerio from 'cheerio';
+import { JSDOM } from 'jsdom';
 
 const main = function cliMain(argv) {
   const chunks = [];
@@ -7,18 +7,20 @@ const main = function cliMain(argv) {
   process.stdin.on('data', chunk => chunks.push(chunk));
   process.stdin.on('end', () => {
     const html = chunks.join();
-    const $ = cheerio.load(html);
-    $('script').each((i, el) => {
-      const src = $(el).attr('src');
+    const dom = new JSDOM(html);
+
+    dom.window.document.querySelectorAll('script').forEach((el) => {
+      const src = el.getAttribute('src');
       if (src) {
         let staticUrl = argv._[0];
         if (staticUrl[staticUrl.length - 1] !== '/') {
           staticUrl = `${staticUrl}/`;
         }
-        $(el).attr('src', `${staticUrl}${src}`);
+        el.setAttribute('src', `${staticUrl}${src}`);
       }
     });
-    process.stdout.write($('body').html());
+
+    process.stdout.write(dom.window.document.documentElement.innerHTML);
   });
 };
 

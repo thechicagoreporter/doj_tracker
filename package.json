@@ -9,7 +9,7 @@
     "sheet2archieml": "./bin/dlsheet --client-secret client_id.json https://docs.google.com/spreadsheets/d/1cj157YGWSDV-c0kBkndZ4XC85tsYSea148mhaP-tpX0/edit | ./bin/sheet2json | ./bin/transformsheetdata | ./bin/json2archieml --prop=recommendations > data.archieml",
     "start": "webpack-dev-server --open",
     "build": "webpack",
-    "publish": "npm run build && s3-cli put --acl-public dist/app.bundle.js ${S3_URL}app.bundle.js && cat ./dist/index.html | ./bin/cssselect '#tracker-container' '#tracker-bundle' '#tracker-init' | ./bin/rewritesrc $S3_HTTP_URL | ./bin/wppublish $WP_URL/wp-json"
+    "publish": "npm run build && s3-cli put --acl-public dist/app.bundle.js ${S3_URL}app.bundle.js && cat ./dist/index.html | ./bin/rewritesrc $S3_HTTP_URL | ./bin/cssselect '#tracker-container' '#tracker-bundle' '#tracker-init' | ./bin/wppublish $WP_URL/wp-json"
   },
   "keywords": [
     "CPD",
@@ -28,7 +28,6 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "babel-register": "^6.24.1",
-    "cheerio": "^1.0.0-rc.2",
     "critical": "^0.9.0",
     "css-loader": "^0.28.4",
     "eslint": "^3.19.0",
@@ -38,6 +37,7 @@
     "extract-text-webpack-plugin": "^3.0.0",
     "google-auth-library": "^0.10.0",
     "googleapis": "^20.0.1",
+    "jsdom": "^11.2.0",
     "lodash": "^4.17.4",
     "marked": "^0.3.6",
     "moment": "^2.18.1",
