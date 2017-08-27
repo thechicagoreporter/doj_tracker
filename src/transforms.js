@@ -249,27 +249,38 @@ export const renderCredits = function renderCreditsTransform(data) {
   };
 };
 
-export const prune = function pruneTransform(data) {
+export const renameProps = function renamePropsTransform(data) {
+  const renamings = {
+    intro_text: 'introText',
+    chart_caption: 'chartCaption',
+  };
+  const renamed = {};
+
+  Object.keys(data).forEach((k) => {
+    const newK = Object.prototype.hasOwnProperty.call(renamings, k) ?
+      renamings[k] :
+      k;
+    renamed[newK] = data[k];
+  });
+
+  return renamed;
+};
+
+export const pruneProps = function prunePropsTransform(data) {
   const props = [
     'title',
-    ['intro_text', 'introText'],
+    'introText',
     'categories',
     'statuses',
     'recommendations',
     'lede',
-    ['chart_caption', 'chartCaption'],
+    'chartCaption',
     'credits',
   ];
   const pruned = {};
 
   props.forEach((prop) => {
-    const oldProp = Array.isArray(prop) ?
-      prop[0] :
-      prop;
-    const newProp = Array.isArray(prop) ?
-      prop[1] :
-      prop;
-    pruned[newProp] = data[oldProp];
+    pruned[prop] = data[prop];
   });
 
   return pruned;

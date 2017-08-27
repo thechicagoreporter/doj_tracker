@@ -7,9 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint lib src",
     "sheet2archieml": "./bin/dlsheet --client-secret client_id.json https://docs.google.com/spreadsheets/d/1cj157YGWSDV-c0kBkndZ4XC85tsYSea148mhaP-tpX0/edit | ./bin/sheet2json | ./bin/transformsheetdata | ./bin/json2archieml --prop=recommendations > data.archieml",
-    "serve": "./bin/serve --client-secret client_id.json $DOCUMENT_URL",
-    "build": "webpack && ./bin/render --client-secret client_id.json $DOCUMENT_URL > dist/index.html",
-    "publish": "npm run build && s3-cli put --acl-public dist/bundle.js ${S3_URL}bundle.js && cat ./dist/index.html | ./bin/cssselect '#tracker-container' '#tracker-bundle' '#tracker-init' | ./bin/rewritesrc $S3_HTTP_URL | ./bin/wppublish $WP_URL/wp-json"
+    "start": "webpack-dev-server --open",
+    "build": "webpack",
+    "publish": "npm run build && s3-cli put --acl-public dist/app.bundle.js ${S3_URL}bundle.js && cat ./dist/index.html | ./bin/cssselect '#tracker-container' '#tracker-bundle' '#tracker-init' | ./bin/rewritesrc $S3_HTTP_URL | ./bin/wppublish $WP_URL/wp-json"
   },
   "keywords": [
     "CPD",
@@ -34,7 +34,7 @@
     "eslint-config-airbnb-base": "^11.2.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-react": "^7.1.0",
-    "express": "^4.15.3",
+    "extract-text-webpack-plugin": "^3.0.0",
     "google-auth-library": "^0.10.0",
     "googleapis": "^20.0.1",
     "lodash": "^4.17.4",
@@ -46,9 +46,11 @@
     "react-redux": "^5.0.5",
     "s3-cli": "^0.13.0",
     "slugify": "^1.1.0",
+    "static-site-generator-webpack-plugin": "^3.4.1",
     "style-loader": "^0.18.2",
     "webpack": "^3.1.0",
     "webpack-dev-middleware": "^1.11.0",
+    "webpack-dev-server": "^2.7.1",
     "wpapi": "^1.1.2",
     "xlsx": "^0.10.7"
   },

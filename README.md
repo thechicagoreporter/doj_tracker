@@ -53,7 +53,9 @@ Click the "Done" button.
 Run the local development server
 --------------------------------
 
-    npm run serve
+    npm start
+
+This should open a browser window with the URL http://localhost:8080/.
 
 You may get the error: /usr/bin/env: ‘node’: No such file or directory. This may be because the package manager installed it under nodejs. In which case do a symlink:
 
