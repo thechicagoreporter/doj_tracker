@@ -1,4 +1,9 @@
 .caption {
+  margin-top: 0.6em;
   font-size: 0.8em;
   font-style: italic;
+}
+
+.caption p {
+  font-size: 1em;
 }
