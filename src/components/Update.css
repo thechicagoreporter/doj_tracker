@@ -1,3 +1,8 @@
 .update {
   list-style-type: none;
 }
+
+.date {
+  /* Override font styles from theme */
+  font-size: 1em !important;
+}

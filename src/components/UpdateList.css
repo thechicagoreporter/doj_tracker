@@ -1,3 +1,8 @@
+@value bodyFontSize from './base.css';
+
 .updates {
   padding-left: 0;
+  /* Override list styles from theme. */
+  margin-left: 0;
+  font-size: bodyFontSize !important;
 }

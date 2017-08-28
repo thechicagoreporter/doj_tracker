@@ -5,7 +5,7 @@ import styles from './Update.css';
 
 const Update = ({ update }) => (
   <li className={styles.update}>
-    <h4>{update.date}</h4>
+    <h4 className={styles.date}>{update.date}</h4>
     <div dangerouslySetInnerHTML={getHtml(update.notes)} />
   </li>
 );
