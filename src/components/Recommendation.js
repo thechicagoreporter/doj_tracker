@@ -27,6 +27,8 @@ class Recommendation extends React.Component {
       collapsed: this.props.recommendation.collapsed,
     });
 
+    const hiddenLabelClassName = cx('label', 'hidden');
+
     const lastUpdated = this.props.recommendation.updates[0].date;
 
     return (
@@ -37,27 +39,20 @@ class Recommendation extends React.Component {
 
         <dl className={styles.propertyList}>
           <div>
-            <dt className={styles.label}>Status</dt>
+            <dt className={hiddenLabelClassName}>Status</dt>
             <dd className={cx('value', 'status', camelCase(this.props.recommendation.statusSlug, '-'))}>
                {this.props.recommendation.status}
             </dd>
           </div>
 
           <div>
-            <dt className={styles.label}>Category</dt>
+            <dt className={hiddenLabelClassName}>Category</dt>
             <dd className={cx('value', 'category')}>{this.props.recommendation.category}</dd>
           </div>
 
           <div>
-            <dt className={styles.label}>Agencies responsible</dt>
-            <dd className={styles.value}>
-              <AgencyList agencies={this.props.recommendation.agency_responsible} />
-            </dd>
-          </div>
-
-          <div>
-            <dt className={styles.label}>Last updated</dt>
-            <dt className={styles.value}>{lastUpdated}</dt>
+            <dt className={cx('label', 'lastUpdated')}>Last updated</dt>
+            <dt className={cx('value', 'lastUpdated')}>{lastUpdated}</dt>
           </div>
         </dl>
 
@@ -67,6 +62,14 @@ class Recommendation extends React.Component {
         </div>
 
         <div className={expansionClassName}>
+          <dl className={styles.propertyList}>
+            <div>
+              <dt className={styles.label}>Agencies responsible</dt>
+              <dd className={styles.value}>
+                <AgencyList agencies={this.props.recommendation.agency_responsible} />
+              </dd>
+            </div>
+          </dl>
           <div className={styles.specific}
             dangerouslySetInnerHTML={
               getHtml(this.props.recommendation.recommendation_specific)
