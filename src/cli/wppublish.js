@@ -1,38 +1,44 @@
 import WPAPI from 'wpapi';
 
-const main = function cliMain(argv) {
+const main = function cliMain(
+  input,
+  output,
+  endpointUrl,
+  username,
+  password,
+  postId,
+  postTitle,
+) {
   const chunks = [];
 
-  process.stdin.resume();
-  process.stdin.on('data', chunk => chunks.push(chunk));
-  process.stdin.on('end', () => {
+  input.resume();
+  input.on('data', chunk => chunks.push(chunk));
+  input.on('end', () => {
     const content = chunks.join();
-    const username = process.env.WP_USERNAME;
-    const password = process.env.WP_PASSWORD;
     const wp = new WPAPI({
-      endpoint: argv._[0],
+      endpoint: endpointUrl,
       username,
       password,
     });
 
     if (process.env.WP_POST_ID) {
-      const postId = parseInt(process.env.WP_POST_ID, 10);
-      wp.posts().id(postId).auth().update({
-        title: process.env.WP_POST_TITLE,
+      const postIdInt = parseInt(postId, 10);
+      wp.posts().id(postIdInt).auth().update({
+        title: postTitle,
         content,
       })
       .catch((err) => {
-        console.log(err);
+        output.write(err);
       });
     } else {
       wp.posts().auth().create({
-        title: process.env.WP_POST_TITLE,
+        title: postTitle,
         content,
       }).then((response) => {
-        console.log(`Post published. To update this post in the future, set the environment variable WP_POST_ID to ${response.id}`);
+        output.write(`Post published. To update this post in the future, set the environment variable WP_POST_ID to ${response.id}`);
       })
       .catch((err) => {
-        console.log(err);
+        output.write(err);
       });
     }
   });

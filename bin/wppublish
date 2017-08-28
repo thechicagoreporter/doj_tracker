@@ -6,6 +6,14 @@ var argv = require('minimist')(process.argv.slice(2));
 
 var main = require('../src/cli/wppublish').default;
 
-main(argv);
+main(
+  process.stdin,
+  process.stdout,
+  argv._[0],
+  process.env.WP_USERNAME,
+  process.env.WP_PASSWORD,
+  process.env.WP_POST_ID,
+  process.env.WP_POST_TITLE
+);
 
 
