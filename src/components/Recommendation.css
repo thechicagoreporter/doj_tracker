@@ -1,15 +1,26 @@
 @value notImplemented, babySteps, partiallyImplemented, implemented, unclear, highlightBlockBackground from '../colors.css';
 
 .gist {
+  /* Make space for the permalink */
+  max-width: 92%;
   margin-top: 0;
   margin-bottom: 1.2em !important;
 }
 
+@value recommendationPadding: 2em;
+
 .recommendation {
-  padding: 2em;
+  position: relative;
+  padding: recommendationPadding;
   margin-bottom: 2em;
   border-top: 4px solid;
   background-color: highlightBlockBackground;
+}
+
+.permalink {
+  position: absolute;
+  top: recommendationPadding;
+  right: recommendationPadding;
 }
 
 .expansion.collapsed {

@@ -1,5 +1,6 @@
 import classNames from 'classnames/bind';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import AgencyList from './AgencyList';
 import ShowMoreButton from './ShowMoreButton';
@@ -36,6 +37,9 @@ class Recommendation extends React.Component {
         <h3 className={styles.gist}>
           {this.props.recommendation.recommendation_gist}
         </h3>
+
+        <Link to={`/recommendations/${this.props.recommendation.id}`}
+              className={styles.permalink}>🔗</Link>
 
         <dl className={styles.propertyList}>
           <div>
