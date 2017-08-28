@@ -48,7 +48,7 @@ const main = function cliMain() {
   process.stdin.resume();
   process.stdin.on('data', chunk => chunks.push(chunk));
   process.stdin.on('end', () => {
-    const jsonStr = chunks.join();
+    const jsonStr = chunks.join('');
     process.stdout.write(JSON.stringify(JSON.parse(jsonStr).map(transform)));
   });
 };

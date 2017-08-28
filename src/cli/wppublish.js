@@ -14,7 +14,7 @@ const main = function cliMain(
   input.resume();
   input.on('data', chunk => chunks.push(chunk));
   input.on('end', () => {
-    const content = chunks.join();
+    const content = chunks.join('');
     const wp = new WPAPI({
       endpoint: endpointUrl,
       username,

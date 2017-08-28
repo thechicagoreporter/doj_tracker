@@ -73,7 +73,7 @@ const main = function cliMain(argv) {
   process.stdin.resume();
   process.stdin.on('data', chunk => chunks.push(chunk));
   process.stdin.on('end', () => {
-    const jsonStr = chunks.join();
+    const jsonStr = chunks.join('');
     const data = JSON.parse(jsonStr);
     const [, s] = serialize(data, prop);
     process.stdout.write(s);

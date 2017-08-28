@@ -6,7 +6,7 @@ const main = function cliMain() {
   process.stdin.resume();
   process.stdin.on('data', chunk => chunks.push(chunk));
   process.stdin.on('end', () => {
-    const archiemlStr = chunks.join();
+    const archiemlStr = chunks.join('');
     const data = archieml.load(archiemlStr);
     process.stdout.write(JSON.stringify(data));
   });

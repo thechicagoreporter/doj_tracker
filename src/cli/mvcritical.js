@@ -32,7 +32,7 @@ const main = function cliMain(argv) {
   process.stdin.resume();
   process.stdin.on('data', chunk => chunks.push(chunk));
   process.stdin.on('end', () => {
-    const html = chunks.join();
+    const html = chunks.join('');
     const dom = new JSDOM(html);
     const document = dom.window.document;
 
