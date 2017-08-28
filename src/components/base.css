@@ -1,4 +1,23 @@
+/*
+ * Classes and variables for use in other component stylesheets.
+ *
+ * See https://github.com/css-modules/postcss-icss-values for more on how
+ * the value definitions work.
+ *
+ * See https://github.com/css-modules/css-modules#composition for more on
+ * how classes can be composed from other casses using CSS modules' `composes`
+ * keyword.  This is similar to mixins in Sass.
+ */
+
+
 @value highlightColor from '../colors.css';
+
+/*
+ * This matches the style from the chicagoreporter.com stylesheet.
+ * We need to mention it explicitely to reset font size on some elements,
+ * such as `<ul>` that are overriden in the site template stylesheet.
+ */
+@value bodyFontSize: 16px;
 
 .button {
   display: inline-block;
@@ -33,8 +52,6 @@
   text-align: center;
   text-decoration: none;
   font-size: 0.8em;
-  margin-top: 1em;
-  margin-bottom: 1em;
   background: none;
   font-family: sans-serif;
 }

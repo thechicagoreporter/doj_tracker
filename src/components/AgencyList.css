@@ -1,9 +1,16 @@
+@value bodyFontSize from './base.css';
+
 .agencies {
-  padding-left: 0;
+  /* Override list styles from browser, theme. */
+  margin-left: 0;
+  margin-bottom: 0;
+  font-size: bodyFontSize !important;
 }
 
 .agency {
   display: inline-block;
   margin-right: 0.6em;
+  /* Override list item margin styles from theme.  */
+  margin-bottom: 0;
   list-style-type: none;
 }
