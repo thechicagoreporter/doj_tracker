@@ -12,6 +12,7 @@ const docUrl = process.env.DOCUMENT_URL;
 const tokenFilename = process.env.TOKEN_FILENAME || 'doj_tracker.json';
 const tokenPath = path.join(drive.DEFAULT_TOKEN_DIR, tokenFilename);
 const clientIdPath = process.env.CLIENT_ID_PATH || 'client_id.json';
+const facebookAppId = process.env.FB_APP_ID;
 
 module.exports = getLocals(docUrl, clientIdPath, tokenPath)
   .then(function(locals) {
@@ -74,7 +75,9 @@ module.exports = getLocals(docUrl, clientIdPath, tokenPath)
         new ExtractTextPlugin("styles.css"),
         new StaticSiteGeneratorPlugin({
           entry: 'staticSite',
-          locals: locals,
+          locals: Object.assign({}, locals, {
+            facebookAppId: facebookAppId
+          }),
           paths: ['/'],
           globals: {
             window: {},

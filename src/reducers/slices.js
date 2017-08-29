@@ -178,3 +178,11 @@ export const introCollapsed = function introCollapsedReducer(
 export const credits = function creditsReducer(state = '') {
   return state;
 };
+
+export const shareEmailSubject = function shareEmailSubjectReducer(state = '') {
+  return state;
+};
+
+export const shareEmailBody = function shareEmailBody(state = '') {
+  return state;
+};

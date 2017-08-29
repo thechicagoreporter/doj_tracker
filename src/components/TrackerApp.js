@@ -14,6 +14,7 @@ import StatusChart from './StatusChart';
 import StatusChartLegend from './StatusChartLegend';
 import StatusChartCaption from '../containers/StatusChartCaption';
 import CreditBox from '../containers/CreditBox';
+import SocialWidgets from './SocialWidgets';
 import styles from './TrackerApp.css';
 
 /**
@@ -42,12 +43,17 @@ const TrackerApp = ({
   categorySlug,
   statusSlug,
   window,
+  facebookAppId,
 }) => {
   const initialFilters = getInitialFilters(statusSlug, categorySlug);
   return (
     <div className={styles.tracker}>
       <Lede />
       <Intro />
+      <SocialWidgets
+        location={window ? window.location : null}
+        facebookAppId={facebookAppId}
+        window={window} />
       <figure className={styles.figure}>
         <StatusChartLegend statuses={statuses} />
         <StatusChart statuses={statuses} window={window} />
@@ -71,6 +77,7 @@ TrackerApp.propTypes = {
   categorySlug: PropTypes.string,
   statusSlug: PropTypes.string,
   window: PropTypes.object,
+  facebookAppId: PropTypes.string,
 };
 
 export default TrackerApp;

@@ -276,6 +276,8 @@ export const pruneProps = function prunePropsTransform(data) {
     'lede',
     'chartCaption',
     'credits',
+    'shareEmailSubject',
+    'shareEmailBody',
   ];
   const pruned = {};
 

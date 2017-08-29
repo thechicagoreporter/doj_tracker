@@ -10,7 +10,7 @@
  */
 
 
-@value highlightColor from '../colors.css';
+@value darkGray, highlightColor from '../colors.css';
 
 /*
  * This matches the style from the chicagoreporter.com stylesheet.
@@ -106,4 +106,8 @@
 
 .borderTop {
   border-top: 4px solid highlightColor;
+}
+
+.socialIcon path {
+ fill: darkGray;
 }

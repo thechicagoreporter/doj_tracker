@@ -97,6 +97,10 @@ Configuration is through environment variables and largely relates to deployment
 
 URL to Google Document containing ArchieML that provides data for this app.
 
+### FB\_APP\_ID
+
+Facebook application ID.
+
 ### TOKEN\_PATH
 
 Path where Google Drive API OAuth token will be stored.  Defaults to `${HOME}/.credentials/doj_tracker.json`.
@@ -198,3 +202,8 @@ Design philosophy
 Coming from doing a lot of React programming, I've come to like lifting state to have a single point of authority for application state.  I also like making DOM updates based on this state.  The alternative, which will be familiar to people who built complex, jQuery-based applications, is to store state in the DOM itself, or attached data.  This quickly gets unwieldy.
 
 [Redux](http://redux.js.org/) is a bit to wrap your head around, but provides a clean set of idioms for managing state changes.  We're using it for this project.
+
+Credits
+-------
+
+Twitter, Facebook and envelope icons are from the [Font Awesome](http://fontawesome.io/) project and converted to SVG by [Font-Awesome-SVG-PNG](https://github.com/encharm/Font-Awesome-SVG-PNG).

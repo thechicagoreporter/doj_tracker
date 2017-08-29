@@ -9,3 +9,5 @@
 /* Colors that mirror chicagoreporter.com */
 @value highlightBlockBackground: #eee;
 @value highlightColor: #c30;
+
+@value darkGray: #696969;

@@ -10,7 +10,7 @@ import TrackerApp from './components/TrackerApp';
  * This is because we're just filtering and scrolling, but still rendering the
  * same things.
  */
-const getRoutes = (statuses, window = null) => {
+const getRoutes = (statuses, window = null, facebookAppId = '') => {
   const paths = [
     '/recommendations/:id',
     '/categories/:categorySlug',
@@ -21,6 +21,7 @@ const getRoutes = (statuses, window = null) => {
     <Route key={i} path={path} render={props => (
       <TrackerApp statuses={statuses}
         window={window}
+        facebookAppId={facebookAppId}
         {...props.match.params} />
     )} />
   ));

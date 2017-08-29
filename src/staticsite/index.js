@@ -33,5 +33,6 @@ module.exports = (locals) => {
   return renderFullPage({
     appHtml: html,
     title: locals.title,
+    facebookAppId: locals.facebookAppId,
   }, rawState);
 };

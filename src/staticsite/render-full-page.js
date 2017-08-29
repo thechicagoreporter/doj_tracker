@@ -20,7 +20,8 @@ const renderFullPage = (ctx, preloadedState) => (`
               dojtracker.renderApp(
                 document.querySelector('.tracker-container-inner'),
                 ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')},
-                window
+                window,
+                '${ctx.facebookAppId}'
               );
           </script>
       </body>
