@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint lib src",
     "sheet2archieml": "./bin/dlsheet --client-secret client_id.json https://docs.google.com/spreadsheets/d/1cj157YGWSDV-c0kBkndZ4XC85tsYSea148mhaP-tpX0/edit | ./bin/sheet2json | ./bin/transformsheetdata | ./bin/json2archieml --prop=recommendations > data.archieml",
-    "start": "webpack-dev-server --open",
-    "build": "webpack",
+    "start": "webpack-dev-server --open --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
     "publish": "npm run build && ./bin/critical && s3-cli sync --delete-removed --acl-public ./dist/ $S3_URL && cat ./dist/index.html | ./bin/mvcritical --staticurl=$S3_HTTP_URL '#tracker-container' | ./bin/rewritesrc $S3_HTTP_URL | ./bin/cssselect '#tracker-container' '#tracker-bundle' '#tracker-init' | ./bin/wppublish $WP_URL/wp-json"
   },
   "keywords": [
@@ -50,9 +50,11 @@
     "static-site-generator-webpack-plugin": "^3.4.1",
     "style-loader": "^0.18.2",
     "uglify-js": "^3.0.28",
+    "uglifyjs-webpack-plugin": "^0.4.6",
     "webpack": "^3.1.0",
     "webpack-dev-middleware": "^1.11.0",
     "webpack-dev-server": "^2.7.1",
+    "webpack-merge": "^4.1.0",
     "wpapi": "^1.1.2",
     "xlsx": "^0.10.7"
   },
