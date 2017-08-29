@@ -1,6 +1,8 @@
 require('babel-register');
 
 const path = require('path');
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const getLocals = require('./src/staticsite/getlocals').default;
@@ -32,12 +34,7 @@ module.exports = getLocals(docUrl, clientIdPath, tokenPath)
             facebookAppId: facebookAppId
           }),
           paths: ['/'],
-          globals: {
-            window: {},
-            document: {
-              createElement: function() {},
-            },
-          }
+          globals: (new JSDOM('')).window
         })
       ] 
     });
