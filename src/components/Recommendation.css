@@ -1,4 +1,4 @@
-@value notImplemented, babySteps, partiallyImplemented, implemented, unclear, highlightBlockBackground from '../colors.css';
+@value notImplemented, babySteps, partiallyImplemented, partiallyImplementedText, implemented, unclear, unclearText, highlightBlockBackground from '../colors.css';
 
 .gist {
   /* Make space for the permalink */
@@ -112,6 +112,7 @@
 
 .status.partiallyImplemented {
   background-color: partiallyImplemented;
+  color: partiallyImplementedText;
 }
 
 .status.implemented {
@@ -120,6 +121,7 @@
 
 .status.unclear {
   background-color: unclear;
+  color: unclearText;
 }
 
 .showMoreCtaContainer {

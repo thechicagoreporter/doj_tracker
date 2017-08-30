@@ -10,7 +10,7 @@
  */
 
 
-@value darkGray, highlightColor from '../colors.css';
+@value darkGray, highlight, secondaryHighlight from '../colors.css';
 
 /*
  * This matches the style from the chicagoreporter.com stylesheet.
@@ -23,7 +23,7 @@
   display: inline-block;
   text-decoration: none;
   color: #fff;
-  background-color: #3d9999;
+  background-color: secondaryHighlight;
   padding: 0.5em 1.5em;
   font-family: "Open Sans Condensed", sans-serif;
 }
@@ -41,7 +41,7 @@
 }
 
 .buttonStrong:hover {
-  background-color: #c30;
+  background-color: highlight;
 }
 
 .toggleLink {
@@ -105,7 +105,7 @@
 }
 
 .borderTop {
-  border-top: 4px solid highlightColor;
+  border-top: 4px solid highlight;
 }
 
 .socialIcon path {

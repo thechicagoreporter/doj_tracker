@@ -1,4 +1,4 @@
-@value notImplemented, babySteps, partiallyImplemented, implemented, unclear  from '../colors.css';
+@value notImplemented, babySteps, partiallyImplemented, partiallyImplementedText, implemented, unclear, unclearText from '../colors.css';
 @value barHeight: 4em;
 
 .chart {
@@ -26,6 +26,7 @@
 
 .bar.partiallyImplemented {
   background-color: partiallyImplemented;
+  color: partiallyImplementedText;
 }
 
 .bar.implemented {
@@ -43,6 +44,14 @@
   line-height: barHeight;
   padding-left: 0.3em;
   font-weight: bold;
+}
+
+.bar.unclear .barLabel {
+  color: unclearText;
+}
+
+.bar.partiallyImplemented .barLabel {
+  color: partiallyImplementedText;
 }
 
 .barLabelNumber {}
