@@ -1,4 +1,4 @@
-@value notImplemented, babySteps, partiallyImplemented, partiallyImplementedText, implemented, unclear, unclearText from '../colors.css';
+@value notImplemented, planned, partiallyImplemented, partiallyImplementedText, implemented, unclear, unclearText from '../colors.css';
 
 .filter {
   composes: filterButton from './base.css';
@@ -13,8 +13,8 @@
   background-color: notImplemented;
 }
 
-.filterSelected.babySteps {
-  background: babySteps;
+.filterSelected.planned {
+  background: planned;
 }
 
 .filterSelected.partiallyImplemented {

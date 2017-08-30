@@ -1,4 +1,4 @@
-@value notImplemented, babySteps, partiallyImplemented, partiallyImplementedText, implemented, unclear, unclearText from '../colors.css';
+@value notImplemented, planned, partiallyImplemented, partiallyImplementedText, implemented, unclear, unclearText from '../colors.css';
 @value barHeight: 4em;
 
 .chart {
@@ -20,8 +20,8 @@
   background-color: notImplemented;
 }
 
-.bar.babySteps {
-  background-color: babySteps;
+.bar.planned {
+  background-color: planned;
 }
 
 .bar.partiallyImplemented {
