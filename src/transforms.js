@@ -101,6 +101,20 @@ const renderRecommendationSpecific = function renderRecommendationSpecificTransf
   };
 };
 
+
+const importanceToNumber = function importanceToNumberTransform(r) {
+  const importanceMap = {
+    low: 3,
+    medium: 2,
+    high: 1,
+  };
+
+  return {
+    ...r,
+    importance: importanceMap[r.importance],
+  };
+};
+
 const updateRecommendation = flow(
   parseUpdateDates,
   sortUpdatesByDate,
@@ -109,6 +123,7 @@ const updateRecommendation = flow(
   addStatusSlug,
   setCollapsed,
   renderRecommendationSpecific,
+  importanceToNumber,
 );
 
 export const updateRecommendations = function updateRecommendationsTransform(data) {
@@ -278,6 +293,7 @@ export const pruneProps = function prunePropsTransform(data) {
     'credits',
     'shareEmailSubject',
     'shareEmailBody',
+    'importance',
   ];
   const pruned = {};
 

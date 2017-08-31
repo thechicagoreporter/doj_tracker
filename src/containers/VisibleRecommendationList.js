@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { toggleRecommendation } from '../actions';
 import RecommendationList from '../components/RecommendationList';
-import { DESC, LAST_UPDATED } from '../constants';
+import { DESC, IMPORTANCE, LAST_UPDATED } from '../constants';
 
 /**
  * Filter recommendation ids based on status, category
@@ -38,6 +38,10 @@ const sorters = {
 
     return a.id - b.id;
   },
+  [IMPORTANCE]: (a, b) => (
+    a.importance - b.importance ||
+    a.id - b.id
+  ),
 };
 
 const descSorter = f => (a, b) => -1 * f(a, b);
