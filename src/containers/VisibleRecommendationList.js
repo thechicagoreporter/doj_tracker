@@ -9,7 +9,7 @@ import { DESC, IMPORTANCE, LAST_UPDATED } from '../constants';
  * @param {string[]} ids - Recommendation ids to be filtered
  * @param {Object[]} selectedFilters - Selected filter values
  * @param {Set} selectedFilters[].selected - Set of selected filter values
- * @param {function(Object): string} selectedFilters.getValue - Function
+ * @param {function(Object): string} selectedFilters.getValues - Function
  *   that returns the filter value from a given recommendation
  * @returns {string[]} Filtered recommendation ids
  */
@@ -18,7 +18,9 @@ const applyFilters = (ids, selectedFilters, getRecommendation) => (
     const r = getRecommendation(id);
     return selectedFilters.reduce((isSelected, selected) => {
       if (selected.selected.size) {
-        return isSelected && selected.selected.has(selected.getValue(r));
+        return isSelected && selected.getValues(r).some(
+          v => selected.selected.has(v),
+        );
       }
 
       return isSelected;
@@ -67,11 +69,11 @@ const mapStateToProps = (state, ownProps) => {
   const selectedFilters = [
     {
       selected: selectedStatuses,
-      getValue: r => r.status,
+      getValues: r => [r.status],
     },
     {
       selected: selectedCategories,
-      getValue: r => r.category,
+      getValues: r => [r.category],
     },
   ];
   const filteredIds = applyFilters(
