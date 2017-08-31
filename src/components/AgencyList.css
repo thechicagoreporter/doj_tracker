@@ -2,6 +2,7 @@
 
 .agencies {
   /* Override list styles from browser, theme. */
+  padding-left: 0;
   margin-left: 0;
   margin-bottom: 0;
   font-size: bodyFontSize !important;
@@ -13,4 +14,12 @@
   /* Override list item margin styles from theme.  */
   margin-bottom: 0;
   list-style-type: none;
+}
+
+.agency::after {
+  content: ', ';
+}
+
+.agency:last-child::after {
+  content: '';
 }
