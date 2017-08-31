@@ -7,7 +7,7 @@ import {
   TOGGLE_STATUS_FILTER,
   TOGGLE_RECOMMENDATION,
 } from '../actions';
-import { LAST_UPDATED } from '../constants';
+import { DESC, LAST_UPDATED } from '../constants';
 
 export const title = function titleReducer(state = 'DOJ Tracker') {
   return state;
@@ -140,12 +140,15 @@ export const filterDrawerCollapsed = function filterDrawerCollapsedReducer(
 };
 
 export const orderBy = function orderByReducer(
-  state = LAST_UPDATED,
+  state = { orderBy: LAST_UPDATED, direction: DESC },
   action,
 ) {
   switch (action.type) {
     case SET_ORDER_BY: {
-      return action.orderBy;
+      return {
+        orderBy: action.orderBy,
+        direction: action.direction,
+      };
     }
 
     default:

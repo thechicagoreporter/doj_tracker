@@ -58,10 +58,14 @@ export const toggleFilterDrawer = function toggleFilterDrawerActionCreator() {
   };
 };
 
-export const setOrderBy = function setOrderByActionCreator(orderBy) {
+export const setOrderBy = function setOrderByActionCreator(
+  orderBy,
+  direction,
+) {
   return {
     type: SET_ORDER_BY,
     orderBy,
+    direction,
   };
 };
 

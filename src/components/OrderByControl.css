@@ -6,3 +6,13 @@
   composes: filterButton from './base.css';
   composes: filterButtonSelected from './base.css';
 }
+
+.controlSelected.ascending::after {
+  content: '▲';
+  margin-left: 0.5em;
+}
+
+.controlSelected.descending::after {
+  content: '▼';
+  margin-left: 0.5em;
+}
