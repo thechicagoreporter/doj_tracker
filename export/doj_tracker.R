@@ -1,0 +1,15 @@
+#install.packages("devtools")
+library(devtools)
+#install_github('ropensci/rchie')
+library(rchie)
+#install_github("tidyverse/googledrive")
+library(googledrive)
+
+#Get DOJ Recommendations file in ArchieML using Google Drive ID
+text <- drive_get("16IQIgNn2DXD5AMlMZE2SsrYJCBWJhSykrelscAY5ek4")
+drive_download(text, path = "DOJRecommendations.txt", overwrite = TRUE)
+#install.packages("readr")
+library(readr)
+markup <- read_file("DOJRecommendations.txt")
+list <- from_archie(markup)
+recommendations <- as.data.frame(list[10])
