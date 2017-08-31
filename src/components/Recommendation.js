@@ -47,6 +47,24 @@ class Recommendation extends React.Component {
         <Link to={`/recommendations/${this.props.recommendation.id}`}
               className={styles.permalink}>🔗</Link>
 
+        <div className={expansionClassName}>
+          <div className={styles.specific}
+            dangerouslySetInnerHTML={
+              getHtml(this.props.recommendation.recommendation_specific)
+            } />
+
+          <UpdateList updates={this.props.recommendation.updates} />
+
+          <dl className={styles.propertyList}>
+            <div>
+              <dt className={styles.label}>{agenciesLabel} responsible</dt>
+              <dd className={styles.value}>
+                <AgencyList agencies={this.props.recommendation.agency_responsible} />
+              </dd>
+            </div>
+          </dl>
+        </div>
+
         <dl className={styles.propertyList}>
           <div>
             <dt className={hiddenLabelClassName}>Status</dt>
@@ -69,24 +87,6 @@ class Recommendation extends React.Component {
         <div className={styles.showMoreCtaContainer}>
           <ShowMoreButton onClick={this.handleShowMoreClick}
             collapsed={this.props.recommendation.collapsed} />
-        </div>
-
-        <div className={expansionClassName}>
-          <div className={styles.specific}
-            dangerouslySetInnerHTML={
-              getHtml(this.props.recommendation.recommendation_specific)
-            } />
-
-          <UpdateList updates={this.props.recommendation.updates} />
-
-          <dl className={styles.propertyList}>
-            <div>
-              <dt className={styles.label}>{agenciesLabel} responsible</dt>
-              <dd className={styles.value}>
-                <AgencyList agencies={this.props.recommendation.agency_responsible} />
-              </dd>
-            </div>
-          </dl>
         </div>
       </div>
     );
