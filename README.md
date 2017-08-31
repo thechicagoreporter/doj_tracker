@@ -53,9 +53,15 @@ Click the "Done" button.
 Run the local development server
 --------------------------------
 
+Running the local development server happens by running an [npm script](https://docs.npmjs.com/misc/scripts):
+
     npm start
 
 This should open a browser window with the URL http://localhost:8080/.
+
+Be sure to check the configuration section below to see more about the environment variables you'll need to set to provide configuration for the script.  You'll likely want to source some environment variables first, like this:
+
+    sh -ac '. ./.env; npm start'
 
 You may get the error: /usr/bin/env: ‘node’: No such file or directory. This may be because the package manager installed it under nodejs. In which case do a symlink:
 
@@ -70,6 +76,17 @@ The first time you run this command, you will see a prompt like this:
 
 Visit the URL in the message and follow the dialog to allow access to the "DOJ Tracker" app.  You will be presented with a code that you should copy and paste after the "Enter the code from that page here" prompt.
 
+Publishing
+----------
+
+Publishing also happens by running an [npm script](https://docs.npmjs.com/misc/scripts):
+
+    npm run publish
+
+See the configuration section for information about the environment variables you'll need to set to successfully publish.  You'll probably want to source them from a .env file like this:
+
+    sh -ac '. ./.env.staging; npm run publish'
+
 Local Testing with WordPress
 ----------------------
 
@@ -77,8 +94,8 @@ For local testing of publication to WordPress and the interaction between styles
 
 After getting VVV set up and creating a local Chicago Reporter site, the site should be available at http://chicagoreporter.vagrant.dev/.
 
-WordPress Configuration
------------------------
+WordPress Preparation
+---------------------
 
 You'll need to install the [Application Passwords](https://wordpress.org/plugins/application-passwords/) plugin which essentially allows creating application-specific API keys.
 
@@ -91,19 +108,7 @@ Create a new post where the tracker HTML will be uploaded.  While a post will be
 Tracker Configuration
 ---------------------
 
-Configuration is through environment variables and largely relates to deployment.
-
-### DOCUMENT\_URL
-
-URL to Google Document containing ArchieML that provides data for this app.
-
-### FB\_APP\_ID
-
-Facebook application ID.
-
-### TOKEN\_PATH
-
-Path where Google Drive API OAuth token will be stored.  Defaults to `${HOME}/.credentials/doj_tracker.json`.
+Configuration is through environment variables, as is recommended by the [Twelve-Factor App](https://12factor.net/config) philosophy.  The configuration variables largely relate to deployment.
 
 ### AWS\_ACCESS\_KEY
 
@@ -113,6 +118,14 @@ AWS access key credential used to publish static assets to S3.
 
 AWS access key secret used to publish static assets to S3.
 
+### DOCUMENT\_URL
+
+URL to Google Document containing ArchieML that provides data for this app.
+
+### FB\_APP\_ID
+
+Facebook application ID.  This is needed to make social sharing using Facebook work.
+
 ### S3\_URL
 
 URL to the S3 bucket where static assets will be published, beginning with `s3://`.
@@ -121,9 +134,9 @@ URL to the S3 bucket where static assets will be published, beginning with `s3:/
 
 URL to the S3 bucket where static assets will be published, beginning with `http://`.
 
-### WP\_URL
+### TOKEN\_PATH
 
-Root URL for the WordPress site where this app will be published.
+Path where Google Drive API OAuth token will be stored.  Defaults to `${HOME}/.credentials/doj_tracker.json`.
 
 ### WP\_USERNAME
 
@@ -133,28 +146,49 @@ WordPress service account user name used to publish the app HTML into WordPress.
 
 WordPress service account password used to publish the app HTML into WordPress.
 
-### WP\_POST\_TITLE
-
-Title of WordPress post where app is published.
-
 ### WP\_POST\_ID
 
 If defined, existing WordPress post that will be updated.
 
+### WP\_POST\_TITLE
+
+Title of WordPress post where app is published.
+
+### WP\_URL
+
+Root URL for the WordPress site where this app will be published.
+
 ### Putting configuration in an environment file
 
-TODO: Add example .env file
+I've found that it's convenient to define environment variables in a .env file, which is just a text file where each line is just a `VAR=VAL` declaration.  It's widely used with tools like [Docker Compose](https://docs.docker.com/compose/env-file/).
 
-Deployment
-----------
+An example .env file might look something like this:
 
-Source the needed configuration environment variables and run this npm script to build the project and publish it:
+  FB_APP_ID=999999999999999
+  WP_URL=http://chicagoreporter.com
+  WP_USERNAME=some-service-account-username
+  WP_PASSWORD="aaaa aaaa aaaa aaaa aaaa aaaa"
+  WP_POST_TITLE="Monitor Chicago’s police reforms"
+  WP_POST_ID=42
+  AWS_ACCESS_KEY=AKIAASSADADAS93245IA
+  AWS_SECRET_KEY=adhjiadhadASF478432sfsdfgsdfsjgsahafSAa6
+  S3_URL=s3://projects.chicagoreporter.com/graphics/dojtracker/
+  S3_HTTP_URL=http://projects.chicagoreporter.com/graphics/dojtracker/
+  DOCUMENT_URL=https://docs.google.com/document/d/23748sfafasfgafasfasr34287892347342asdfafaas/edit
 
-    sh -ac '. ./.env; npm run publish'
+Note that the credentials in the above example are mocked.
 
-To handle different deployments, say to staging and production, you could put the environment variable definitions in multiple .env files.
+You could make multiple files, such as `.env` for local development, `.env.staging` for staging and `.env.production` for production.  Then, add the variables to the environment before running the npm scripts.
 
-   sh -ac '. ./.env.staging; npm run publish'
+For example, to start the local development server:
+
+    sh -ac '. ./.env; npm start'
+
+Or, to publish to staging:
+
+    sh -ac '. ./.env.staging; npm run publish'
+
+In the above examples, the `sh` command runs our npm script in a separate shell.  That way, the environment variables don't pollute the environment in our main shell.  The `-a` option exports all variables, so the variables sourced from the `.env` file via `. ./.env` will be available to the npm script.  The `-c` option specifies the command to run in the shell.  In this case, we specify two commands, separated by a `;`.  The first sources the environment variables and the second runs the npm script.
 
 Data prep
 ---------
@@ -193,6 +227,29 @@ The client-side JavaScript uses:
 
 * `Document.querySelectorAll()`, which is supported in IE8+.
 * `el.addEventListener()`, which is supported in IE9+
+
+Build process
+-------------
+
+TODO: Describe build process including the role of npm scripts, Webpack, Babel and the custom processing scripts.
+
+A tour of the code
+------------------
+
+For someone not following the dizzying pace of contemporary front-end development, you'll probably notice some new things in the code.
+
+* [ES2015](https://babeljs.io/learn-es2015/) JavaScript syntax
+   * Arrow functions
+   * Spread operator
+   * `const` and `let` keywords
+   * `import` to load modules
+* [CSS modules](https://github.com/css-modules/css-modules)
+* [JSX](https://facebook.github.io/react/docs/introducing-jsx.html)
+
+
+TODO: Describe the new technologies in greater detail.
+
+TODO: Describe project directory structure.
 
 Design philosophy
 -----------------
