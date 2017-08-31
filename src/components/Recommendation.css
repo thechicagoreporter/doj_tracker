@@ -17,16 +17,6 @@
   background-color: highlightBlockBackground;
 }
 
-.permalink {
-  position: absolute;
-  top: recommendationPadding;
-  right: recommendationPadding;
-}
-
-.expansion.collapsed {
-  display: none;
-}
-
 .recommendation.notImplemented {
   border-top-color: notImplemented;
 }
@@ -45,6 +35,24 @@
 
 .recommendation.unclear {
   border-top-color: unclear;
+}
+
+.permalink {
+  position: absolute;
+  top: recommendationPadding;
+  right: recommendationPadding;
+}
+
+.expansion {
+  margin-top: 1em;
+}
+
+.expansion.collapsed {
+  display: none;
+}
+
+.specific {
+  font-size: 1.1em;
 }
 
 .propertyList {
@@ -67,33 +75,8 @@
   font-weight: normal;
 }
 
-
-.lastUpdated {
-  display: inline-block;
-  font-size: 0.8em;
-  text-transform: none;
-  padding-top: 0.6em;
-}
-
-.label.lastUpdated::after {
-  content: ':';
-  margin-right: 0.4em;
-}
-
-.value.lastUpdated {
-  margin-bottom: 0;
-}
-
 .hidden {
   display: none;
-}
-
-/* Padding for special properties that we want to show up like buttons. */
-@value highlightValuePadding: 0.4em;
-
-.category {
-  padding-top: highlightValuePadding;
-  padding-bottom: highlightValuePadding;
 }
 
 .status {
@@ -124,10 +107,30 @@
   color: unclearText;
 }
 
-.showMoreCtaContainer {
-  text-align: center;
+.lastUpdated {
+  display: inline-block;
+  font-size: 0.8em;
+  text-transform: none;
+  padding-top: 0.6em;
 }
 
-.expansion {
-  margin-top: 1em;
+.label.lastUpdated::after {
+  content: ':';
+  margin-right: 0.4em;
+}
+
+.value.lastUpdated {
+  margin-bottom: 0;
+}
+
+/* Padding for special properties that we want to show up like buttons. */
+@value highlightValuePadding: 0.4em;
+
+.category {
+  padding-top: highlightValuePadding;
+  padding-bottom: highlightValuePadding;
+}
+
+.showMoreCtaContainer {
+  text-align: center;
 }
