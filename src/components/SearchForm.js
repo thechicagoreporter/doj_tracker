@@ -20,7 +20,7 @@ class SearchForm extends React.Component {
           type="text"
           value={this.state.q}
           onChange={this.handleInputChange}
-          placeholder="Search. ex: taser, body camera" />
+          placeholder="Search. ex: taser, data, body camera" />
       </form>
     );
   }
