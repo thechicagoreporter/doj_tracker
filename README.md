@@ -199,6 +199,13 @@ Early on in this project, we decided that it made more sense to store the data i
 
     npm run sheet2archieml
 
+Troubleshooting
+---------------
+
+During the development process, we found that comments placed in certain places added square brackets into the text export of the document which broke ArchieML parsing.  It might be helpful to run the `dldoc` command to inspect the raw text export of the document.
+
+    ./bin/dldoc --client-secret=client_id.json https://docs.google.com/document/d/16IQIgNn2DXD5AMlMZE2SsrYJCBWJhSykrelscAY5ek4/edit
+
 Coding style
 ------------
 
