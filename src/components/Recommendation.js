@@ -32,6 +32,12 @@ class Recommendation extends React.Component {
 
     const lastUpdated = this.props.recommendation.updates[0].date;
 
+    const agenciesLabel = (
+      this.props.recommendation.agency_responsible.length === 1 ?
+      'Agency' :
+      'Agencies'
+    );
+
     return (
       <div className={getClassName(this.props)} ref={this.props.scrollToRef}>
         <h3 className={styles.gist}>
@@ -68,7 +74,7 @@ class Recommendation extends React.Component {
         <div className={expansionClassName}>
           <dl className={styles.propertyList}>
             <div>
-              <dt className={styles.label}>Agencies responsible</dt>
+              <dt className={styles.label}>{agenciesLabel} responsible</dt>
               <dd className={styles.value}>
                 <AgencyList agencies={this.props.recommendation.agency_responsible} />
               </dd>
