@@ -1,6 +1,7 @@
 import {
   SEARCH,
   SET_ORDER_BY,
+  TOGGLE_AGENCY_FILTER,
   TOGGLE_CATEGORY_FILTER,
   TOGGLE_INTRO,
   TOGGLE_FILTER_DRAWER,
@@ -31,6 +32,37 @@ export const q = function qReducer(state = null, action) {
 // eslint-disable-next-line camelcase
 export const introText = function introTextReducer(state = '') {
   return state;
+};
+
+export const agencies = function agenciesReducer(
+  state = { all: [], selected: [] },
+  action,
+) {
+  switch (action.type) {
+    case TOGGLE_AGENCY_FILTER: {
+      const newSelectedAgencies = new Set(state.selected);
+      if (state.selected.has(action.filter)) {
+        newSelectedAgencies.delete(action.filter);
+      } else if (action.initialRender &&
+                 (action.filter === action.initialFilter)) {
+        // This is the first time we're handling this action, there is
+        // an initial filter set from a router parameter and it matches
+        // the filter that is being toggled.
+        // Since it will not be in the set of selected filters (because
+        // it was set from a route parameter) we can't remove it. But we
+        // want to make sure we don't add it.  So, do nothing.
+      } else {
+        newSelectedAgencies.add(action.filter);
+      }
+
+      return Object.assign({}, state, {
+        selected: newSelectedAgencies,
+      });
+    }
+
+    default:
+      return state;
+  }
 };
 
 export const categories = function categoriesReducer(

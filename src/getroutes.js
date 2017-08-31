@@ -13,6 +13,7 @@ import TrackerApp from './components/TrackerApp';
 const getRoutes = (statuses, window = null, facebookAppId = '') => {
   const paths = [
     '/recommendations/:id',
+    '/agencies/:agencySlug',
     '/categories/:categorySlug',
     '/statuses/:statusSlug',
     '/',

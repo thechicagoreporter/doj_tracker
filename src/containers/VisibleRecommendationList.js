@@ -66,6 +66,10 @@ const mapStateToProps = (state, ownProps) => {
     (new Set(state.categories.selected)).add(ownProps.initialCategory) :
     state.categories.selected;
 
+  const selectedAgencies = state.initialRender && ownProps.initialAgency ?
+    (new Set(state.agencies.selected)).add(ownProps.initialAgency) :
+    state.agencies.selected;
+
   const selectedFilters = [
     {
       selected: selectedStatuses,
@@ -74,6 +78,10 @@ const mapStateToProps = (state, ownProps) => {
     {
       selected: selectedCategories,
       getValues: r => [r.category],
+    },
+    {
+      selected: selectedAgencies,
+      getValues: r => r.agency_responsible,
     },
   ];
   const filteredIds = applyFilters(

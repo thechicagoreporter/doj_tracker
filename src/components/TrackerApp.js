@@ -20,6 +20,8 @@ import styles from './TrackerApp.css';
 /**
  * Return initial filter sets.
  *
+ * @param {string} agencySlug - Slug representing an agency filter value.
+ *   This will probably come from a URL router parameter.
  * @param {string} statusSlug - Slug representing a status filter value.
  *   This will probably come from a URL router parameter.
  * @param {string} categorySlug - Slug representing a category filter value.
@@ -28,10 +30,12 @@ import styles from './TrackerApp.css';
  *    Values will be sets containing the initial filter values based
  *    on the slug parameters to this function.
  */
-const getInitialFilters = (statusSlug, categorySlug) => {
+const getInitialFilters = (agencySlug, statusSlug, categorySlug) => {
   const category = unslugify(categorySlug);
   const status = unslugify(statusSlug);
+  const agency = unslugify(agencySlug);
   return {
+    agencies: agency ? new Set([agency]) : new Set(),
     categories: category ? new Set([category]) : new Set(),
     statuses: status ? new Set([status]) : new Set(),
   };
@@ -40,12 +44,18 @@ const getInitialFilters = (statusSlug, categorySlug) => {
 const TrackerApp = ({
   statuses,
   id,
+  agencySlug,
   categorySlug,
   statusSlug,
   window,
   facebookAppId,
 }) => {
-  const initialFilters = getInitialFilters(statusSlug, categorySlug);
+  const initialFilters = getInitialFilters(
+    agencySlug,
+    statusSlug,
+    categorySlug,
+  );
+
   return (
     <div className={styles.tracker}>
       <Lede />
@@ -81,6 +91,7 @@ const TrackerApp = ({
 TrackerApp.propTypes = {
   statuses: PropTypes.object,
   id: PropTypes.string,
+  agencySlug: PropTypes.string,
   categorySlug: PropTypes.string,
   statusSlug: PropTypes.string,
   window: PropTypes.object,

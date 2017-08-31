@@ -1,5 +1,6 @@
 export const SEARCH = 'SEARCH';
 export const SET_ORDER_BY = 'SET_ORDER_BY';
+export const TOGGLE_AGENCY_FILTER = 'TOGGLE_AGENCY_FILTER';
 export const TOGGLE_CATEGORY_FILTER = 'TOGGLE_CATEGORY_FILTER';
 export const TOGGLE_FILTER_DRAWER = 'TOGGLE_FILTER_DRAWER';
 export const TOGGLE_INTRO = 'TOGGLE_INTRO';
@@ -10,6 +11,19 @@ export const search = function searchActionCreator(q) {
   return {
     type: SEARCH,
     q,
+  };
+};
+
+export const toggleAgencyFilter = function toggleAgencyFilterActionCreator(
+  filter,
+  initialFilters,
+  initialRender,
+) {
+  return {
+    type: TOGGLE_AGENCY_FILTER,
+    filter,
+    initialFilters,
+    initialRender,
   };
 };
 

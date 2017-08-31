@@ -172,6 +172,34 @@ export const addCategories = function addCategoriesTransform(data) {
   });
 };
 
+export const addAgencies = function addAgenciesTransform(data) {
+  const agenciesByName = {};
+
+  data.recommendations.allIds.forEach((id) => {
+    const recommendation = data.recommendations.byId[id];
+    recommendation.agency_responsible.forEach((agency) => {
+      if (!agenciesByName[agency]) {
+        agenciesByName[agency] = {
+          agency,
+          slug: slugify(agency.toLowerCase()),
+        };
+      }
+    });
+  });
+
+  const agencies = Object.keys(agenciesByName)
+    .sort()
+    .map(k => agenciesByName[k]);
+
+  return {
+    ...data,
+    agencies: {
+      all: agencies,
+      selected: [],
+    },
+  };
+};
+
 /**
  * Convert list of statuses to shape useful to front-end code.
  *
@@ -285,6 +313,7 @@ export const pruneProps = function prunePropsTransform(data) {
   const props = [
     'title',
     'introText',
+    'agencies',
     'categories',
     'statuses',
     'recommendations',

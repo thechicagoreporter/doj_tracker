@@ -21,7 +21,7 @@ FilterDrawer.propTypes = {
   collapsed: PropTypes.bool,
   filterCount: PropTypes.number,
   onToggleClick: PropTypes.func,
-  children: PropTypes.object,
+  children: PropTypes.array,
 };
 
 export default FilterDrawer;

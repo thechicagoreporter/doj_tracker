@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import SelectedAgencyFilters from '../containers/SelectedAgencyFilters';
 import SelectedCategoryFilters from '../containers/SelectedCategoryFilters';
 import SelectedStatusFilters from '../containers/SelectedStatusFilters';
 import VisibleFilterDrawer from '../containers/VisibleFilterDrawer';
@@ -12,6 +13,8 @@ const Filters = ({ initialFilters }) => (
 
     <VisibleFilterDrawer>
       <SelectedCategoryFilters collectionName="categories"
+          initialFilters={initialFilters} />
+      <SelectedAgencyFilters collectionName="agencies"
           initialFilters={initialFilters} />
     </VisibleFilterDrawer>
   </div>

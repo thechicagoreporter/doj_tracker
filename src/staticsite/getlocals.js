@@ -5,6 +5,7 @@ import { authorize, dldoc } from '../google-drive';
 import {
   updateRecommendations,
   recommendationLookup,
+  addAgencies,
   addCategories,
   reshapeStatuses,
   renderLede,
@@ -19,6 +20,7 @@ import {
 const transform = flow(
   updateRecommendations,
   recommendationLookup,
+  addAgencies,
   addCategories,
   reshapeStatuses,
   renderLede,

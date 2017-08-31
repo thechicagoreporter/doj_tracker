@@ -18,6 +18,10 @@ export const hydrateState = (state) => {
     recommendations: Object.assign({}, state.recommendations, {
       filteredIds,
     }),
+    agencies: {
+      ...state.agencies,
+      selected: new Set(state.agencies.selected),
+    },
     categories: Object.assign({}, state.categories, {
       selected: new Set(state.categories.selected),
     }),
