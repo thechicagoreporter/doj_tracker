@@ -72,6 +72,13 @@ class Recommendation extends React.Component {
         </div>
 
         <div className={expansionClassName}>
+          <div className={styles.specific}
+            dangerouslySetInnerHTML={
+              getHtml(this.props.recommendation.recommendation_specific)
+            } />
+
+          <UpdateList updates={this.props.recommendation.updates} />
+
           <dl className={styles.propertyList}>
             <div>
               <dt className={styles.label}>{agenciesLabel} responsible</dt>
@@ -80,12 +87,6 @@ class Recommendation extends React.Component {
               </dd>
             </div>
           </dl>
-          <div className={styles.specific}
-            dangerouslySetInnerHTML={
-              getHtml(this.props.recommendation.recommendation_specific)
-            } />
-
-          <UpdateList updates={this.props.recommendation.updates} />
         </div>
       </div>
     );
