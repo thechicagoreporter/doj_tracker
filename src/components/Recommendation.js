@@ -80,7 +80,7 @@ class Recommendation extends React.Component {
 
           <div>
             <dt className={cx('label', 'lastUpdated')}>Last updated</dt>
-            <dt className={cx('value', 'lastUpdated')}>{lastUpdated}</dt>
+            <dd className={cx('value', 'lastUpdated')}>{lastUpdated}</dd>
           </div>
         </dl>
 
