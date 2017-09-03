@@ -40,6 +40,7 @@ const sorters = {
 
     return a.id - b.id;
   },
+
   [IMPORTANCE]: (a, b) => (
     a.importance - b.importance ||
     a.id - b.id

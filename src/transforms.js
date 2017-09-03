@@ -101,14 +101,21 @@ const renderRecommendationSpecific = function renderRecommendationSpecificTransf
   };
 };
 
+// Map of importance levels to integers.
+// More important levels get a higher number.
+const importanceMap = ['low', 'medium', 'high'].reduce((map, v, i) => ({
+  ...map,
+  [v]: i,
+}));
 
+/**
+ * Convert string importance value to a numeric value.
+ *
+ * @param {Object} r - Recommendation object.
+ * @returns {Object} Recommendation object but with importance level converted
+ *   to a numeric value.
+ */
 const importanceToNumber = function importanceToNumberTransform(r) {
-  const importanceMap = {
-    low: 3,
-    medium: 2,
-    high: 1,
-  };
-
   return {
     ...r,
     importance: importanceMap[r.importance],
@@ -322,7 +329,6 @@ export const pruneProps = function prunePropsTransform(data) {
     'credits',
     'shareEmailSubject',
     'shareEmailBody',
-    'importance',
   ];
   const pruned = {};
 

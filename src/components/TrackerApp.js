@@ -1,7 +1,7 @@
 /* eslint camelcase: 0 */
 import PropTypes from 'prop-types';
 import React from 'react';
-import { ASC, DESC, IMPORTANCE, LAST_UPDATED } from '../constants';
+import { DESC, IMPORTANCE, LAST_UPDATED } from '../constants';
 import { unslugify } from '../util';
 import ActiveSearchForm from '../containers/ActiveSearchForm';
 import VisibleOrderByControls from '../containers/VisibleOrderByControls';
@@ -78,7 +78,7 @@ const TrackerApp = ({
           label="Last Updated" />
         <OrderByControl
           orderBy={IMPORTANCE}
-          defaultDirection={ASC}
+          defaultDirection={DESC}
           label="Importance" />
       </VisibleOrderByControls>
       <VisibleRecommendationList detailId={id}
