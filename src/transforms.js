@@ -271,6 +271,38 @@ export const renderLede = function renderLedeTransform(data) {
   };
 };
 
+/**
+ * Render the chart title.
+ *
+ * The chart title is a template that uses JavaScript template string syntax
+ * for variable interpolation.
+ *
+ * @returns {Object} Initial state object with rendered `chart_title` property.
+ */
+export const renderChartTitle = function renderChartTitleTransform(data) {
+  const tpl = template(data.chart_title);
+  const numImplemented = find(data.statuses.all, status => (
+    status.status === 'Implemented'
+  )).count;
+  const ctx = {
+    numRecommendations: data.recommendations.allIds.length,
+    numImplemented,
+  };
+  return {
+    ...data,
+    chart_title: tpl(ctx),
+  };
+};
+
+/**
+ * Render the chart caption.
+ *
+ * The chart caption is a template that uses JavaScript template string syntax
+ * for interpolation. After interpolation it should be rendered as Markdown.
+ *
+ * @returns {Object} Initial state object with rendered `chart_caption`
+ *   property.
+ */
 export const renderChartCaption = function renderChartCaptionTransform(data) {
   const tpl = template(data.chart_caption);
   const lastUpdatedId = maxBy(data.recommendations.allIds, id => (
@@ -303,6 +335,7 @@ export const renameProps = function renamePropsTransform(data) {
   const renamings = {
     intro_text: 'introText',
     chart_caption: 'chartCaption',
+    chart_title: 'chartTitle',
   };
   const renamed = {};
 
@@ -326,6 +359,7 @@ export const pruneProps = function prunePropsTransform(data) {
     'recommendations',
     'lede',
     'chartCaption',
+    'chartTitle',
     'credits',
     'shareEmailSubject',
     'shareEmailBody',

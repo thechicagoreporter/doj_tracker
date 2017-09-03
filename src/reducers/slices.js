@@ -199,6 +199,10 @@ export const chartCaption = function chartCaptionReducer(state = '') {
   return state;
 };
 
+export const chartTitle = function chartTitleReducer(state = '') {
+  return state;
+};
+
 export const introCollapsed = function introCollapsedReducer(
   state = true,
   action,

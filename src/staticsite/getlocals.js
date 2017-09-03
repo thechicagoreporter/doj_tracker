@@ -12,6 +12,7 @@ import {
   renderIntro,
   renderCredits,
   renderChartCaption,
+  renderChartTitle,
   groupByStatus,
   renameProps,
   pruneProps,
@@ -28,6 +29,7 @@ const transform = flow(
   renderIntro,
   renderCredits,
   renderChartCaption,
+  renderChartTitle,
   renameProps,
   pruneProps,
 );

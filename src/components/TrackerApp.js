@@ -12,6 +12,7 @@ import Intro from '../containers/Intro';
 import OrderByControl from './OrderByControl';
 import StatusChart from './StatusChart';
 import StatusChartLegend from './StatusChartLegend';
+import StatusChartTitle from '../containers/StatusChartTitle';
 import StatusChartCaption from '../containers/StatusChartCaption';
 import CreditBox from '../containers/CreditBox';
 import SocialWidgets from './SocialWidgets';
@@ -69,6 +70,7 @@ const TrackerApp = ({
         location={window ? window.location : null}
         facebookAppId={facebookAppId}
         window={window} />
+      <StatusChartTitle />
       <figure className={styles.figure}>
         <StatusChartLegend statuses={statuses} />
         <StatusChart statuses={statuses} window={window} />
