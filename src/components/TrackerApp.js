@@ -41,6 +41,11 @@ const getInitialFilters = (agencySlug, statusSlug, categorySlug) => {
   };
 };
 
+/**
+ * Main component for this application.
+ *
+ * This composes most of the other components in the application.
+ */
 const TrackerApp = ({
   statuses,
   id,
@@ -89,12 +94,43 @@ const TrackerApp = ({
 };
 
 TrackerApp.propTypes = {
+  /**
+   * Object representing the statuses of recommendations.
+   *
+   * It should have an `all` property that is an array of objects, each with
+   * a `slug` property and a `status` property, and a `selected` property which
+   * is a set of strings corresponding to the `status` values of the objects.
+   */
   statuses: PropTypes.object,
+  /**
+   * Recommendation ID for the recommendation that should be shown in detail.
+   * That is, it will be expanded and the window will be scolled to its
+   * element.
+   */
   id: PropTypes.string,
+  /**
+   * Slug of agency that should be used to initially filter the list of
+   * recommendations.
+   */
   agencySlug: PropTypes.string,
+  /**
+   * Slug of category that should be used to initially filter the list of
+   * recommendations.
+   */
   categorySlug: PropTypes.string,
+  /**
+   * Slug of status that should be used to initially filter the list of
+   * recommendations.
+   */
   statusSlug: PropTypes.string,
+  /**
+   * DOM window object.
+   */
   window: PropTypes.object,
+  /**
+   * Facebook application ID, used to enable sharing recommendations on
+   * Facebook.
+   */
   facebookAppId: PropTypes.string,
 };
 

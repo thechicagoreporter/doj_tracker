@@ -28,7 +28,17 @@ const applyFilters = (ids, selectedFilters, getRecommendation) => (
   })
 );
 
+/**
+ * Comparison functions for recommendations.
+ *
+ * The properties correspond to properties in a recommendation object.
+ *
+ * The values are functions that can be passed to Array.sort().
+ */
 const sorters = {
+  /**
+   * Compare two recommendations by last updated date.
+   */
   [LAST_UPDATED]: (a, b) => {
     if (a.lastUpdated < b.lastUpdated) {
       return -1;
@@ -41,14 +51,31 @@ const sorters = {
     return a.id - b.id;
   },
 
+  /**
+   * Compare two recommedations by importance.
+   */
   [IMPORTANCE]: (a, b) => (
     a.importance - b.importance ||
     a.id - b.id
   ),
 };
 
+/**
+ * Return a function that reverses the order of another sorter.
+ *
+ * @param {function} f - sorting function.
+ * @returns Function that reverses the value returned by f.
+ */
 const descSorter = f => (a, b) => -1 * f(a, b);
 
+/**
+ * Convert Redux state to props for a component.
+ *
+ * See http://redux.js.org/docs/basics/UsageWithReact.html#implementing-container-components
+ *
+ * @param {object} state - Redux state.
+ * @param {object} ownProps - Props passed to the component directly.
+ */
 const mapStateToProps = (state, ownProps) => {
   // If a query is specified, get a list of recommendation IDs that match
   // the query.  Otherwise, get IDs for all recommendations.
@@ -121,6 +148,16 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
+/**
+ * Return callback props to be injected into the presentational component.
+ *
+ * See http://redux.js.org/docs/basics/UsageWithReact.html#implementing-container-components
+ *
+ * @param {function} dispatch - Redux state dispatch method.
+ * @param {object} ownProps - Props passed directly to component.
+ *
+ * @returns {object} Props to be passed to the presentational component.
+ */
 const mapDispatchToProps = (dispatch, ownProps) => ({
   onToggleRecommendation: (recommendation, initialRender) => {
     dispatch(toggleRecommendation(

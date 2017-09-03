@@ -2,11 +2,17 @@ import classNames from 'classnames/bind';
 import { Search } from 'js-search';
 import filterStyles from './components/Filter.css';
 
+/**
+ * Convert initial state deserialized from JSON to a more useable form.
+ */
 export const hydrateState = (state) => {
   const filteredIds = new Set();
   const search = new Search('id');
   search.addIndex('recommendation_gist');
 
+  // Add all recommendations to the set of filtered IDs since we show all
+  // recommendations initially.
+  // Add all recommendations to the search index.
   state.recommendations.allIds.forEach((id) => {
     const r = state.recommendations.byId[id];
     filteredIds.add(r.id);
@@ -15,9 +21,11 @@ export const hydrateState = (state) => {
 
   return {
     ...state,
+    // Add the set of filtered IDs to the recommendations collection
     recommendations: Object.assign({}, state.recommendations, {
       filteredIds,
     }),
+    // Convert `selected` properties from arrays to `Set` objects.
     agencies: {
       ...state.agencies,
       selected: new Set(state.agencies.selected),
