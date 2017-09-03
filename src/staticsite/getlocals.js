@@ -23,11 +23,11 @@ const transform = flow(
   addAgencies,
   addCategories,
   reshapeStatuses,
+  groupByStatus,
   renderLede,
   renderIntro,
   renderCredits,
   renderChartCaption,
-  groupByStatus,
   renameProps,
   pruneProps,
 );
