@@ -4,5 +4,7 @@
   padding-left: 0;
   /* Override list styles from theme. */
   margin-left: 0;
+  /* Create more space between this component and the next elements */
+  margin-bottom: 2.5em;
   font-size: bodyFontSize !important;
 }

@@ -1,4 +1,4 @@
-@value notImplemented, planned, partiallyImplemented, partiallyImplementedText, implemented, unclear, unclearText, highlightBlockBackground from '../colors.css';
+@value notImplemented, planned, partiallyImplemented, partiallyImplementedText, implemented, unclear, unclearText, highlightBlockBackground, highlightBlockBackgroundDarker from '../colors.css';
 
 .gist {
   /* Make space for the permalink */
@@ -52,7 +52,14 @@
 }
 
 .specific {
+  /* Larger font-size to make it stand out from the updates */
   font-size: 1.1em;
+  /* And a bottom border, padding and margin to separate the elements even
+   * further
+   */
+  border-bottom: 2px solid highlightBlockBackgroundDarker;
+  padding-bottom: 1em;
+  margin-bottom: 2em;
 }
 
 .propertyList {
