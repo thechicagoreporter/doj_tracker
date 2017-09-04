@@ -21,30 +21,6 @@
 @value unclearText: bodyText;
 @value notImplemented: highlight;
 @value planned: #ffbb30;
-@value partiallyImplemented: #ffef21;
+@value partiallyImplemented: #93ffc8;
 @value partiallyImplementedText: bodyText;
 @value implemented: secondaryHighlight;
-
-/* Not-so-subtle "threat-level" colors */
-/*
-@value unclear: #d1d2cd;
-@value unclearText: bodyText;
-@value notImplemented: #CC3300;
-@value planned: #FF9900;
-@value partiallyImplemented: #ffff00;
-@value partiallyImplementedText: bodyText;
-@value implemented: #6AA84F;
-*/
-
-/* Blue sequential colors */
-/* From http://colorbrewer2.org/?type=sequential&scheme=PuBu&n=6 */
-/*
-@value unclear: #d0d1e6;
-@value unclearText: bodyText;
-@value notImplemented: #a6bddb;
-@value planned: #74a9cf;
-@value partiallyImplemented: #2b8cbe;
-@value partiallyImplementedText: #fff;
-@value implemented: #045a8d;
-*/
-
