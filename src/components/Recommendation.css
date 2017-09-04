@@ -52,14 +52,21 @@
 }
 
 .specific {
-  /* Larger font-size to make it stand out from the updates */
-  font-size: 1.1em;
+  font-size: 1.2em;
   /* And a bottom border, padding and margin to separate the elements even
-   * further
-   */
+     further */
   border-bottom: 2px solid highlightBlockBackgroundDarker;
   padding-bottom: 1em;
   margin-bottom: 2em;
+  composes: serifFont from './base.css';
+}
+
+.specific p {
+  /*
+   * Override default theme font size for paragraphs.
+   */
+  font-size: 1em;
+  line-height: 1.2em;
 }
 
 .propertyList {

@@ -19,6 +19,14 @@
  */
 @value bodyFontSize: 16px;
 
+/*
+ * There aren't any serif fonts in chicagoreporter.com.  However, this is from
+ * the Largo stylesheet.  It's the font stack used for the body style.
+ */
+.serifFont {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
 .button {
   display: inline-block;
   text-decoration: none;
