@@ -2,6 +2,12 @@
   margin-top: 1em;
 }
 
+.set:last-child {
+  /* Add bottom margin to create space between last filter and sorting
+   * controls */
+  margin-bottom: 1em;
+}
+
 .label {
   composes: label from './base.css';
 }
