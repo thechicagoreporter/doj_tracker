@@ -1,12 +1,18 @@
 .intro {
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin-bottom: 1.6em;
   text-align: center;
 }
 
 .toggle {
-  composes: button from '../components/base.css';
-  composes: buttonStrong from '../components/base.css';
+  font-size: 1.2em;
+}
+
+.expanded {
+  composes: collapsingLink from '../components/base.css';
+}
+
+.collapsed {
+  composes: expandingLink from '../components/base.css';
 }
 
 .inner {

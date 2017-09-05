@@ -1,3 +1,7 @@
 .lede {
   font-size: 1.2em;
 }
+
+.lede p:last-child {
+  margin-bottom: 0;
+}

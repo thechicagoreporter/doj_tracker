@@ -35,6 +35,7 @@ class Intro extends React.Component {
     const toggleClassName = cx({
       toggle: true,
       collapsed: this.props.collapsed,
+      expanded: !this.props.collapsed,
     });
 
     const label = this.props.collapsed ?
@@ -43,12 +44,12 @@ class Intro extends React.Component {
 
     return (
       <div className={styles.intro}>
-        <a href="#"
+        <button
           className={toggleClassName}
           onClick={this.handleToggleClick}>
 
           {label}
-        </a>
+        </button>
         <div className={innerClassName}
           dangerouslySetInnerHTML={getHtml(this.props.text)} />
       </div>
