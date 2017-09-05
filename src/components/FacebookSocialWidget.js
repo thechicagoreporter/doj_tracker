@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import FacebookIcon from './FacebookIcon';
+import styles from './FacebookSocialWidget.css';
 
 const getShareUrl = (location, appId) => {
   const encoded = encodeURI(location);
@@ -22,7 +23,7 @@ class FacebookSocialWidget extends React.Component {
     };
 
     return (
-      <a href={shareUrl} onClick={handleClick}><FacebookIcon /></a>
+      <a href={shareUrl} onClick={handleClick} className={styles.widget}><FacebookIcon /></a>
     );
   }
 }

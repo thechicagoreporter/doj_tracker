@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import TwitterIcon from './TwitterIcon';
+import styles from './TwitterSocialWidget.css';
 
 const getShareUrl = (location) => {
   const encoded = encodeURI(location);
@@ -22,7 +23,7 @@ class TwitterSocialWidget extends React.Component {
     };
 
     return (
-      <a href={shareUrl} onClick={handleClick}><TwitterIcon /></a>
+      <a href={shareUrl} onClick={handleClick} className={styles.widget}><TwitterIcon /></a>
     );
   }
 }

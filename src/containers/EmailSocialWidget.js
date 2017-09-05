@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import EnvelopeIcon from '../components/EnvelopeIcon';
+import styles from './EmailSocialWidget.css';
 
 const mapStateToProps = (state, ownProps) => ({
   subject: state.shareEmailSubject,
@@ -17,7 +18,7 @@ const EmailSocialWidget = ({ location, subject, body }) => {
   const shareUrl = `mailto:?subject=${subject}&body=${body} ${location}`;
 
   return (
-    <a href={shareUrl}><EnvelopeIcon /></a>
+    <a href={shareUrl} className={styles.widget}><EnvelopeIcon /></a>
   );
 };
 
