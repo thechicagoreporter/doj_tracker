@@ -1,4 +1,5 @@
 @value notImplemented, planned, partiallyImplemented, partiallyImplementedText, implemented, unclear, unclearText, highlightBlockBackground, highlightBlockBackgroundDarker from '../colors.css';
+@value breakpointLg from './base.css';
 
 .gist {
   /* Make space for the permalink */
@@ -8,6 +9,7 @@
 }
 
 @value recommendationPadding: 2em;
+@value recommendationPaddingLg: 2.6em;
 
 .recommendation {
   position: relative;
@@ -16,6 +18,7 @@
   border-top: 4px solid;
   background-color: highlightBlockBackground;
 }
+
 
 .recommendation.notImplemented {
   border-top-color: notImplemented;
@@ -41,6 +44,17 @@
   position: absolute;
   top: recommendationPadding;
   right: recommendationPadding;
+}
+
+@media (min-width: breakpointLg) {
+  .recommendation {
+    padding: recommendationPaddingLg;
+  }
+
+  .permalink {
+    top: recommendationPaddingLg;
+    right: recommendationPaddingLg;
+  }
 }
 
 .expansion {

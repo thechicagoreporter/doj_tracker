@@ -9,8 +9,14 @@
  * keyword.  This is similar to mixins in Sass.
  */
 
-
 @value darkGray, highlight, secondaryHighlight from '../colors.css';
+
+/*
+ * We really only have one breakpoint, and I don't even know if it's fair
+ * to call it a breakpoint. This mostly has to do with the maximum width
+ * of the recommendation cards.
+ */
+@value breakpointLg: 768px;
 
 /*
  * This matches the style from the chicagoreporter.com stylesheet.
