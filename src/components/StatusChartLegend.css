@@ -1,11 +1,16 @@
 @value notImplemented, planned, partiallyImplemented, implemented, unclear  from '../colors.css';
 
-.legend {}
+.legend {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 0.8em;
+}
 
 .item {
   display: inline-block;
   margin-bottom: 0.2em;
-  margin-right: 1em;
 }
 
 .color,
