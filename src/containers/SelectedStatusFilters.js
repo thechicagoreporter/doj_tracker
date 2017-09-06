@@ -4,7 +4,7 @@ import FilterSet from '../components/FilterSet';
 import { getFilterClassName } from '../util';
 
 const mapStateToProps = (state, ownProps) => ({
-  label: 'By Status',
+  label: 'Filter By Status',
   items: state.statuses.all,
   isSelected: status => (
     state.statuses.selected.has(status.status) ||
