@@ -6,6 +6,7 @@
   max-width: 92%;
   margin-top: 0;
   margin-bottom: 1.2em !important;
+  font-size: 1.6em !important;
 }
 
 @value recommendationPadding: 2em;
@@ -18,7 +19,6 @@
   border-top: 4px solid;
   background-color: highlightBlockBackground;
 }
-
 
 .recommendation.notImplemented {
   border-top-color: notImplemented;
