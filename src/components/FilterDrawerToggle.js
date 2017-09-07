@@ -29,7 +29,7 @@ class FilterDrawerToggle extends React.Component {
       return 'Hide filters';
     }
     const extra = this.props.filterCount ? ` (${this.props.filterCount})` : '';
-    return `Show more filters${extra}`;
+    return `Filter by category, agency${extra}`;
   }
 
   handleClick() {
