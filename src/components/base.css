@@ -66,9 +66,7 @@
 
 .toggleLink::after {
   position: relative;
-  top: 0.5em;
   margin-left: 0.25em;
-  font-size: 2em;
 }
 
 .expandingLink {
@@ -76,7 +74,9 @@
 }
 
 .expandingLink::after {
-  content: '˅';
+  /* Unicode "down arrowhead" */
+  content: '\2304';
+  top: -0.2em;
 }
 
 .collapsingLink {
@@ -84,7 +84,9 @@
 }
 
 .collapsingLink::after {
-  content: '˄';
+  /* Unicode "up arrowhead" */
+  content: '\2303';
+  top: 0.33em;
 }
 
 .filterButton {
