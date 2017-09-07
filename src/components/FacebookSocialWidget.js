@@ -23,7 +23,9 @@ class FacebookSocialWidget extends React.Component {
     };
 
     return (
-      <a href={shareUrl} onClick={handleClick} className={styles.widget}><FacebookIcon /></a>
+      <a href={shareUrl} onClick={handleClick} className={styles.widget}>
+        <FacebookIcon width="24px" height="24px" />
+      </a>
     );
   }
 }

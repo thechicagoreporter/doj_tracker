@@ -18,7 +18,9 @@ const EmailSocialWidget = ({ location, subject, body }) => {
   const shareUrl = `mailto:?subject=${subject}&body=${body} ${location}`;
 
   return (
-    <a href={shareUrl} className={styles.widget}><EnvelopeIcon /></a>
+    <a href={shareUrl} className={styles.widget}>
+      <EnvelopeIcon width="24px" height="24px" />
+    </a>
   );
 };
 

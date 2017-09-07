@@ -121,6 +121,7 @@
 }
 
 .socialWidget {
-  padding-left: 0.5em;
-  padding-right: 0.5em;
+  /* Make space between social widgets equal to the widget width */
+  padding-left: 12px;
+  padding-right: 12px;
 }

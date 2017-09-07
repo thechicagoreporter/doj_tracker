@@ -23,7 +23,9 @@ class TwitterSocialWidget extends React.Component {
     };
 
     return (
-      <a href={shareUrl} onClick={handleClick} className={styles.widget}><TwitterIcon /></a>
+      <a href={shareUrl} onClick={handleClick} className={styles.widget}>
+        <TwitterIcon width="24px" height="24px" />
+      </a>
     );
   }
 }

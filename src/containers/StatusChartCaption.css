@@ -8,6 +8,8 @@
 
 .caption p {
   font-size: 1em;
+  /* Reset style from theme */
+  margin-bottom: 1em;
 }
 
 /**

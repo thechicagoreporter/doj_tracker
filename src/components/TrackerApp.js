@@ -66,16 +66,16 @@ const TrackerApp = ({
     <div className={styles.tracker}>
       <Lede />
       <Intro />
-      <SocialWidgets
-        location={window ? window.location : null}
-        facebookAppId={facebookAppId}
-        window={window} />
       <StatusChartTitle />
       <figure className={styles.figure}>
         <StatusChartLegend statuses={statuses} />
         <StatusChart statuses={statuses} window={window} />
         <StatusChartCaption />
       </figure>
+      <SocialWidgets
+        location={window ? window.location : null}
+        facebookAppId={facebookAppId}
+        window={window} />
       <ActiveSearchForm />
       <Filters initialFilters={initialFilters} />
       <VisibleOrderByControls>
