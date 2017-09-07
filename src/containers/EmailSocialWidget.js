@@ -15,7 +15,8 @@ const EmailSocialWidget = ({ location, subject, body }) => {
     return false;
   }
 
-  const shareUrl = `mailto:?subject=${subject}&body=${body} ${location}`;
+  const bodyEncoded = encodeURIComponent(body);
+  const shareUrl = `mailto:?subject=${subject}&body=${bodyEncoded} ${location}.`;
 
   return (
     <a href={shareUrl} className={styles.widget}>
