@@ -56,7 +56,7 @@ class Recommendation extends React.Component {
           <UpdateList updates={this.props.recommendation.updates} />
 
           <dl className={styles.propertyList}>
-            <div>
+            <div className={cx('propertyGroup', 'solo')}>
               <dt className={styles.label}>{agenciesLabel} responsible</dt>
               <dd className={styles.value}>
                 <AgencyList agencies={this.props.recommendation.agency_responsible} />
@@ -66,19 +66,19 @@ class Recommendation extends React.Component {
         </div>
 
         <dl className={styles.propertyList}>
-          <div>
+          <div className={styles.propertyGroup}>
             <dt className={hiddenLabelClassName}>Status</dt>
             <dd className={cx('value', 'status', camelCase(this.props.recommendation.statusSlug, '-'))}>
                {this.props.recommendation.status}
             </dd>
           </div>
 
-          <div>
+          <div className={styles.propertyGroup}>
             <dt className={hiddenLabelClassName}>Category</dt>
             <dd className={cx('value', 'category')}>{this.props.recommendation.category}</dd>
           </div>
 
-          <div>
+          <div className={styles.propertyGroup}>
             <dt className={cx('label', 'lastUpdated')}>Last updated</dt>
             <dd className={cx('value', 'lastUpdated')}>{lastUpdated}</dd>
           </div>

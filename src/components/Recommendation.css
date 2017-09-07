@@ -95,12 +95,30 @@
 }
 
 .propertyList {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  overflow: hidden;
   /* Reset dl styles from theme. */
   margin-bottom: 0;
+}
+
+.propertyGroup.solo {
+  margin-bottom: 1em;
+  text-align: left !important;
+}
+
+@media (min-width: 700px) {
+  .propertyGroup {
+    float: left;
+    width: 33%;
+    text-align: center;
+  }
+
+  .propertyGroup:first-child {
+    text-align: left;
+  }
+
+  .propertyGroup:last-child {
+    text-align: right;
+  }
 }
 
 .label {
@@ -109,9 +127,12 @@
 
 .value {
   margin-left: 0;
-  margin-bottom: 1em;
   /* Reset dd font styles from the theme. */
   font-weight: normal;
+}
+
+.propertyGroup:first-child .value {
+  margin-bottom: 0.5em;
 }
 
 .hidden {
