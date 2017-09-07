@@ -1,3 +1,5 @@
+@value sansSerifFontStack from '../components/base.css';
+
 .caption {
   margin-top: 0.6em;
   font-size: 0.8em;
@@ -6,4 +8,15 @@
 
 .caption p {
   font-size: 1em;
+}
+
+/**
+ * Reset theme first letter style.
+ */
+.caption p::first-letter {
+  float: none !important;
+  padding: 0 !important;
+  font-family: sansSerifFontStack !important;
+  font-size: 1em !important;
+  line-height: 1em !important;
 }

@@ -1,5 +1,5 @@
-@value notImplemented, planned, partiallyImplemented, partiallyImplementedText, implemented, unclear, unclearText, highlightBlockBackground, highlightBlockBackgroundDarker from '../colors.css';
-@value breakpointLg from './base.css';
+@value notImplemented, planned, partiallyImplemented, partiallyImplementedText, implemented, unclear, unclearText, highlightBlockBackground, highlightBlockBackgroundDarker, bodyText from '../colors.css';
+@value breakpointLg, sansSerifFontStack from './base.css';
 
 .gist {
   /* Make space for the permalink */
@@ -66,21 +66,32 @@
 }
 
 .specific {
-  font-size: 1.2em;
+  font-size: 1.2em !important;
   /* And a bottom border, padding and margin to separate the elements even
      further */
   border-bottom: 2px solid highlightBlockBackgroundDarker;
   padding-bottom: 1em;
   margin-bottom: 2em;
-  composes: serifFont from './base.css';
 }
 
 .specific p {
   /*
    * Override default theme font size for paragraphs.
    */
-  font-size: 1em;
+  font-size: 1.2em;
   line-height: 1.2em;
+}
+
+/*
+ * Reset first letter styles from theme.
+ */
+.specific p::first-letter {
+  color: bodyText !important;
+  float: none !important;
+  padding: 0 !important;
+  font-family: sansSerifFontStack !important;
+  font-size: 1em !important;
+  line-height: 1em !important;
 }
 
 .propertyList {

@@ -1,6 +1,19 @@
+@value sansSerifFontStack from '../components/base.css';
+
 .intro {
   margin-bottom: 1.6em;
   text-align: center;
+}
+
+/*
+ * Reset first letter styles from theme.
+ */
+.intro p::first-letter {
+  float: none !important;
+  padding: 0 !important;
+  font-family: sansSerifFontStack !important;
+  font-size: 1em !important;
+  line-height: 1em !important;
 }
 
 .toggle {
