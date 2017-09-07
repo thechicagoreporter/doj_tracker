@@ -21,6 +21,6 @@
 @value unclearText: bodyText;
 @value notImplemented: highlight;
 @value planned: #ffbb30;
-@value partiallyImplemented: #93ffc8;
+@value partiallyImplemented: #99d8c9;
 @value partiallyImplementedText: bodyText;
 @value implemented: secondaryHighlight;
