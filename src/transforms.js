@@ -363,6 +363,7 @@ export const pruneProps = function prunePropsTransform(data) {
     'credits',
     'shareEmailSubject',
     'shareEmailBody',
+    'shareTweetText',
   ];
   const pruned = {};
 

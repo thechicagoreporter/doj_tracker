@@ -225,6 +225,10 @@ export const shareEmailSubject = function shareEmailSubjectReducer(state = '') {
   return state;
 };
 
-export const shareEmailBody = function shareEmailBody(state = '') {
+export const shareEmailBody = function shareEmailBodyRuducer(state = '') {
+  return state;
+};
+
+export const shareTweetText = function shareTweetTextReducer(state = '') {
   return state;
 };

@@ -1,12 +1,18 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import TwitterIcon from './TwitterIcon';
+import { connect } from 'react-redux';
+import TwitterIcon from '../components/TwitterIcon';
 import styles from './TwitterSocialWidget.css';
 
-const getShareUrl = (location) => {
-  const encoded = encodeURI(location);
-  return `https://twitter.com/intent/tweet?url=${encoded}`;
+const getShareUrl = (location, text) => {
+  const encodedUrl = encodeURIComponent(location);
+  const encodedText = encodeURIComponent(text);
+  return `https://twitter.com/intent/tweet?text=${encodedText}&url=${encodedUrl}`;
 };
+
+const mapStateToProps = state => ({
+  text: state.shareTweetText,
+});
 
 class TwitterSocialWidget extends React.Component {
   render() {
@@ -14,7 +20,10 @@ class TwitterSocialWidget extends React.Component {
       return false;
     }
 
-    const shareUrl = getShareUrl(this.props.location);
+    const shareUrl = getShareUrl(
+      this.props.location,
+      this.props.text,
+    );
     const handleClick = (evt) => {
       evt.preventDefault();
       if (this.props.window) {
@@ -33,6 +42,7 @@ class TwitterSocialWidget extends React.Component {
 TwitterSocialWidget.propTypes = {
   location: PropTypes.object,
   window: PropTypes.object,
+  text: PropTypes.string,
 };
 
-export default TwitterSocialWidget;
+export default connect(mapStateToProps)(TwitterSocialWidget);

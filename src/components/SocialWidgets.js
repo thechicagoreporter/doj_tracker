@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './SocialWidgets.css';
 
 import FacebookSocialWidget from './FacebookSocialWidget';
-import TwitterSocialWidget from './TwitterSocialWidget';
+import TwitterSocialWidget from '../containers/TwitterSocialWidget';
 import EmailSocialWidget from '../containers/EmailSocialWidget';
 
 const SocialIcons = ({ location, facebookAppId, window }) => (

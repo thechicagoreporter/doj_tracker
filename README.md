@@ -190,6 +190,23 @@ Or, to publish to staging:
 
 In the above examples, the `sh` command runs our npm script in a separate shell.  That way, the environment variables don't pollute the environment in our main shell.  The `-a` option exports all variables, so the variables sourced from the `.env` file via `. ./.env` will be available to the npm script.  The `-c` option specifies the command to run in the shell.  In this case, we specify two commands, separated by a `;`.  The first sources the environment variables and the second runs the npm script.
 
+Adding new state variables
+--------------------------
+
+The data that drives the app lives in an Google Document that is parsed as ArchieML.
+
+The most important information in the document are the recommendations which are part of the `recommendations` array.  However, there are a number of other properties such as `lede` and `intro_text` that are used to render the app.
+
+The Google Doc is retrieved and converted to text via a request to the Google Drive API that is initiated by Webpack when bundling or running the development server.  The parsed ArchieML is then transofmed into a more useable format by a series of JavaScript functions and the final data is passed to Redux to set the initial application state.  The state object is used by React to render the app.
+
+To add a new state variable:
+
+* Add it near the top of the Google Doc using the appropriate ArchieML syntax.
+* camelCase variable names are preferred because they look nicer when referencedd in the JavaScript code.
+* Add the new property name to the accepted list of properties in the `pruneProps()` transform functon in `src/transforms.js`.
+* Add a really basic reducer in `src/reducers/slices.js`. The exported function name should be the same as your property name.
+
+
 Data prep
 ---------
 
