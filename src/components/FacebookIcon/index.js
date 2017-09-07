@@ -11,13 +11,13 @@ const FacebookIcon = ({ width, height }) => (
 );
 
 FacebookIcon.defaultProps = {
-  width: 32,
-  height: 32,
+  width: '32px',
+  height: '32px',
 };
 
 FacebookIcon.propTypes = {
-  width: PropTypes.number,
-  height: PropTypes.number,
+  width: PropTypes.string,
+  height: PropTypes.string,
 };
 
 export default FacebookIcon;

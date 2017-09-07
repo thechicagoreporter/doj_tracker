@@ -15,13 +15,13 @@ const TwitterIcon = ({ width, height }) => (
 );
 
 TwitterIcon.defaultProps = {
-  width: 32,
-  height: 32,
+  width: '32px',
+  height: '32px',
 };
 
 TwitterIcon.propTypes = {
-  width: PropTypes.number,
-  height: PropTypes.number,
+  width: PropTypes.string,
+  height: PropTypes.string,
 };
 
 export default TwitterIcon;
