@@ -1,5 +1,7 @@
 .update {
   list-style-type: none;
+  /* Match margin on heading style from theme for date */
+  margin-bottom: 24px;
 }
 
 .date {
