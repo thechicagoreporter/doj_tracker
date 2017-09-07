@@ -189,6 +189,7 @@
 .category {
   padding-top: highlightValuePadding;
   padding-bottom: highlightValuePadding;
+  font-weight: bold;
 }
 
 .showMoreCtaContainer {
