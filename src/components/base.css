@@ -52,41 +52,61 @@
   background-color: highlight;
 }
 
-.toggleLink {
-  display: block;
+/* A button that looks like a link */
+.linkButton {
   border: none;
   padding: 0;
-  width: 100%;
-  text-align: center;
-  text-decoration: none;
   font-size: 0.8em;
   background: none;
   font-family: sans-serif;
 }
 
-.toggleLink::after {
+.toggleButton {
+  composes: linkButton;
+}
+
+.toggleButton::after {
   position: relative;
   margin-left: 0.25em;
 }
 
-.expandingLink {
-  composes: toggleLink;
+.expandButton {
+  composes: toggleButton;
 }
 
-.expandingLink::after {
+.expandButton::after {
   /* Unicode "down arrowhead" */
   content: '\2304';
   top: -0.2em;
 }
 
-.collapsingLink {
-  composes: toggleLink;
+.collapseButton {
+  composes: toggleButton;
 }
 
-.collapsingLink::after {
+.collapseButton::after {
   /* Unicode "up arrowhead" */
   content: '\2303';
   top: 0.33em;
+}
+
+/* A button designed to be in the center of the component, with a full-width
+ * click target */
+.centeredButton {
+  display: block;
+  width: 100%;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.centeredExpandButton {
+  composes: expandButton;
+  composes: centeredButton;
+}
+
+.centeredCollapseButton {
+  composes: collapseButton;
+  composes: centeredButton;
 }
 
 .filterButton {

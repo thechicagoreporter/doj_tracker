@@ -8,9 +8,9 @@
 }
 
 .expanded {
-  composes: collapsingLink from './base.css';
+  composes: centeredCollapseButton from './base.css';
 }
 
 .collapsed {
-  composes: expandingLink from './base.css';
+  composes: centeredExpandButton from './base.css';
 }

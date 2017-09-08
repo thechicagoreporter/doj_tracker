@@ -21,11 +21,11 @@
 }
 
 .expanded {
-  composes: collapsingLink from '../components/base.css';
+  composes: centeredCollapseButton from '../components/base.css';
 }
 
 .collapsed {
-  composes: expandingLink from '../components/base.css';
+  composes: centeredExpandButton from '../components/base.css';
 }
 
 .inner {
