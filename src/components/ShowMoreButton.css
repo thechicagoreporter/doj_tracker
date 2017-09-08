@@ -12,6 +12,7 @@
   .toggle {
     /* On wider displays, but the button on the same line as the text */
     display: inline;
+    margin-top: 0;
   }
 }
 
