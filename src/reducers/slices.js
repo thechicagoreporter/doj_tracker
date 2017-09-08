@@ -10,13 +10,13 @@ import {
 } from '../actions';
 import { DESC, LAST_UPDATED } from '../constants';
 
+const identityReducer = initialState => (state = initialState) => state;
+
 export const title = function titleReducer(state = 'DOJ Tracker') {
   return state;
 };
 
-export const search = function searchReducer(state = {}) {
-  return state;
-};
+export const search = identityReducer({});
 
 export const q = function qReducer(state = null, action) {
   switch (action.type) {
@@ -30,9 +30,7 @@ export const q = function qReducer(state = null, action) {
 };
 
 // eslint-disable-next-line camelcase
-export const introText = function introTextReducer(state = '') {
-  return state;
-};
+export const introText = identityReducer('');
 
 export const agencies = function agenciesReducer(
   state = { all: [], selected: [] },
@@ -153,9 +151,7 @@ export const recommendations = function recommendationsReducer(
   }
 };
 
-export const initialRender = function initialRender(state = true) {
-  return state;
-};
+export const initialRender = identityReducer(true);
 
 export const filterDrawerCollapsed = function filterDrawerCollapsedReducer(
   state = true,
@@ -191,17 +187,11 @@ export const orderBy = function orderByReducer(
   }
 };
 
-export const lede = function leadReducer(state = '') {
-  return state;
-};
+export const lede = identityReducer('');
 
-export const chartCaption = function chartCaptionReducer(state = '') {
-  return state;
-};
+export const chartCaption = identityReducer('');
 
-export const chartTitle = function chartTitleReducer(state = '') {
-  return state;
-};
+export const chartTitle = identityReducer('');
 
 export const introCollapsed = function introCollapsedReducer(
   state = true,
@@ -217,22 +207,12 @@ export const introCollapsed = function introCollapsedReducer(
   }
 };
 
-export const credits = function creditsReducer(state = '') {
-  return state;
-};
+export const credits = identityReducer('');
 
-export const methodology = function methodologyReducer(state = '') {
-  return state;
-};
+export const methodology = identityReducer('');
 
-export const shareEmailSubject = function shareEmailSubjectReducer(state = '') {
-  return state;
-};
+export const shareEmailSubject = identityReducer('');
 
-export const shareEmailBody = function shareEmailBodyRuducer(state = '') {
-  return state;
-};
+export const shareEmailBody = identityReducer('');
 
-export const shareTweetText = function shareTweetTextReducer(state = '') {
-  return state;
-};
+export const shareTweetText = identityReducer('');
