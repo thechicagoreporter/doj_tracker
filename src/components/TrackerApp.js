@@ -62,6 +62,16 @@ const TrackerApp = ({
     categorySlug,
   );
 
+  // Wrap the browser's requestAnimationFrame so we can pass it to downstream
+  // components.
+  const raf = (f) => {
+    if (!window) {
+      return;
+    }
+
+    window.requestAnimationFrame(f);
+  };
+
   return (
     <div className={styles.tracker}>
       <Lede />
@@ -85,7 +95,8 @@ const TrackerApp = ({
           label="Last Updated" />
       </VisibleOrderByControls>
       <VisibleRecommendationList detailId={id}
-        initialFilters={initialFilters} />
+        initialFilters={initialFilters}
+        requestAnimationFrame={raf} />
       <CreditBox />
     </div>
   );

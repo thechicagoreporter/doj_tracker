@@ -65,10 +65,20 @@
 
 .expansion {
   margin-top: 1em;
+
+  /* These styles are needed to animate the drawer.
+   * See https://css-tricks.com/using-css-transitions-auto-dimensions/ for
+   * more on this technique */
+  height: auto;
+  /* This prevents the content from being visible when we "hide" the expandable
+   * container by setting its height to 0 */
+  overflow: hidden;
+  transition: height 0.5s linear;
 }
 
 .expansion.collapsed {
-  display: none;
+  /* Use height to "hide" the element so we can animate it open/closed. */
+  height: 0;
 }
 
 .specific {

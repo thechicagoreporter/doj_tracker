@@ -17,7 +17,8 @@ class RecommendationList extends React.Component {
                 this.props.initialRender,
               )
             }
-            scrollToRef={el => this.scrollToRef(el, r.id)} />
+            scrollToRef={el => this.scrollToRef(el, r.id)}
+            requestAnimationFrame={this.props.requestAnimationFrame} />
         ))}
       </div>
     );
@@ -46,6 +47,7 @@ RecommendationList.propTypes = {
   onToggleRecommendation: PropTypes.func,
   detailId: PropTypes.string,
   initialRender: PropTypes.bool,
+  requestAnimationFrame: PropTypes.func,
 };
 
 export default RecommendationList;
