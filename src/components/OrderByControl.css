@@ -4,15 +4,14 @@
 
 .controlSelected {
   composes: filterButton from './base.css';
-  composes: filterButtonSelected from './base.css';
 }
 
 .controlSelected.ascending::after {
-  content: '▲';
+  content: '\25B2';
   margin-left: 0.5em;
 }
 
 .controlSelected.descending::after {
-  content: '▼';
+  content: '\25BC';
   margin-left: 0.5em;
 }

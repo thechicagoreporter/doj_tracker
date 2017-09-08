@@ -18,7 +18,7 @@ const OrderByControls = ({ orderBy, direction, children, setOrderBy }) => (
 OrderByControls.propTypes = {
   orderBy: PropTypes.string,
   direction: PropTypes.string,
-  children: PropTypes.array,
+  children: PropTypes.object,
   setOrderBy: PropTypes.func,
 };
 
