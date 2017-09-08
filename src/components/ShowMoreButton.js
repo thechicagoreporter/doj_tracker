@@ -28,7 +28,9 @@ class ShowMoreButton extends React.Component {
   }
 
   handleClick() {
-    this.props.onClick();
+    if (this.props.onClick) {
+      this.props.onClick();
+    }
   }
 }
 

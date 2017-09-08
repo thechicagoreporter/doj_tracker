@@ -40,9 +40,9 @@ class Recommendation extends React.Component {
 
     return (
       <div className={getClassName(this.props)} ref={this.props.scrollToRef}>
-        <h3 className={styles.gist}>
+        <h3 className={styles.gist} onClick={this.handleShowMoreClick}>
           <span className={styles.gistText}>{this.props.recommendation.recommendation_gist}</span>
-          <ShowMoreButton onClick={this.handleShowMoreClick}
+          <ShowMoreButton
             collapsed={this.props.recommendation.collapsed} />
         </h3>
 
