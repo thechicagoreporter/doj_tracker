@@ -4,7 +4,6 @@
 .gist {
   /* Make space for the permalink */
   max-width: 96%;
-  margin: 0 -0.25em;
   margin-bottom: 1.2em !important;
   font-size: 1.6em !important;
 }
