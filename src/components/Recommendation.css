@@ -3,10 +3,17 @@
 
 .gist {
   /* Make space for the permalink */
-  max-width: 92%;
-  margin-top: 0;
+  max-width: 96%;
+  margin: 0 -0.25em;
   margin-bottom: 1.2em !important;
   font-size: 1.6em !important;
+}
+
+.gistText {
+  /* Create space between the gist text and the "read more" link. We put the
+     margin on this, the first element so the second element (the button) will
+     be left-aligned if it wraps to a new line */
+  margin-right: 0.5em;
 }
 
 @value recommendationPadding: 2em;
@@ -190,8 +197,4 @@
   padding-top: highlightValuePadding;
   padding-bottom: highlightValuePadding;
   font-weight: bold;
-}
-
-.showMoreCtaContainer {
-  text-align: center;
 }

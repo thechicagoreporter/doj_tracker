@@ -41,7 +41,9 @@ class Recommendation extends React.Component {
     return (
       <div className={getClassName(this.props)} ref={this.props.scrollToRef}>
         <h3 className={styles.gist}>
-          {this.props.recommendation.recommendation_gist}
+          <span className={styles.gistText}>{this.props.recommendation.recommendation_gist}</span>
+          <ShowMoreButton onClick={this.handleShowMoreClick}
+            collapsed={this.props.recommendation.collapsed} />
         </h3>
 
         <Link to={`/recommendations/${this.props.recommendation.id}`}
@@ -83,11 +85,6 @@ class Recommendation extends React.Component {
             <dd className={cx('value', 'lastUpdated')}>{lastUpdated}</dd>
           </div>
         </dl>
-
-        <div className={styles.showMoreCtaContainer}>
-          <ShowMoreButton onClick={this.handleShowMoreClick}
-            collapsed={this.props.recommendation.collapsed} />
-        </div>
       </div>
     );
   }
