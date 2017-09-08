@@ -331,6 +331,13 @@ export const renderCredits = function renderCreditsTransform(data) {
   };
 };
 
+export const renderMethodology = function renderMethodologyTransform(data) {
+  return {
+    ...data,
+    methodology: marked(data.methodology),
+  };
+};
+
 export const renameProps = function renamePropsTransform(data) {
   const renamings = {
     intro_text: 'introText',
@@ -361,6 +368,7 @@ export const pruneProps = function prunePropsTransform(data) {
     'chartCaption',
     'chartTitle',
     'credits',
+    'methodology',
     'shareEmailSubject',
     'shareEmailBody',
     'shareTweetText',

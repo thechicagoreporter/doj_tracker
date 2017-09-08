@@ -15,6 +15,7 @@ import StatusChartLegend from './StatusChartLegend';
 import StatusChartTitle from '../containers/StatusChartTitle';
 import StatusChartCaption from '../containers/StatusChartCaption';
 import CreditBox from '../containers/CreditBox';
+import MethodologyBox from '../containers/MethodologyBox';
 import SocialWidgets from './SocialWidgets';
 import styles from './TrackerApp.css';
 
@@ -97,6 +98,7 @@ const TrackerApp = ({
       <VisibleRecommendationList detailId={id}
         initialFilters={initialFilters}
         requestAnimationFrame={raf} />
+      <MethodologyBox />
       <CreditBox />
     </div>
   );

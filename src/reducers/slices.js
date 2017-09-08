@@ -221,6 +221,10 @@ export const credits = function creditsReducer(state = '') {
   return state;
 };
 
+export const methodology = function methodologyReducer(state = '') {
+  return state;
+};
+
 export const shareEmailSubject = function shareEmailSubjectReducer(state = '') {
   return state;
 };
