@@ -134,10 +134,6 @@
   margin-bottom: 0.6em;
 }
 
-.borderTop {
-  border-top: 4px solid highlight;
-}
-
 .socialIcon path {
  fill: darkGray;
 }

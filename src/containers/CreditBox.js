@@ -9,7 +9,13 @@ const mapStateToProps = state => ({
 });
 
 const CreditBox = ({ text }) => (
-  <div className={styles.creditBox} dangerouslySetInnerHTML={getHtml(text)} />
+  <div className={styles.creditBox}>
+    <div className="series-divider">
+      <div className="divider-line"></div>
+    </div>
+
+    <div dangerouslySetInnerHTML={getHtml(text)} />
+  </div>
 );
 
 CreditBox.propTypes = {
