@@ -17,7 +17,12 @@ module.exports = (locals) => {
   const rawState = pruneProps(locals);
   const store = createStore(rootReducer, hydrateState(rawState));
   const state = store.getState();
-  const routes = getRoutes(state.statuses);
+  const routes = getRoutes(
+    state.statuses,
+    null,
+    locals.shareUrl,
+    locals.facebookAppId,
+  );
 
   // Render the component to a string
   const html = renderToString(
@@ -33,6 +38,7 @@ module.exports = (locals) => {
   return renderFullPage({
     appHtml: html,
     title: locals.title,
+    shareUrl: locals.shareUrl,
     facebookAppId: locals.facebookAppId,
   }, rawState);
 };

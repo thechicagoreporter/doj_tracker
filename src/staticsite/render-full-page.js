@@ -21,6 +21,7 @@ const renderFullPage = (ctx, preloadedState) => (`
                 document.querySelector('.tracker-container-inner'),
                 ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')},
                 window,
+                '${ctx.shareUrl}',
                 '${ctx.facebookAppId}'
               );
           </script>

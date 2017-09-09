@@ -134,6 +134,10 @@ URL to the S3 bucket where static assets will be published, beginning with `s3:/
 
 URL to the S3 bucket where static assets will be published, beginning with `http://`.
 
+### SHARE\_URL
+
+URL to use for social sharing widgets.  This is neccessary because when baking the static site, we can't get the page URL from `window.location`.
+
 ### TOKEN\_PATH
 
 Path where Google Drive API OAuth token will be stored.  Defaults to `${HOME}/.credentials/doj_tracker.json`.

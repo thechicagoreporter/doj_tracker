@@ -3,18 +3,14 @@ import React from 'react';
 import FacebookIcon from './FacebookIcon';
 import styles from './FacebookSocialWidget.css';
 
-const getShareUrl = (location, appId) => {
-  const encoded = encodeURI(location);
+const getShareUrl = (shareUrl, appId) => {
+  const encoded = encodeURI(shareUrl);
   return `https://www.facebook.com/dialog/share?app_id=${appId}&display=popup&href=${encoded}`;
 };
 
 class FacebookSocialWidget extends React.Component {
   render() {
-    if (!this.props.location || !this.props.appId) {
-      return false;
-    }
-
-    const shareUrl = getShareUrl(this.props.location, this.props.appId);
+    const shareUrl = getShareUrl(this.props.shareUrl, this.props.appId);
     const handleClick = (evt) => {
       evt.preventDefault();
       if (this.props.window) {
@@ -32,7 +28,7 @@ class FacebookSocialWidget extends React.Component {
 
 FacebookSocialWidget.propTypes = {
   appId: PropTypes.string,
-  location: PropTypes.object,
+  shareUrl: PropTypes.string,
   window: PropTypes.object,
 };
 

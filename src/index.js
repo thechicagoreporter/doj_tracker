@@ -12,11 +12,17 @@ import getRoutes from './getroutes';
 import './index.css';
 
 // eslint-disable-next-line import/prefer-default-export
-export const renderApp = (container, initialState, window, facebookAppId) => {
+export const renderApp = (
+  container,
+  initialState,
+  window,
+  shareUrl,
+  facebookAppId,
+) => {
   // Create a new Redux store instance
   const store = createStore(rootReducer, hydrateState(initialState));
   const state = store.getState();
-  const routes = getRoutes(state.statuses, window, facebookAppId);
+  const routes = getRoutes(state.statuses, window, shareUrl, facebookAppId);
 
   // Render the component
   render(

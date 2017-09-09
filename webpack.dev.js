@@ -13,6 +13,7 @@ const tokenFilename = process.env.TOKEN_FILENAME || 'doj_tracker.json';
 const tokenPath = path.join(drive.DEFAULT_TOKEN_DIR, tokenFilename);
 const clientIdPath = process.env.CLIENT_ID_PATH || 'client_id.json';
 const facebookAppId = process.env.FB_APP_ID;
+const shareUrl = process.env.SHARE_URL;
 
 const StaticSiteGeneratorPlugin = require(
   'static-site-generator-webpack-plugin'
@@ -31,7 +32,8 @@ module.exports = getLocals(docUrl, clientIdPath, tokenPath)
         new StaticSiteGeneratorPlugin({
           entry: 'staticSite',
           locals: Object.assign({}, locals, {
-            facebookAppId: facebookAppId
+            facebookAppId: facebookAppId,
+            shareUrl: shareUrl
           }),
           paths: ['/'],
           globals: (new JSDOM('')).window

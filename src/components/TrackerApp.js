@@ -55,6 +55,7 @@ const TrackerApp = ({
   categorySlug,
   statusSlug,
   window,
+  shareUrl,
   facebookAppId,
 }) => {
   const initialFilters = getInitialFilters(
@@ -84,7 +85,7 @@ const TrackerApp = ({
         <StatusChartCaption />
       </figure>
       <SocialWidgets
-        location={window ? window.location : null}
+        shareUrl={shareUrl}
         facebookAppId={facebookAppId}
         window={window} />
       <ActiveSearchForm />
@@ -138,6 +139,10 @@ TrackerApp.propTypes = {
    * DOM window object.
    */
   window: PropTypes.object,
+  /**
+   * URL to share via social sharing widgets
+   */
+  shareUrl: PropTypes.string,
   /**
    * Facebook application ID, used to enable sharing recommendations on
    * Facebook.

@@ -7,26 +7,22 @@ import styles from './EmailSocialWidget.css';
 const mapStateToProps = (state, ownProps) => ({
   subject: state.shareEmailSubject,
   body: state.shareEmailBody,
-  location: ownProps.location,
+  shareUrl: ownProps.shareUrl,
 });
 
-const EmailSocialWidget = ({ location, subject, body }) => {
-  if (!location) {
-    return false;
-  }
-
+const EmailSocialWidget = ({ shareUrl, subject, body }) => {
   const bodyEncoded = encodeURIComponent(body);
-  const shareUrl = `mailto:?subject=${subject}&body=${bodyEncoded} ${location}.`;
+  const mailtoUrl = `mailto:?subject=${subject}&body=${bodyEncoded} ${shareUrl}.`;
 
   return (
-    <a href={shareUrl} className={styles.widget}>
+    <a href={mailtoUrl} className={styles.widget}>
       <EnvelopeIcon width="24px" height="24px" />
     </a>
   );
 };
 
 EmailSocialWidget.propTypes = {
-  location: PropTypes.object,
+  shareUrl: PropTypes.string,
   subject: PropTypes.string,
   body: PropTypes.string,
 };

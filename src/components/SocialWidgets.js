@@ -6,22 +6,22 @@ import FacebookSocialWidget from './FacebookSocialWidget';
 import TwitterSocialWidget from '../containers/TwitterSocialWidget';
 import EmailSocialWidget from '../containers/EmailSocialWidget';
 
-const SocialIcons = ({ location, facebookAppId, window }) => (
+const SocialIcons = ({ shareUrl, facebookAppId, window }) => (
   <div className={styles.socialWidgets}>
     <TwitterSocialWidget
-      location={location}
+      shareUrl={shareUrl}
       window={window} />
     <FacebookSocialWidget
-      location={location}
+      shareUrl={shareUrl}
       appId={facebookAppId}
       window={window} />
     <EmailSocialWidget
-      location={location} />
+      shareUrl={shareUrl} />
   </div>
 );
 
 SocialIcons.propTypes = {
-  location: PropTypes.object,
+  shareUrl: PropTypes.string,
   facebookAppId: PropTypes.string,
   window: PropTypes.object,
 };
