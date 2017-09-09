@@ -1,6 +1,8 @@
 require('babel-register');
 
 const path = require('path');
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
 const merge = require('webpack-merge');
 const webpack = require('webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
@@ -31,12 +33,7 @@ module.exports = getLocals(docUrl, clientIdPath, tokenPath)
             shareUrl: shareUrl
           }),
           paths: ['/'],
-          globals: {
-            window: {},
-            document: {
-              createElement: function() {},
-            },
-          }
+          globals: (new JSDOM('')).window
         }),
         new UglifyJSPlugin(),
         new webpack.DefinePlugin({
@@ -44,6 +41,6 @@ module.exports = getLocals(docUrl, clientIdPath, tokenPath)
             'NODE_ENV': JSON.stringify('production')
           }
         })
-      ] 
+      ]
     });
   });

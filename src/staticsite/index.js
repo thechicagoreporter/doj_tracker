@@ -1,7 +1,7 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import {
-  StaticRouter,
+  HashRouter,
   Switch,
 } from 'react-router-dom';
 import { createStore } from 'redux';
@@ -27,11 +27,11 @@ module.exports = (locals) => {
   // Render the component to a string
   const html = renderToString(
     <Provider store={store}>
-      <StaticRouter>
+      <HashRouter>
         <Switch>
           {routes}
         </Switch>
-      </StaticRouter>
+      </HashRouter>
     </Provider>,
   );
 
