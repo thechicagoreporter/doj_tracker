@@ -143,6 +143,7 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     recommendations,
+    totalRecommendations: state.recommendations.allIds.length,
     detailId: ownProps.detailId,
     initialRender: state.initialRender,
   };

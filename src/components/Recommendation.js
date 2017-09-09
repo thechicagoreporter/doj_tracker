@@ -189,6 +189,9 @@ class Recommendation extends React.Component {
 }
 
 Recommendation.propTypes = {
+  /**
+   * An object representing a DOJ recommendation.
+   */
   recommendation: PropTypes.shape({
     category: PropTypes.string,
     agency_responsible: PropTypes.arrayOf(PropTypes.string),
@@ -200,8 +203,26 @@ Recommendation.propTypes = {
     statusSlug: PropTypes.string,
     updates: PropTypes.arrayOf(PropTypes.object),
   }),
+  /**
+   * Handler for when a user toogles the collapsed state of the recommendation
+   * card.
+   */
   onToggleRecommendation: PropTypes.func,
+  /**
+   * Callback function to pass the card's DOM element upstream.
+   *
+   * This is used to help scroll to a particular card a recommendation is
+   * specified in the path.
+   */
   scrollToRef: PropTypes.func,
+  /**
+   * Function for scheduling a callback when the next animation frame occurs.
+   *
+   * TODO: Better explaination of this.
+   *
+   * This would just be `window.requestAnimationFrame()`, but we pass it in as
+   * a prop to make it easier to mock/test.
+   */
   requestAnimationFrame: PropTypes.func,
 };
 
