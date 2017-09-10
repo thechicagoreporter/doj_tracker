@@ -152,9 +152,10 @@ export const recommendationLookup = function recommendationLookupTransform(data)
       recommendations.allIds.push(r.id);
     });
 
-  return Object.assign({}, data, {
+  return {
+    ...data,
     recommendations,
-  });
+  };
 };
 
 export const addCategories = function addCategoriesTransform(data) {
@@ -171,12 +172,13 @@ export const addCategories = function addCategoriesTransform(data) {
     }
   });
 
-  return Object.assign({}, data, {
+  return {
+    ...data,
     categories: {
       all: Object.keys(categoriesByName).map(k => categoriesByName[k]),
       selected: [],
     },
-  });
+  };
 };
 
 export const addAgencies = function addAgenciesTransform(data) {
@@ -215,7 +217,8 @@ export const addAgencies = function addAgenciesTransform(data) {
  * selected for filtering.
  */
 export const reshapeStatuses = function reshapeStatusesTransform(data) {
-  return Object.assign({}, data, {
+  return {
+    ...data,
     statuses: {
       // Add slugs to statuses.
       all: data.statuses.map(s => ({
@@ -226,7 +229,7 @@ export const reshapeStatuses = function reshapeStatusesTransform(data) {
       // front-end logic as showing all recommendations, regardless of status.
       selected: [],
     },
-  });
+  };
 };
 
 export const renderIntro = function renderIntroTransform(data) {
@@ -248,20 +251,19 @@ export const groupByStatus = function groupByStatusTransform(data) {
     byStatus[r.status].push(r);
   });
 
-  const allStatuses = data.statuses.all.map(s => Object.assign(
-    {},
-    s,
-    {
-      count: byStatus[s.status].length,
-      pctRecommendations: byStatus[s.status].length / data.recommendations.allIds.length,
-    },
-  ));
+  const allStatuses = data.statuses.all.map(s => ({
+    ...s,
+    count: byStatus[s.status].length,
+    pctRecommendations: byStatus[s.status].length / data.recommendations.allIds.length,
+  }));
 
-  return Object.assign({}, data, {
-    statuses: Object.assign({}, data.statuses, {
+  return {
+    ...data,
+    statuses: {
+      ...data.statuses,
       all: allStatuses,
-    }),
-  });
+    },
+  };
 };
 
 export const renderLede = function renderLedeTransform(data) {

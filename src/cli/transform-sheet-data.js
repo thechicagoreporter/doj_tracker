@@ -1,5 +1,7 @@
 const transform = function transformRow(data) {
-  const transformed = Object.assign({}, data);
+  const transformed = {
+    ...data,
+  };
 
   // Split the `agency_responsible` field into multiple values
   transformed.agency_responsible = transformed.agency_responsible.split(/\s*,\s*/);

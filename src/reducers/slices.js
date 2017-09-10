@@ -53,9 +53,10 @@ export const agencies = function agenciesReducer(
         newSelectedAgencies.add(action.filter);
       }
 
-      return Object.assign({}, state, {
+      return {
+        ...state,
         selected: newSelectedAgencies,
-      });
+      };
     }
 
     default:
@@ -84,9 +85,10 @@ export const categories = function categoriesReducer(
         newSelectedCategories.add(action.filter);
       }
 
-      return Object.assign({}, state, {
+      return {
+        ...state,
         selected: newSelectedCategories,
-      });
+      };
     }
 
     default:
@@ -115,9 +117,10 @@ export const statuses = function statusesReducer(
         newSelectedStatuses.add(action.filter);
       }
 
-      return Object.assign({}, state, {
+      return {
+        ...state,
         selected: newSelectedStatuses,
-      });
+      };
     }
 
     default:
@@ -137,13 +140,16 @@ export const recommendations = function recommendationsReducer(
         true :
         !recommendation.collapsed;
 
-      return Object.assign({}, state, {
-        byId: Object.assign({}, state.byId, {
-          [id]: Object.assign({}, recommendation, {
+      return {
+        ...state,
+        byId: {
+          ...state.byId,
+          [id]: {
+            ...recommendation,
             collapsed,
-          }),
-        }),
-      });
+          },
+        },
+      };
     }
 
     default:

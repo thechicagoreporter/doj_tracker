@@ -22,20 +22,23 @@ export const hydrateState = (state) => {
   return {
     ...state,
     // Add the set of filtered IDs to the recommendations collection
-    recommendations: Object.assign({}, state.recommendations, {
+    recommendations: {
+      ...state.recommendations,
       filteredIds,
-    }),
+    },
     // Convert `selected` properties from arrays to `Set` objects.
     agencies: {
       ...state.agencies,
       selected: new Set(state.agencies.selected),
     },
-    categories: Object.assign({}, state.categories, {
+    categories: {
+      ...state.categories,
       selected: new Set(state.categories.selected),
-    }),
-    statuses: Object.assign({}, state.statuses, {
+    },
+    statuses: {
+      ...state.statuses,
       selected: new Set(state.statuses.selected),
-    }),
+    },
     search,
   };
 };
