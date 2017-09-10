@@ -50,6 +50,8 @@
   position: absolute;
   top: recommendationPadding;
   right: recommendationPadding;
+  /* Remove underline */
+  text-decoration: none;
 }
 
 @media (min-width: breakpointLg) {
