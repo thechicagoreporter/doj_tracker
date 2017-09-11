@@ -1,5 +1,8 @@
-// Load polyfill for Object.assign() in older browsers, e.g. IE11
+// Load polyfill for Object.assign(). It's needed in older browsers, e.g. IE11
 import 'core-js/fn/object/assign';
+// Load polyfill for Set().  It's needed in older browsers, e.g. Safari on
+// iOS v8.
+import 'core-js/fn/set';
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
