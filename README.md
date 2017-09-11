@@ -50,6 +50,21 @@ Click the "Download" button and save the file as `client_id.json` in the project
 
 Click the "Done" button.
 
+Updating an existing installation
+---------------------------------
+
+To bring an existing installation up-to-date, first change directory to wherever you cloned the repo on installation:
+
+    cd ~/projects/doj-tracker
+
+Then pull in new changes to the source code:
+
+    git pull
+
+Then install any JavaScript dependencies that have changed:
+
+    npm install
+
 Run the local development server
 --------------------------------
 
