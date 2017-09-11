@@ -3,6 +3,12 @@ Chicago Reporter DOJ Tracker
 
 A tracker for United States Department of Justice recommendations for reforming the Chicago Police Department.
 
+Preflight project management can be found [here](https://app.asana.com/0/266435719787280/266435719787302).
+
+The repository for this project is [here](https://github.com/thechicagoreporter/doj_tracker/).
+
+Bugs and feature requests should be reported in the [GitHub issue tracker](https://github.com/thechicagoreporter/doj_tracker/issues).
+
 Assumptions
 -----------
 
