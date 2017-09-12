@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+
+require('babel-register');
+
+var argv = require('minimist')(process.argv.slice(2));
+
+var main = require('../src/cli/validate').default;
+
+main(argv);

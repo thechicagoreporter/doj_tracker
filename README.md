@@ -97,6 +97,13 @@ The first time you run this command, you will see a prompt like this:
 
 Visit the URL in the message and follow the dialog to allow access to the "DOJ Tracker" app.  You will be presented with a code that you should copy and paste after the "Enter the code from that page here" prompt.
 
+Validate data
+-------------
+
+It might be useful to validate that the data parsed and transformed from the Google doc has the neccesary values to successfully render the app.  There is a node script that you can run to do this:
+
+    sh -ac '. ./.env; npm run validate'
+
 Publishing
 ----------
 
