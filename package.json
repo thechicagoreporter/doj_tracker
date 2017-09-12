@@ -72,5 +72,8 @@
     "react-router": "^4.1.2",
     "react-router-dom": "^4.1.2",
     "redux": "^3.7.1"
-  }
+  },
+  "browserslist": [
+    "last 5 versions"
+  ]
 }
