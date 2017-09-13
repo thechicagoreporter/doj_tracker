@@ -80,3 +80,14 @@ export const unslugify = slug => (
 export const getHtml = text => ({
   __html: text,
 });
+
+/**
+ * Returns the union of two sets.
+ */
+export const union = (s1, s2) => {
+  const newSet = new Set(s1);
+  s2.forEach((elem) => {
+    newSet.add(elem);
+  });
+  return newSet;
+};

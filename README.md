@@ -222,6 +222,27 @@ Or, to publish to staging:
 
 In the above examples, the `sh` command runs our npm script in a separate shell.  That way, the environment variables don't pollute the environment in our main shell.  The `-a` option exports all variables, so the variables sourced from the `.env` file via `. ./.env` will be available to the npm script.  The `-c` option specifies the command to run in the shell.  In this case, we specify two commands, separated by a `;`.  The first sources the environment variables and the second runs the npm script.
 
+Sharing pre-fliltered URLS
+--------------------------
+
+There are a few hash-based URL routes that will pre-filter the initial list of recommendations.
+
+### By category
+
+Append a hash-based route of the form `#/categories/:categorySlug`, where `:categorySlug` is the slugfied form of a category name, to the end of the URL.
+
+For example:
+
+    http://chicagoreporter.com/99-reforms/#/categories/officer-wellness-and-safety
+
+## By status
+
+Append a hash-based route of the form `#/statuses/:statusSlug`, where `:statusSlug` is the slugified form of a status, to the end of the URL.
+
+For example:
+
+   http://chicagoreporter.com/99-reforms/#/statuses/implemented
+
 Adding new state variables
 --------------------------
 
@@ -274,15 +295,6 @@ In the code, you may see comments that look like this:
 
 These just disable a particular coding style [rules](http://eslint.org/docs/rules/) when the exception is appropriate.
 
-Browser support
----------------
-
-tl;dr This app should work in modern web browsers (IE9+).
-
-The client-side JavaScript uses:
-
-* `Document.querySelectorAll()`, which is supported in IE8+.
-* `el.addEventListener()`, which is supported in IE9+
 
 Build process
 -------------

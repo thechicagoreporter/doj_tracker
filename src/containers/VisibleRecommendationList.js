@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { toggleRecommendation } from '../actions';
 import RecommendationList from '../components/RecommendationList';
 import { DESC, IMPORTANCE, LAST_UPDATED } from '../constants';
+import { union } from '../util';
 
 /**
  * Filter recommendation ids based on status, category
@@ -86,16 +87,16 @@ const mapStateToProps = (state, ownProps) => {
   // Build a list of selected filter values and getter functions
   // to retrieve the corresponding value from the recommendation
   // object.
-  const selectedStatuses = state.initialRender && ownProps.initialStatus ?
-    (new Set(state.statuses.selected)).add(ownProps.initialStatus) :
+  const selectedStatuses = state.initialRender && ownProps.initialFilters.statuses.size ?
+    union(state.statuses.selected, ownProps.initialFilters.statuses) :
     state.statuses.selected;
 
-  const selectedCategories = state.initialRender && ownProps.initialCategory ?
-    (new Set(state.categories.selected)).add(ownProps.initialCategory) :
+  const selectedCategories = state.initialRender && ownProps.initialFilters.categories.size ?
+    union(state.categories.selected, ownProps.initialFilters.categories) :
     state.categories.selected;
 
-  const selectedAgencies = state.initialRender && ownProps.initialAgency ?
-    (new Set(state.agencies.selected)).add(ownProps.initialAgency) :
+  const selectedAgencies = state.initialRender && ownProps.initialFilters.agencies.size ?
+    union(state.agencies.selected, ownProps.initialFilters.agencies) :
     state.agencies.selected;
 
   const selectedFilters = [
