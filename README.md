@@ -196,17 +196,17 @@ I've found that it's convenient to define environment variables in a .env file, 
 
 An example .env file might look something like this:
 
-  FB_APP_ID=999999999999999
-  WP_URL=http://chicagoreporter.com
-  WP_USERNAME=some-service-account-username
-  WP_PASSWORD="aaaa aaaa aaaa aaaa aaaa aaaa"
-  WP_POST_TITLE="Monitor Chicago’s police reforms"
-  WP_POST_ID=42
-  AWS_ACCESS_KEY=AKIAASSADADAS93245IA
-  AWS_SECRET_KEY=adhjiadhadASF478432sfsdfgsdfsjgsahafSAa6
-  S3_URL=s3://projects.chicagoreporter.com/graphics/dojtracker/
-  S3_HTTP_URL=http://projects.chicagoreporter.com/graphics/dojtracker/
-  DOCUMENT_URL=https://docs.google.com/document/d/23748sfafasfgafasfasr34287892347342asdfafaas/edit
+    FB_APP_ID=999999999999999
+    WP_URL=http://chicagoreporter.com
+    WP_USERNAME=some-service-account-username
+    WP_PASSWORD="aaaa aaaa aaaa aaaa aaaa aaaa"
+    WP_POST_TITLE="Monitor Chicago’s police reforms"
+    WP_POST_ID=42
+    AWS_ACCESS_KEY=AKIAASSADADAS93245IA
+    AWS_SECRET_KEY=adhjiadhadASF478432sfsdfgsdfsjgsahafSAa6
+    S3_URL=s3://projects.chicagoreporter.com/graphics/dojtracker/
+    S3_HTTP_URL=http://projects.chicagoreporter.com/graphics/dojtracker/
+    DOCUMENT_URL=https://docs.google.com/document/d/23748sfafasfgafasfasr34287892347342asdfafaas/edit
 
 Note that the credentials in the above example are mocked.
 
@@ -241,7 +241,7 @@ Append a hash-based route of the form `#/statuses/:statusSlug`, where `:statusSl
 
 For example:
 
-   http://chicagoreporter.com/99-reforms/#/statuses/implemented
+    http://chicagoreporter.com/99-reforms/#/statuses/implemented
 
 Adding new state variables
 --------------------------
