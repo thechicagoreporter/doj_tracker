@@ -222,7 +222,7 @@ Or, to publish to staging:
 
 In the above examples, the `sh` command runs our npm script in a separate shell.  That way, the environment variables don't pollute the environment in our main shell.  The `-a` option exports all variables, so the variables sourced from the `.env` file via `. ./.env` will be available to the npm script.  The `-c` option specifies the command to run in the shell.  In this case, we specify two commands, separated by a `;`.  The first sources the environment variables and the second runs the npm script.
 
-Sharing pre-fliltered URLS
+Sharing pre-fliltered URLs
 --------------------------
 
 There are a few hash-based URL routes that will pre-filter the initial list of recommendations.
