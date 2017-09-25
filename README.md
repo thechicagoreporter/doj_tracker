@@ -190,6 +190,10 @@ Title of WordPress post where app is published.
 
 Root URL for the WordPress site where this app will be published.
 
+### PUB\_YEAR, PUB\_MONTH, PUB\_DAY
+
+Date of original publication, to be used by WP post update to avoid resetting pub date.
+
 ### Putting configuration in an environment file
 
 I've found that it's convenient to define environment variables in a .env file, which is just a text file where each line is just a `VAR=VAL` declaration.  It's widely used with tools like [Docker Compose](https://docs.docker.com/compose/env-file/).

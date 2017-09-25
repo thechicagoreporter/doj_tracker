@@ -25,6 +25,7 @@ const main = function cliMain(
       const postIdInt = parseInt(postId, 10);
       wp.posts().id(postIdInt).auth().update({
         title: postTitle,
+	date: new Date(process.env.PUB_YEAR,process.env.PUB_MONTH,process.env.PUB_DAY),
         content,
       })
       .catch((err) => {
