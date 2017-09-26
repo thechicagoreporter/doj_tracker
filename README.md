@@ -190,9 +190,9 @@ Title of WordPress post where app is published.
 
 Root URL for the WordPress site where this app will be published.
 
-### PUB\_YEAR, PUB\_MONTH, PUB\_DAY
+### PUB\_DATE
 
-Date of original publication, to be used by WP post update to avoid resetting pub date.
+Date of original publication ("YYYY-MM-DD") to be used by WP post update to avoid resetting pub date.
 
 ### Putting configuration in an environment file
 

@@ -1,4 +1,5 @@
 import WPAPI from 'wpapi';
+import moment from 'moment';
 
 const main = function cliMain(
   input,
@@ -25,7 +26,7 @@ const main = function cliMain(
       const postIdInt = parseInt(postId, 10);
       wp.posts().id(postIdInt).auth().update({
         title: postTitle,
-	date: new Date(process.env.PUB_YEAR,process.env.PUB_MONTH,process.env.PUB_DAY),
+	date: moment(process.env.PUB_DATE).format("YYYY-MM-DDTHH:MM:SS"),
         content,
       })
       .catch((err) => {
@@ -44,5 +45,4 @@ const main = function cliMain(
     }
   });
 };
-
 export default main;
