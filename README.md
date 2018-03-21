@@ -201,7 +201,7 @@ I've found that it's convenient to define environment variables in a .env file, 
 An example .env file might look something like this:
 
     FB_APP_ID=999999999999999
-    WP_URL=http://chicagoreporter.com
+    WP_URL=http://www.chicagoreporter.com
     WP_USERNAME=some-service-account-username
     WP_PASSWORD="aaaa aaaa aaaa aaaa aaaa aaaa"
     WP_POST_TITLE="Monitor Chicago’s police reforms"
