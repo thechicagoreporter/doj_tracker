@@ -160,7 +160,7 @@ URL to the S3 bucket where static assets will be published, beginning with `s3:/
 
 ### S3\_HTTP\_URL
 
-URL to the S3 bucket where static assets will be published, beginning with `http://`.
+URL to the S3 bucket where static assets will be published, beginning with `https://`.
 
 ### SHARE\_URL
 
@@ -201,7 +201,7 @@ I've found that it's convenient to define environment variables in a .env file, 
 An example .env file might look something like this:
 
     FB_APP_ID=999999999999999
-    WP_URL=http://www.chicagoreporter.com
+    WP_URL=https://www.chicagoreporter.com
     WP_USERNAME=some-service-account-username
     WP_PASSWORD="aaaa aaaa aaaa aaaa aaaa aaaa"
     WP_POST_TITLE="Monitor Chicago’s police reforms"
@@ -209,7 +209,7 @@ An example .env file might look something like this:
     AWS_ACCESS_KEY=AKIAASSADADAS93245IA
     AWS_SECRET_KEY=adhjiadhadASF478432sfsdfgsdfsjgsahafSAa6
     S3_URL=s3://projects.chicagoreporter.com/graphics/dojtracker/
-    S3_HTTP_URL=http://projects.chicagoreporter.com/graphics/dojtracker/
+    S3_HTTP_URL=https://s3.amazonaws.projects.chicagoreporter.com/graphics/dojtracker/
     DOCUMENT_URL=https://docs.google.com/document/d/23748sfafasfgafasfasr34287892347342asdfafaas/edit
 
 Note that the credentials in the above example are mocked.
@@ -237,7 +237,7 @@ Append a hash-based route of the form `#/categories/:categorySlug`, where `:cate
 
 For example:
 
-    http://chicagoreporter.com/99-reforms/#/categories/officer-wellness-and-safety
+    https://chicagoreporter.com/99-reforms/#/categories/officer-wellness-and-safety
 
 ## By status
 
@@ -245,7 +245,7 @@ Append a hash-based route of the form `#/statuses/:statusSlug`, where `:statusSl
 
 For example:
 
-    http://chicagoreporter.com/99-reforms/#/statuses/implemented
+    https://chicagoreporter.com/99-reforms/#/statuses/implemented
 
 Adding new state variables
 --------------------------
